@@ -1,3 +1,2 @@
 # ptsb-oct-23-capstone-team-2
-
-Daniela Watanabe
+Members: Aidan Ho, Daniela Watanabe
