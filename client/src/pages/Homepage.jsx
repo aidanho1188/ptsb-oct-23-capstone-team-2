@@ -1,5 +1,12 @@
+import Logo from '../components/Logo/Logo'
+
 function Homepage() {
-  return <div>This is the Homepage</div>
+  return (
+    <div>
+      <h1>Homepage</h1>
+      <Logo />
+    </div>
+  )
 }
 
 export default Homepage
