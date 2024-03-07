@@ -17,5 +17,8 @@ display: flex;
 flex-direction: row;
 justify-content: space-between;
 padding: 15px;
-width: 100%;
+border-bottom: 1px #4F4F4F solid;
+z-index: 10000;
+position: sticky;
+top: 0;
 }
