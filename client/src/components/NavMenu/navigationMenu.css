@@ -1,0 +1,10 @@
+.nav-menu-layout {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-link {
+    color: white;
+    font-size: 1em;
+    padding: 5px;
+}
