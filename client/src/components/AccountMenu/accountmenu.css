@@ -1,0 +1,16 @@
+.account-menu-layout {
+  position: relative;
+}
+
+.dropdown-menu-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.account-menu-layout:hover .dropdown-menu-content {
+  display: block;
+}
