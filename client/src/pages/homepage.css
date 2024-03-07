@@ -1,0 +1,21 @@
+.homepage-container {
+display: flex;
+flex-direction: column;
+width: 100vw;
+padding: 15px;
+}
+
+.homepage-title {
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 15px;
+}
+
+.nav-bar {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+padding: 15px;
+width: 100%;
+}
