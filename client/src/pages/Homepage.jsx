@@ -5,7 +5,6 @@ import './homepage.css'
 
 function Homepage() {
   return (
-
     <div className="homepage-container">
       {/* <h1 className="homepage-title">Homepage</h1> */}
       <div className="nav-bar">
