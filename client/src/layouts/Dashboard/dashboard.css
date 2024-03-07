@@ -1,0 +1,21 @@
+.dashboard {
+  border: 1px solid #e0e0e0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 5em;
+}
+
+.dashboard > * {
+  margin: 1em;
+  padding: 1em;
+}
+.dashboard .table {
+  border: 1px solid #e0e0e0;
+  width: 20%;
+}
+
+.dashboard .graph {
+  border: 1px solid #e0e0e0;
+  width: 90%;
+}
