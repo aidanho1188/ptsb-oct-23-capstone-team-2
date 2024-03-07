@@ -3,7 +3,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-
+@import '../app/globals.css';
 /* Your custom styles go here */
 
 :root {
