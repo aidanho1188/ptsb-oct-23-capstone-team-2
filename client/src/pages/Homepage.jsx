@@ -1,7 +1,6 @@
 import Logo from '../components/Logo/Logo'
 import NavMenu from '../components/NavMenu/NavigationMenu'
 import './homepage.css'
-import AccountMenu from '../components/AccountMenu/AccountMenu'
 
 function Homepage() {
   return (
@@ -10,7 +9,6 @@ function Homepage() {
       <div className='nav-bar'>
         <Logo />
         <NavMenu />
-        <AccountMenu />
       </div>
     </div>
   )
