@@ -1,17 +1,12 @@
-import Logo from "../components/Logo/Logo";
-import NavMenu from "../components/NavMenu/NavigationMenu";
-import './homepage.css'
+import Logo from '../components/Logo/Logo'
 
 function Homepage() {
   return (
-    <div className="homepage-container">
-      <h1 className="homepage-title">Homepage</h1>
-      <div className="nav-bar">
-        <Logo />
-        <NavMenu />
-      </div>
+    <div>
+      <h1>Homepage</h1>
+      <Logo />
     </div>
-  );
+  )
 }
 
-export default Homepage;
+export default Homepage
