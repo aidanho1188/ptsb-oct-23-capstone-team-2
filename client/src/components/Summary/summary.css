@@ -1,4 +1,13 @@
 .summary-layout {
   width: 50vw;
-  height: 70vh;
+  height: 80vh;
+}
+
+.summary-card-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  border: 1px solid white;
+  margin: 1rem;
 }
