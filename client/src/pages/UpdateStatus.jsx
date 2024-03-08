@@ -1,4 +1,5 @@
 import Summary from '../components/Summary/Summary'
+import WorkOrder from '../components/WorkOrder/WorkOrder'
 import './updatestatus.css'
 
 function UpdateStatus() {
@@ -6,6 +7,7 @@ function UpdateStatus() {
     <div className='update-status-container'>
       <h1 className='homepage-title'>Update Status</h1>
       <Summary />
+      <WorkOrder />
     </div>
   )
 }
