@@ -1,42 +1,70 @@
-import {
-  useFormField,
-  Form,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormDescription,
-  FormMessage,
-  FormField,
-} from "../../../components/ui/form";
-import { Button } from "../../../components/ui/button";
-import { Input } from "../../../components/ui/input";
+import {zodResolver} from '@hookform/resolvers/zod'
+import {useForm} from 'react-hook-form'
+import {z} from 'zod'
 
-import "./responseForm.css";
+import {Button} from '../../../components/ui/button'
+import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from '../../../components/ui/form'
+import {Input} from '../../../components/ui/input'
+
+// Sample schema, replace with our own when we need it later
+// const formSchema = z.object({
+//   username: z.string().min(2, {
+//     message: 'Username must be at least 2 characters.',
+//   }),
+// })
 
 function ResponseForm() {
-  return (
-      <Form>
-        <form>
-          <FormField
-            control={Form.control}
-              name="username"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Username</FormLabel>
-                <FormControl>
-                  <Input placeholder="shadcn" {...field} />
-                </FormControl>
-                <FormDescription>
-                  This is your public display name.
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button type="submit">Submit</Button>
-        </form>
-      </Form>
-  );
-}
+  const form = useForm()
 
-export default ResponseForm;
+  return (
+    <Form {...form}>
+      <form className='space-y-8'>
+        <FormField
+          control={form.control}
+          name='Title'
+          render={({field}) => (
+            <FormItem>
+              <FormLabel>Title</FormLabel>
+              <FormControl>
+                <Input placeholder='Title' {...field} />
+              </FormControl>
+              <FormDescription>Title of this form</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name='Email'
+          render={({field}) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input placeholder='Email' {...field} />
+              </FormControl>
+              <FormDescription>Enter Email</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name='email'
+          render={({field}) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input placeholder='Email' {...field} />
+              </FormControl>
+              <FormDescription>This is your public display name.</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type='submit'>Submit</Button>
+      </form>
+    </Form>
+  )
+}
+export default ResponseForm
