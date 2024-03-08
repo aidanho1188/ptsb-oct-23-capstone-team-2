@@ -1,46 +1,31 @@
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "../../../components/ui/navigation-menu";
+import {NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger} from '../../../components/ui/navigation-menu'
 
-import "./navigationMenu.css";
+import './navigationMenu.css'
 
 function NavMenu() {
   return (
-    <NavigationMenu>
-      <NavigationMenuList className="nav-menu-layout">
+    <div className='nav-menu-layout'>
+      <NavigationMenu>
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuLink className='nav-link'>Check In</NavigationMenuLink>
+          </NavigationMenuItem>
 
-        <NavigationMenuItem>
-          <NavigationMenuLink className="nav-link">
-            Check In
-          </NavigationMenuLink>
-        </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink className='nav-link'>Check Out</NavigationMenuLink>
+          </NavigationMenuItem>
 
-        <NavigationMenuItem>
-        <NavigationMenuLink className="nav-link">
-            Check Out
-          </NavigationMenuLink>
-        </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink className='nav-link'>Update Status</NavigationMenuLink>
+          </NavigationMenuItem>
 
-        <NavigationMenuItem>
-          <NavigationMenuLink className="nav-link">
-            Update Status
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-
-        <NavigationMenuItem>
-          <NavigationMenuLink className="nav-link">
-            Work Order Activity
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-
-      </NavigationMenuList>
-    </NavigationMenu>
-  );
+          <NavigationMenuItem>
+            <NavigationMenuLink className='nav-link'>Work Order Activity</NavigationMenuLink>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
+    </div>
+  )
 }
 
-export default NavMenu;
+export default NavMenu

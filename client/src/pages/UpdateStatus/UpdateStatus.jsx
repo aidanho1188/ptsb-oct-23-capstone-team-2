@@ -1,11 +1,10 @@
-import Summary from '../components/Summary/Summary'
+import NavBar from '../../layouts/Navbar/NavBar'
 import './updatestatus.css'
 
 function UpdateStatus() {
   return (
     <div className='update-status-container'>
-      <h1 className='homepage-title'>Update Status</h1>
-      <Summary />
+      <NavBar />
     </div>
   )
 }

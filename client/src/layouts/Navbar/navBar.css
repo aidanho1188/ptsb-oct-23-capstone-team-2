@@ -1,0 +1,10 @@
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 1rem;
+  z-index: 10000;
+  position: sticky;
+  top: 0;
+  flex-wrap: nowrap;
+}
