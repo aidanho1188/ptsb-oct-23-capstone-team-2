@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@radix-ui /themes/styles.css;
 
 @layer base {
   :root {
@@ -72,6 +71,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    /* @apply bg-background */
+    @apply text-foreground;
   }
 }
