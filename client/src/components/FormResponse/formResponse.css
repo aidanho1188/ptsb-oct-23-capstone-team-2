@@ -1,0 +1,9 @@
+.form-response-layout {
+  width: 35vw;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+}

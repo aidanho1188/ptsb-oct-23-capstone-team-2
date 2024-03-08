@@ -1,28 +1,42 @@
-import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow} from '../../../components/ui/table'
+import {Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter} from '../../../components/ui/card'
 import './summary.css'
 
+// Will need to extract this into summary layout file
 function Summary() {
   return (
     <div className='summary-layout'>
-      <Table>
-        <TableCaption>A list of your recent invoices.</TableCaption>
-        <TableHeader>
-          <TableRow>
-            <TableHead className='w-[100px]'>Invoice</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Method</TableHead>
-            <TableHead className='text-right'>Amount</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          <TableRow>
-            <TableCell className='font-medium'>INV001</TableCell>
-            <TableCell>Paid</TableCell>
-            <TableCell>Credit Card</TableCell>
-            <TableCell className='text-right'>$250.00</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
+      <h1>Summary</h1>
+      <Card className='summary-card-layout'>
+        <CardHeader>
+          <CardTitle>Order Id: #123456789</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p>Requested By:</p>
+          <p>Requested For:</p>
+          <p>Location:</p>
+          <p>Assigned To:</p>
+          <p>Created Date:</p>
+          <p>Due Date:</p>
+          <p>Completed Date:</p>
+          <p>Comments:</p>
+        </CardContent>
+      </Card>
+
+      <Card className='summary-card-layout'>
+        <CardHeader>
+          <CardTitle>Order Id: #123456789</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p>Requested By:</p>
+          <p>Requested For:</p>
+          <p>Location:</p>
+          <p>Assigned To:</p>
+          <p>Created Date:</p>
+          <p>Due Date:</p>
+          <p>Completed Date:</p>
+          <p>Comments:</p>
+        </CardContent>
+      </Card>
     </div>
   )
 }
