@@ -1,4 +1,5 @@
 import Summary from '../components/Summary/Summary'
+import WorkOrder from '../components/WorkOrder/WorkOrder'
 import './updatestatus.css'
 import Form from '../components/FormResponse/FormResponse'
 
@@ -8,6 +9,7 @@ function UpdateStatus() {
       <h1 className='homepage-title'>Update Status</h1>
       <Form />
       <Summary />
+      <WorkOrder />
     </div>
   )
 }
