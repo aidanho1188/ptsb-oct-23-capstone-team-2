@@ -1,5 +1,5 @@
 import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow} from '../../../components/ui/table'
-import './tablePlaceholder.css'
+// import './tablePlaceholder.css'
 function TablePlaceholder(prop) {
   return (
     <div className={prop.className}>
