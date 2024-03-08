@@ -1,17 +1,13 @@
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '../../../components/ui/dropdown-menu'
+import {Button} from '../../../components/ui/button'
+import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger} from '../../../components/ui/dropdown-menu'
 
 const AccountMenu = () => {
   return (
     <div className='account-menu-layout'>
       <DropdownMenu>
-        <DropdownMenuTrigger>Account</DropdownMenuTrigger>
+        <DropdownMenuTrigger className='dropdown-menu-trigger'>
+          <Button variant='outline'>Account</Button>
+        </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel>Subscription</DropdownMenuLabel>
           <DropdownMenuSeparator />

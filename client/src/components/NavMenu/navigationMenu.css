@@ -1,11 +1,14 @@
 .nav-menu-layout {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 .nav-link {
-    color: white;
-    font-size: 1em;
-    padding: 1rem;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  padding: 1rem;
+  cursor: pointer;
 }

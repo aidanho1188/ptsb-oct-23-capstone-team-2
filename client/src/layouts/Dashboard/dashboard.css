@@ -1,8 +1,7 @@
 .dashboard {
-  border: 1px solid #e0e0e0;
-  display: flex !important;
-  flex-wrap: wrap !important;
-  justify-content: space-around !important;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
   gap: 5em;
 }
 

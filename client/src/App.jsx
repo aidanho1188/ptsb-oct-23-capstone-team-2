@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { QueryClient, QueryClientProvider } from 'react-query'
-import Homepage from './pages/Homepage.jsx'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import {QueryClient, QueryClientProvider} from 'react-query'
+import Homepage from './pages/Homepage/Homepage.jsx'
+import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import './App.css'
-import UpdateStatus from './pages/UpdateStatus.jsx'
+import UpdateStatusPage from './pages/UpdateStatus/UpdateStatus.jsx'
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -12,8 +12,8 @@ const router = createBrowserRouter([
     element: <Homepage />,
   },
   {
-    path: '/UpdateStatus',
-    element: <UpdateStatus />,
+    path: '/update-status',
+    element: <UpdateStatusPage />,
   },
 ])
 
