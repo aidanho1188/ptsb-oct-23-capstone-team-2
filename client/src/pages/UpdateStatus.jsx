@@ -1,6 +1,6 @@
 import Summary from '../components/Summary/Summary'
 import './updatestatus.css'
-import Form from '../components/ResponseForm/ResponseForm'
+import Form from '../components/FormResponse/FormResponse'
 
 function UpdateStatus() {
   return (

@@ -6,6 +6,7 @@ import {Button} from '../../../components/ui/button'
 import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from '../../../components/ui/form'
 import {Input} from '../../../components/ui/input'
 
+// ! Extract this to login form later!
 // Sample schema, replace with our own when we need it later
 // const formSchema = z.object({
 //   username: z.string().min(2, {
