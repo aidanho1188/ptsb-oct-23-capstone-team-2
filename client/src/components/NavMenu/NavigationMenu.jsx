@@ -1,3 +1,4 @@
+import {GridIcon, GroupIcon} from '@radix-ui/react-icons'
 import {NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger} from '../../../components/ui/navigation-menu'
 
 import './navigationMenu.css'
@@ -8,19 +9,30 @@ function NavMenu() {
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuLink className='nav-link'>Check In</NavigationMenuLink>
+            <NavigationMenuLink href='#' className='nav-link'>
+              <GroupIcon /> Check In
+            </NavigationMenuLink>
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <NavigationMenuLink className='nav-link'>Check Out</NavigationMenuLink>
+            <NavigationMenuLink href='#' className='nav-link'>
+              <GroupIcon />
+              Check Out
+            </NavigationMenuLink>
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <NavigationMenuLink className='nav-link'>Update Status</NavigationMenuLink>
+            <NavigationMenuLink href='/update-status' className='nav-link'>
+              <GroupIcon />
+              Update Status
+            </NavigationMenuLink>
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <NavigationMenuLink className='nav-link'>Work Order Activity</NavigationMenuLink>
+            <NavigationMenuLink href='#' className='nav-link'>
+              <GroupIcon />
+              Work Order Activity
+            </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
