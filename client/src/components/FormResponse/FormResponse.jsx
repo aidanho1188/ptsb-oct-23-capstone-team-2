@@ -1,4 +1,4 @@
-import {Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter} from '../../../components/ui/card'
+import {Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter} from '@/components/ui/card'
 import './formResponse.css'
 
 // Will need to extract this into summary layout file

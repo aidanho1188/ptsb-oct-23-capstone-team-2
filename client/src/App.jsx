@@ -3,7 +3,7 @@ import {QueryClient, QueryClientProvider} from 'react-query'
 import Homepage from './pages/Homepage/Homepage.jsx'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import './App.css'
-import UpdateStatusPage from './pages/UpdateStatus/UpdateStatus.jsx'
+import UpdateStatusPage from './pages/UpdateStatusPage/UpdateStatusPage.jsx'
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
