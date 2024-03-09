@@ -1,6 +1,5 @@
 import {GridIcon, GroupIcon} from '@radix-ui/react-icons'
-import {NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger} from '../../../components/ui/navigation-menu'
-
+import {NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger} from '@/components/ui/navigation-menu'
 import './navigationMenu.css'
 
 function NavMenu() {
