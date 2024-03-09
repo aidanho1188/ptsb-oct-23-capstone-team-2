@@ -1,11 +1,12 @@
 import NavBar from '../../layouts/Navbar/NavBar'
-import './updatestatus.css'
-import Form from '../components/FormResponse/FormResponse'
+import UpdateStatusLayout from '.@/layouts/UpdateStatusLayout/UpdateStatusLayout'
+import './updateStatusPage.css'
 
 function UpdateStatus() {
   return (
     <div className='update-status-container'>
       <NavBar />
+      <UpdateStatusLayout />
     </div>
   )
 }
