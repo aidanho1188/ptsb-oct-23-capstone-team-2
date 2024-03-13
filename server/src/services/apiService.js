@@ -1,10 +1,11 @@
 require('dotenv').config()
 const axios = require('axios')
-const authCode = process.env.AUTH_CODE
+const saveToken = require('../utils/saveToken.js')
 const clientId = process.env.CLIENT_ID
 const clientSecret = process.env.CLIENT_SECRET
 const grantType = process.env.GRANT_TYPE
 const redirect_uri = process.env.REDIRECT_URI
+const authCode = decodeURIComponent(process.env.AUTH_CODE)
 
 async function fetchToken() {
   try {
@@ -18,12 +19,14 @@ async function fetchToken() {
     })
 
     const data = response.data
+    const accessToken = data.access_token
+    const refreshToken = data.refresh_token
     console.log(data)
+    await saveToken(accessToken, refreshToken)
     // if 401, use refresh token
   } catch (error) {
     console.error('Error:', error)
   }
 }
-
 
 module.exports = {fetchToken}

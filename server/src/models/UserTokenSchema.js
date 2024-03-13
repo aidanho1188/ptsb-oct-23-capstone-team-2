@@ -1,18 +1,14 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const UserTokenSchema = new mongoose.Schema({
-  userId: {
-    type: ObjectId,
-    required: true
-  },
   accessToken: {
     type: String,
-    required: false
+    required: false,
   },
   refreshToken: {
     type: String,
-    required: true
-  }
-});
+    required: true,
+  },
+})
 
-module.exports = mongoose.model('UserToken', UserTokenSchema);
+module.exports = mongoose.model('UserToken', UserTokenSchema)
