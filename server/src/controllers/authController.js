@@ -1,5 +1,6 @@
 const express = require('express')
 const apiService = require('../services/apiService')
+const tokenService = require('../services/tokenService')
 const authRouter = express.Router()
 
 // function for login
@@ -10,7 +11,8 @@ const login = (req, res, next) => {
   // } else {
   //   res.status(401).send('Unauthorized')
   // }
-  apiService.fetchToken()
+  // apiService.fetchToken()
+  tokenService.fetchAccessToken()
 }
 
 // function for logout
