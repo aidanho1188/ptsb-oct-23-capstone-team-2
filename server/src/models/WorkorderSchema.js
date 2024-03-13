@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const WorkorderSchema= new mongoose.Schema({
-  workOrderId: {
+  workorderId: {
     type: String,
     required: true
   },
@@ -13,4 +13,4 @@ const WorkorderSchema= new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('UserToken', WorkorderSchema);
+module.exports = mongoose.model('Workorder', WorkorderSchema);
