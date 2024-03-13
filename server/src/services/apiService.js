@@ -1,15 +1,16 @@
 require('dotenv').config()
 const axios = require('axios')
 const saveToken = require('../utils/saveToken.js')
-const clientId = process.env.CLIENT_ID
-const clientSecret = process.env.CLIENT_SECRET
+const clientId = process.env.SB_CLIENT_ID
+const clientSecret = process.env.SB_CLIENT_SECRET
 const grantType = process.env.GRANT_TYPE
 const redirect_uri = process.env.REDIRECT_URI
-const authCode = decodeURIComponent(process.env.AUTH_CODE)
+const tokenType = process.env.SB_TOKEN_TYPE
+const authCode = decodeURIComponent(process.env.SB_AUTH_CODE)
 
 async function fetchToken() {
   try {
-    const body = `grant_type=${grantType}&code=${authCode}&redirect_uri=${encodeURIComponent(redirect_uri)}`
+    const body = `grant_type=${grantType}&code=${authCode}&redirect_uri=${redirect_uri}`
 
     const response = await axios.post('https://sb2login.servicechannel.com/oauth/token', body, {
       headers: {
@@ -22,7 +23,7 @@ async function fetchToken() {
     const accessToken = data.access_token
     const refreshToken = data.refresh_token
     console.log(data)
-    await saveToken(accessToken, refreshToken)
+    await saveToken(tokenType, accessToken, refreshToken)
     // if 401, use refresh token
   } catch (error) {
     console.error('Error:', error)
