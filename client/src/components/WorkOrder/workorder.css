@@ -3,8 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  padding: 1rem;
+  width: 35vw;
+  margin: auto;
 }
 
 .work-order-layout .flex.flex-col.space-y-3 > * {

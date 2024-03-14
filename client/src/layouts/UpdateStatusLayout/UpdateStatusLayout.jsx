@@ -6,13 +6,13 @@ import './updateStatusLayout.css'
 function UpdateStatusLayout() {
   return (
     <div className='update-status-layout'>
-      {/* <div className='left-column'> */}
-      <WorkOrder />
-      <FormResponse />
-      {/* </div> */}
-      {/* <div className='right-column'> */}
-      <Summary />
-      {/* </div> */}
+      <div className='left-column'>
+        <WorkOrder />
+        <FormResponse />
+      </div>
+      <div className='right-column'>
+        <Summary />
+      </div>
     </div>
   )
 }
