@@ -1,9 +1,12 @@
-.work-order-layout {
-}
-.font-medium {
-  font-weight: 700;
+.order-layout {
+  /* display: flex; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
 }
 
-.leading-none {
-  line-height: 3;
+.work-order-layout .flex.flex-col.space-y-3 > * {
+  line-height: 5;
 }

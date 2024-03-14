@@ -1,6 +1,44 @@
-.update-status-container {
+/* html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+.updates-status-container {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
   padding: 1rem;
 }
+.nav_bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 1rem;
+  z-index: 10000;
+  top: 0;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+button.back-button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 5px;
+}
+/*
+.form-response {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+} */
+
+/* .content {
+  height: 100%;
+} */

@@ -5,10 +5,14 @@ import './updateStatusLayout.css'
 
 function UpdateStatusLayout() {
   return (
-    <div>
+    <div className='update-status-layout'>
+      {/* <div className='left-column'> */}
       <WorkOrder />
       <FormResponse />
+      {/* </div> */}
+      {/* <div className='right-column'> */}
       <Summary />
+      {/* </div> */}
     </div>
   )
 }
