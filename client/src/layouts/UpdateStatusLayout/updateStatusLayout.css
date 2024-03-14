@@ -6,7 +6,7 @@
 .left-column {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: fit-content;
   padding: 1rem;
 }
 
