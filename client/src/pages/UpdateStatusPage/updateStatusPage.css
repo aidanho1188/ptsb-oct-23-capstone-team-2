@@ -1,6 +1,13 @@
 .update-status-container {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
   padding: 1rem;
+}
+
+button.back-button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 5px;
 }

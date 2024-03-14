@@ -1,6 +1,10 @@
 .summary-layout {
-  width: 50vw;
-  height: 80vh;
+  width: 100%;
+  height: max-content;
+}
+
+.summary-layout h1 {
+  text-align: center;
 }
 
 .summary-card-layout {

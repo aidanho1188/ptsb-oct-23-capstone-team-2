@@ -1,0 +1,18 @@
+.update-status-layout {
+  display: flex;
+  flex-direction: row;
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  padding: 1rem;
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+}
