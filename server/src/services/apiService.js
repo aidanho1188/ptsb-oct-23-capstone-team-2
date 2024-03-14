@@ -8,6 +8,7 @@ const redirect_uri = process.env.REDIRECT_URI
 const tokenType = process.env.SB_TOKEN_TYPE
 const authCode = decodeURIComponent(process.env.SB_AUTH_CODE)
 
+// one time use with authCode
 async function fetchToken() {
   try {
     const body = `grant_type=${grantType}&code=${authCode}&redirect_uri=${redirect_uri}`
@@ -24,7 +25,6 @@ async function fetchToken() {
     const refreshToken = data.refresh_token
     console.log(data)
     await saveToken(tokenType, accessToken, refreshToken)
-    // if 401, use refresh token
   } catch (error) {
     console.error('Error:', error)
   }
