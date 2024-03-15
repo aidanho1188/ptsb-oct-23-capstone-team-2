@@ -6,6 +6,7 @@
 }
 
 .dashboard > * {
+  background-color: #0000;
   margin: 1em;
   padding: 0.5em;
 }

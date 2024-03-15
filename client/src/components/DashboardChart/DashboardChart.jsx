@@ -49,7 +49,7 @@ function DashboardChart() {
         <Tooltip />
         <Legend />
         <Bar dataKey='Check In' fill='#00541A' />
-        <Bar dataKey='Work Orders' fill='#61CE70' />
+        <Bar dataKey='Work Orders' fill='#007BFF' />
       </BarChart>
     </div>
   )

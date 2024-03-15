@@ -1,8 +1,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-/* @import '../app/globals.css'; */
-
+@import '../app/globals.css';
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -10,9 +9,9 @@
   /* font-weight: 400; */
 
   /* color-scheme: light dark; */
-  --primary-color: #00541A;
-  --secondary-color: #61CE70;
-  --tertiary-color: #4F4F4F;
+  --primary-color: #00541a;
+  --secondary-color: #61ce70;
+  --tertiary-color: #4f4f4f;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

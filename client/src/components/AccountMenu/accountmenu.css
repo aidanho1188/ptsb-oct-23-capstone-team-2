@@ -8,8 +8,13 @@
   margin-left: -10px;
   z-index: 3; /* ensures dropdown stays on top of nav bar */
   background-color: white !important;
+  color: black;
 }
 
 .account-menu-layout:hover .dropdown-menu-content {
   display: block;
+}
+
+.account-btn {
+  color: black;
 }

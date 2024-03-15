@@ -7,7 +7,9 @@ const AccountMenu = () => {
     <div className='account-menu-layout'>
       <DropdownMenu>
         <DropdownMenuTrigger className='dropdown-menu-trigger'>
-          <Button variant='outline'>Account</Button>
+          <Button variant='outline' className='account-btn'>
+            Account
+          </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className='dropdown-menu-content'>
           <DropdownMenuLabel>Subscription</DropdownMenuLabel>
