@@ -1,13 +1,14 @@
 import TablePlaceholder from '../../components/DashboardPlaceholder/TablePlaceholder'
 import DashboardChart from '../../components/DashboardChart/DashboardChart'
 import OpenWorkorders from '../../components/OpenWorkorders/OpenWorkorders'
+import OnSiteStatus from '../../components/OnSiteStatus/OnSiteStatus'
 import './dashboard.css'
 
 function Dashboard() {
   return (
     <div className='dashboard'>
       <OpenWorkorders />
-      <TablePlaceholder />
+      <OnSiteStatus />
       <TablePlaceholder />
       <TablePlaceholder />
       <TablePlaceholder />
