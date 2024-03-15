@@ -1,26 +1,56 @@
 import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow} from '@/components/ui/table'
-// import './tablePlaceholder.css'
+import {ScrollArea} from '@/components/ui/scroll-area'
+import axios from 'axios'
+import React, {useEffect, useState} from 'react'
+import './tablePlaceholder.css'
+
 function TablePlaceholder(prop) {
+  const [workorders, setWorkorders] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/api/workorders/open')
+        setWorkorders(response.data.value)
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
+    }
+
+    fetchData()
+  }, [])
+
   return (
-    <div className={prop.className}>
-      <Table>
-        <TableCaption>A list of your recent invoices.</TableCaption>
+    <div className='table'>
+      <h2>Work orders</h2>
+      <Table className='table-container'>
         <TableHeader>
-          <TableRow>
-            <TableHead className='w-[100px]'>Invoice</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Method</TableHead>
-            <TableHead className='text-right'>Amount</TableHead>
-          </TableRow>
+          <ScrollArea>
+            <TableRow className='table-headers'>
+              <TableHead className='table-headers'>Workorder</TableHead>
+              <TableHead className='table-headers'>Status</TableHead>
+              <TableHead className='table-headers'>Subscriber</TableHead>
+              <TableHead className='table-headers'>Trade</TableHead>
+            </TableRow>
+          </ScrollArea>
         </TableHeader>
-        <TableBody>
-          <TableRow>
-            <TableCell className='font-medium'>INV001</TableCell>
-            <TableCell>Paid</TableCell>
-            <TableCell>Credit Card</TableCell>
-            <TableCell className='text-right'>$250.00</TableCell>
-          </TableRow>
-        </TableBody>
+        <ScrollArea className='scroll'>
+          <TableCaption>A list of open workorders.</TableCaption>
+          <TableBody>
+            {workorders.map((workorder) => (
+              <TableRow key={workorder.Id} className='row'>
+                <TableCell className='font-medium w-[100px]'>{workorder.Id}</TableCell>
+                <TableCell className='temp-block'></TableCell>
+                <TableCell className='temp-block'></TableCell>
+                <TableCell>{workorder.Status.Primary || 'None'}</TableCell>
+                <TableCell className='temp-block'></TableCell>
+                <TableCell className='temp-block'></TableCell>
+                <TableCell>{workorder.Caller}</TableCell>
+                <TableCell className='text-right'>{workorder.Trade}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </ScrollArea>
       </Table>
     </div>
   )
