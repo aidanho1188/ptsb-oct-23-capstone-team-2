@@ -1,5 +1,6 @@
 import {Button} from '@/components/ui/button'
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger} from '@/components/ui/dropdown-menu'
+import './accountmenu.css'
 
 const AccountMenu = () => {
   return (
@@ -8,7 +9,7 @@ const AccountMenu = () => {
         <DropdownMenuTrigger className='dropdown-menu-trigger'>
           <Button variant='outline'>Account</Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent>
+        <DropdownMenuContent className='dropdown-menu-content'>
           <DropdownMenuLabel>Subscription</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem>Profile</DropdownMenuItem>

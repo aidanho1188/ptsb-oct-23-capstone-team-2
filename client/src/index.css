@@ -1,19 +1,18 @@
-/* src/styles/index.css */
-
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-@import '../app/globals.css';
-/* Your custom styles go here */
+/* @import '../app/globals.css'; */
+
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* color-scheme: light dark; */
+  --primary-color: #00541A;
+  --secondary-color: #61CE70;
+  --tertiary-color: #4F4F4F;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -26,6 +25,7 @@ body {
   display: flex;
   width: 100%;
   height: fit-content;
+  background-image: linear-gradient(to bottom right, var(--primary-color), var(--secondary-color));
 }
 
 h1 {

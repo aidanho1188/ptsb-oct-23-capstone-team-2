@@ -3,11 +3,11 @@
 }
 
 .dropdown-menu-content {
-  display: none;
-  position: absolute;
+  position: relative;
   top: 100%;
-  left: 0;
-  z-index: 1;
+  margin-left: -10px;
+  z-index: 3; /* ensures dropdown stays on top of nav bar */
+  background-color: white !important;
 }
 
 .account-menu-layout:hover .dropdown-menu-content {

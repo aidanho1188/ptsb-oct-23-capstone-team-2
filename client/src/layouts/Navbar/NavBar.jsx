@@ -5,11 +5,11 @@ import './navBar.css'
 
 function NavBar() {
   return (
-    <div className='nav-bar'>
+    <nav className='nav-bar'>
       <Logo />
       <NavMenu className='nav-menu' />
       <AccountMenu />
-    </div>
+    </nav>
   )
 }
 
