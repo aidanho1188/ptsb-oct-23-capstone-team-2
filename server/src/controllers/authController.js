@@ -1,7 +1,6 @@
 const express = require('express')
 const apiService = require('../services/apiService')
 const tokenService = require('../services/tokenService')
-const authRouter = express.Router()
 
 // function for login
 const login = (req, res, next) => {

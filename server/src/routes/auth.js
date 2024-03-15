@@ -1,9 +1,9 @@
 const express = require('express')
 const authRouter = express.Router()
 const authController = require('../controllers/authController')
-const {handle401} = require('./handle401')
+const {handleExpiredToken} = require('./handleExpiredToken')
 
-authRouter.get('/login', handle401, authController.login)
-authRouter.get('/logout', authController.logout)
+authRouter.get('/login', handleExpiredToken, authController.login)
+// authRouter.get('/logout', handleExpiredToken, authController.logout)
 
 module.exports = authRouter

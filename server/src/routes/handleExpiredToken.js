@@ -1,10 +1,10 @@
 const express = require('express')
-const userToken = require('../models/UserTokenSchema')
+const userToken = require('../models/UserTokenSchema.js')
 const {refetchAccessToken} = require('../services/tokenService.js')
 const axios = require('axios')
 const getAccessToken = require('../utils/getAccessToken.js')
 
-async function handle401(req, res, next) {
+async function handleExpiredToken(req, res, next) {
   try {
     // check for valid access token here instead of status code
     // TODO: extract this into a function
@@ -13,13 +13,15 @@ async function handle401(req, res, next) {
         Authorization: `Bearer ${await getAccessToken('sandbox')}`,
       },
     })
+    console.log('Access Token is still valid')
     next()
   } catch (error) {
     if (error.response.status === 401) {
       console.log('Attempting to refresh token')
-        await refetchAccessToken()
+      await refetchAccessToken()
+      next()
     }
   }
 }
 
-module.exports = {handle401}
+module.exports = {handleExpiredToken}
