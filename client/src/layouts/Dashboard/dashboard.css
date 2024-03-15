@@ -2,10 +2,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  gap: 2em;
+  gap: 1em;
 }
 
 .dashboard > * {
   margin: 1em;
-  padding: 1em;
+  padding: 0.5em;
 }

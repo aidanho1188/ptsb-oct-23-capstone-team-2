@@ -2,9 +2,9 @@ import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Table
 import {ScrollArea} from '@/components/ui/scroll-area'
 import axios from 'axios'
 import React, {useEffect, useState} from 'react'
-import './tablePlaceholder.css'
+import './openWorkorders.css'
 
-function TablePlaceholder() {
+function OpenWorkorders() {
   const [workorders, setWorkorders] = useState([])
 
   useEffect(() => {
@@ -57,5 +57,4 @@ function TablePlaceholder() {
     </div>
   )
 }
-
-export default TablePlaceholder
+export default OpenWorkorders
