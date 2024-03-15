@@ -30,4 +30,7 @@ async function fetchToken() {
   }
 }
 
+// get work orders with open as primary status
+
+
 module.exports = {fetchToken}

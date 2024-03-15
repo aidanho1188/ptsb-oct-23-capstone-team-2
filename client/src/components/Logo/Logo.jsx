@@ -4,7 +4,7 @@ import './logo.css'
 function Logo() {
   return (
     <div className='logo-layout'>
-      <Button variant='outline'>Logo</Button>
+      <img src='https://www.outsideunlimited.com/wp-content/uploads/2023/07/logo.svg' alt='Logo' />
     </div>
   )
 }
