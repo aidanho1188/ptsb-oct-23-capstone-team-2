@@ -1,14 +1,3 @@
-require('dotenv').config()
-const axios = require('axios')
-const saveToken = require('../utils/saveToken.js')
-const clientId = process.env.SB_CLIENT_ID
-const clientSecret = process.env.SB_CLIENT_SECRET
-const grantType = process.env.GRANT_TYPE
-const redirect_uri = process.env.REDIRECT_URI
-const tokenType = process.env.SB_TOKEN_TYPE
-const authCode = decodeURIComponent(process.env.SB_AUTH_CODE)
-
-// one time use with authCode
 async function fetchToken() {
   try {
     const body = `grant_type=${grantType}&code=${authCode}&redirect_uri=${redirect_uri}`
@@ -30,7 +19,23 @@ async function fetchToken() {
   }
 }
 
-// get work orders with open as primary status
+/**
+ * Fetches data from the specified endpoint from the Service channel
+ * @param {string} endpoint - The endpoint to fetch data from. `ex. workorders or workorders/id`
+ * @param {string} select - The fields to select in the fetched data. `ex. Id,LocationId,Trade,Status`
+ * @param {string} filter - The filter to apply to the fetched data. `ex. Status/Primary eq 'OPEN'`
+ * @returns {Promise<any>} A promise that resolves with the fetched data.
+ */
+async function fetchData(endpoint, select, filter) {
+  const response = await axios.get(`https://sb2api.servicechannel.com/v3/odata/${endpoint}?$select=${select}&$filter=${filter}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${await getAccessToken('sandbox')}`,
+    },
+    ResponseType: 'json',
+  })
+  data = response.data
+  return data
+}
 
-
-module.exports = {fetchToken}
+module.exports = {fetchToken, fetchData}
