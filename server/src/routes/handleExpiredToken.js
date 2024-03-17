@@ -13,7 +13,6 @@ async function handleExpiredToken(req, res, next) {
         Authorization: `Bearer ${await getAccessToken('sandbox')}`,
       },
     })
-    console.log(response)
     console.log('Access Token is still valid')
     next()
   } catch (error) {
