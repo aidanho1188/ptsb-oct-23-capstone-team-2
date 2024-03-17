@@ -47,7 +47,7 @@ function OpenWorkorders() {
                 <TableCell className='temp-block'></TableCell>
                 <TableCell>{workorder.Status.Primary || 'None'}</TableCell>
                 <TableCell className='temp-block'></TableCell>
-                <TableCell>{workorder.Caller}</TableCell>
+                <TableCell>{workorder.LocationId}</TableCell>
                 <TableCell className='text-right'>{workorder.Trade}</TableCell>
               </TableRow>
             ))}

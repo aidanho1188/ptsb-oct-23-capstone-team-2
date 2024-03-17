@@ -5,23 +5,23 @@ const {fetchData} = require('../services/apiService.js')
 
 const open = async (req, res, next) => {
   try {
-    const data = fetchData('workorders', 'Id,LocationId,Trade,Status', "Status/Primary eq 'OPEN'")
-    console.log(data)
+    const data = await fetchData('workorders', 'Id,LocationId,Trade,Status', "Status/Primary eq 'OPEN'")
+    // console.log(data)
     res.json(data)
   } catch (error) {
     console.log(error)
-    next()
+    // next()
   }
 }
 
-const onSite = async (req, res, next, select, filter) => {
+const onSite = async (req, res, next) => {
   try {
-    const data = fetchData('workorders', 'Id,LocationId,Trade,Status', "Status/Extended eq 'ON SITE'")
+    const data = await fetchData('workorders', 'Id,LocationId,Trade,Status', "Status/Extended eq 'ON SITE'")
     console.log(data)
     res.json(data)
   } catch (error) {
     console.log(error)
-    next()
+    // next()
   }
 }
 
