@@ -13,7 +13,6 @@ async function handleExpiredToken(req, res, next) {
         Authorization: `Bearer ${await getAccessToken('sandbox')}`,
       },
     })
-    console.log(response)
     console.log('Access Token is still valid')
     next()
   } catch (error) {
@@ -21,9 +20,6 @@ async function handleExpiredToken(req, res, next) {
       console.log('Attempting to refresh token')
       await refetchAccessToken()
       next()
-    } else if (error.response.status === 502) {
-      console.log('Server is down')
-      res.status(502).send('Server is down')
     }
   }
 }
