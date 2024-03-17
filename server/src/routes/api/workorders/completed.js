@@ -3,5 +3,5 @@ const router = express.Router()
 const workordersController = require('../../../controllers/workordersController')
 const {handleExpiredToken} = require('../../handleExpiredToken')
 
-router.get('/', handleExpiredToken, workordersController.open)
+router.get('/', handleExpiredToken, workordersController.completed)
 module.exports = router

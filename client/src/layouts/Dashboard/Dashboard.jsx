@@ -2,6 +2,7 @@ import TablePlaceholder from '../../components/DashboardPlaceholder/TablePlaceho
 import DashboardChart from '../../components/DashboardChart/DashboardChart'
 import OpenWorkorders from '../../components/OpenWorkorders/OpenWorkorders'
 import OnSiteStatus from '../../components/OnSiteStatus/OnSiteStatus'
+import CompletednWO from '../../components/CompletedWO/CompletedWO'
 import './dashboard.css'
 
 function Dashboard() {
@@ -12,7 +13,7 @@ function Dashboard() {
       <TablePlaceholder />
       <TablePlaceholder />
       <TablePlaceholder />
-      <TablePlaceholder />
+      <CompletednWO />
 
       <DashboardChart />
     </div>
