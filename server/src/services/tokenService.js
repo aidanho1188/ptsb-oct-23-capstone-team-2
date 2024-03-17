@@ -19,6 +19,7 @@ async function refetchAccessToken() {
     const data = response.data
     const newAccessToken = data.access_token
     const newRefreshToken = data.refresh_token
+    console.log('New Access Token:', newAccessToken)
     await saveToken(tokenType, newAccessToken, newRefreshToken)
   } catch (error) {
     console.error('Error:', error)
