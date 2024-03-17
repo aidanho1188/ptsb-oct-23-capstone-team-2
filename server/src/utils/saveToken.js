@@ -1,4 +1,5 @@
-const UserToken = require('../models/UserTokenSchema.js')
+const UserToken = require('../models/UserTokenSchema.js');
+const sendErrorResponse = require('../utils/errorHandler.js');
 
 async function saveToken(tokenType, newAccessToken, newRefreshToken) {
   try {
@@ -12,7 +13,8 @@ async function saveToken(tokenType, newAccessToken, newRefreshToken) {
     )
     console.log('Token saved successfully')
   } catch (error) {
-    console.log(error)
+    const errorResponse = sendErrorResponse(error);
+    console.error('Error:', errorResponse);
   }
 }
 
