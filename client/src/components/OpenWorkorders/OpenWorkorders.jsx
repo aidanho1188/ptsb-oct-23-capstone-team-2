@@ -31,7 +31,7 @@ function OpenWorkorders() {
                 Work Order
               </TableHead>
               <TableHead className='px-1'>Status</TableHead>
-              <TableHead className='px-1'>Subscriber</TableHead>
+              <TableHead className='px-1'>Store ID</TableHead>
               <TableHead className='px-1' style={{width: '80px'}}>
                 Trade
               </TableHead>
@@ -47,7 +47,7 @@ function OpenWorkorders() {
                 <TableCell className='temp-block'></TableCell>
                 <TableCell>{workorder.Status.Primary || 'None'}</TableCell>
                 <TableCell className='temp-block'></TableCell>
-                <TableCell>{workorder.Caller}</TableCell>
+                <TableCell>{workorder.LocationId}</TableCell>
                 <TableCell className='text-right'>{workorder.Trade}</TableCell>
               </TableRow>
             ))}
