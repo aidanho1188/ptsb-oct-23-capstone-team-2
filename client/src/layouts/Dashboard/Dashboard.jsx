@@ -4,15 +4,18 @@ import OpenWorkorders from '../../components/OpenWorkorders/OpenWorkorders'
 import OnSiteStatus from '../../components/OnSiteStatus/OnSiteStatus'
 import './dashboard.css'
 import IncompleteStatus from '../../components/IncompleteStatus/IncompleteStatus'
+import AwaitingQuoteTable from '../../components/AwaitingQuoteTable/AwaitingQuoteTable'
+
 
 function Dashboard() {
+  
   return (
     <div className='dashboard'>
       <OpenWorkorders />
       <OnSiteStatus />
       <IncompleteStatus />
       <TablePlaceholder />
-      <TablePlaceholder />
+      <AwaitingQuoteTable />
       <TablePlaceholder />
 
       <DashboardChart />

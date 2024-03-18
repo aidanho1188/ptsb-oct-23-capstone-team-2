@@ -24,6 +24,15 @@ const onSite = async (req, res, next) => {
     // next()
   }
 }
+const awaitingQuote = async (req, res, next) => {
+  try {
+    const data = await fetchData('workorders', 'Id,LocationId,Trade,Status', "Status/Extended eq 'Awaiting Quote'")
+    console.log(data)
+    res.json(data)
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 const incomplete = async (req, res, next) => {
   try {
@@ -36,4 +45,5 @@ const incomplete = async (req, res, next) => {
   }
 }
 
-module.exports = {open, onSite, incomplete}
+module.exports = {open, onSite, incomplete, awaitingQuote}
+
