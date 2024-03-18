@@ -6,7 +6,7 @@ const tokenService = require('../services/tokenService')
 const login = (req, res, next) => {
   next()
   if (req.body.username === 'test' && req.body.password === 'test') {
-    next()
+    // next()
     // TODO: get work order information for dashboard
     // business logic to get access token
     // failed to fetch using current token(apiService.fetchToken())

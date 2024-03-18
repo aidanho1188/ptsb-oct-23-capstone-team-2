@@ -8,18 +8,17 @@ function OpenWorkorders(props) {
   const [workorders, setWorkorders] = useState([])
 
   useEffect(() => {
-    // TODO: remove this if the fetch in Dashboard.jsx is working
     const fetchData = async () => {
       try {
         const response = await axios.get('http://localhost:8080/api/workorders/open')
         setWorkorders(response.data.value)
-        props.setTotalWorkOrder([...{name: 'Open', 'Work Orders': response.data.value.length}])
       } catch (error) {
         console.error('Error fetching data:', error)
       }
     }
 
-    // fetchData()
+    fetchData()
+    // send data to parent
   }, [])
 
   return (

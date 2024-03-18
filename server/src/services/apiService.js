@@ -6,7 +6,7 @@ const clientId = process.env.SB_CLIENT_ID
 const clientSecret = process.env.SB_CLIENT_SECRET
 const grantType = process.env.GRANT_TYPE
 const redirect_uri = process.env.REDIRECT_URI
-const tokenType = process.env.TOKEN_TYPE
+const tokenType = process.env.SB_TOKEN_TYPE
 const authCode = decodeURIComponent(process.env.SB_AUTH_CODE)
 
 async function fetchToken() {
@@ -38,7 +38,7 @@ async function fetchToken() {
  * @returns {Promise<any>} A promise that resolves with the fetched data.
  */
 async function fetchData(endpoint, select, filter) {
-  console.log(`working on fetching data from Service Channel...`)
+  console.log(`Working on fetching data from Service Channel...`)
   const response = await axios.get(`https://sb2api.servicechannel.com/v3/odata/${endpoint}?$select=${select}&$filter=${filter}`, {
     headers: {
       'Content-Type': 'application/json',
