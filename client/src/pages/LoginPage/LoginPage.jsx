@@ -1,10 +1,10 @@
 import React from 'react'
 import Login from '../../components/Login/Login'
+import './loginPage.css'
 
-const LoginPage = () => {
+function LoginPage() {
   return (
     <div>
-      <h1>Login Page</h1>
       <Login />
     </div>
   )
