@@ -47,3 +47,15 @@ const incomplete = async (req, res, next) => {
 
 module.exports = {open, onSite, incomplete, awaitingQuote}
 
+const completed = async (req, res, next) => {
+  try {
+    const data = await fetchData('workorders', 'Id,LocationId,Trade,Status', "Status/Primary eq 'COMPLETED'")
+    console.log(data)
+    res.json(data)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+module.exports = {open, onSite, completed}
+

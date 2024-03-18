@@ -2,6 +2,7 @@ import TablePlaceholder from '../../components/DashboardPlaceholder/TablePlaceho
 import DashboardChart from '../../components/DashboardChart/DashboardChart'
 import OpenWorkorders from '../../components/OpenWorkorders/OpenWorkorders'
 import OnSiteStatus from '../../components/OnSiteStatus/OnSiteStatus'
+import CompletednWO from '../../components/CompletedWO/CompletedWO'
 import './dashboard.css'
 import IncompleteStatus from '../../components/IncompleteStatus/IncompleteStatus'
 import AwaitingQuoteTable from '../../components/AwaitingQuoteTable/AwaitingQuoteTable'
@@ -15,9 +16,8 @@ function Dashboard() {
       <OnSiteStatus />
       <IncompleteStatus />
       <TablePlaceholder />
+      <CompletednWO />
       <AwaitingQuoteTable />
-      <TablePlaceholder />
-
       <DashboardChart />
     </div>
   )
