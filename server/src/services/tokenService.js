@@ -1,6 +1,7 @@
 const axios = require('axios')
 const getRefreshToken = require('../utils/getRefetchToken.js')
 const saveToken = require('../utils/saveToken.js')
+const sendErrorResponse = require('../utils/errorHandler.js');
 const clientId = process.env.CLIENT_ID
 const clientSecret = process.env.CLIENT_SECRET
 const tokenType = process.env.TOKEN_TYPE
@@ -22,7 +23,8 @@ async function refetchAccessToken() {
     console.log('New Access Token:', newAccessToken)
     await saveToken(tokenType, newAccessToken, newRefreshToken)
   } catch (error) {
-    console.error('Error:', error)
+    const errorResponse = sendErrorResponse(error);
+    console.error('Error:', errorResponse);
   }
 }
 
