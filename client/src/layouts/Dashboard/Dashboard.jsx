@@ -3,7 +3,9 @@ import DashboardChart from '../../components/DashboardChart/DashboardChart'
 import OpenWorkorders from '../../components/OpenWorkorders/OpenWorkorders'
 import OnSiteStatus from '../../components/OnSiteStatus/OnSiteStatus'
 import './dashboard.css'
+import IncompleteStatus from '../../components/IncompleteStatus/IncompleteStatus'
 import AwaitingQuoteTable from '../../components/AwaitingQuoteTable/AwaitingQuoteTable'
+
 
 function Dashboard() {
   
@@ -11,7 +13,7 @@ function Dashboard() {
     <div className='dashboard'>
       <OpenWorkorders />
       <OnSiteStatus />
-      <TablePlaceholder />
+      <IncompleteStatus />
       <TablePlaceholder />
       <AwaitingQuoteTable />
       <TablePlaceholder />
