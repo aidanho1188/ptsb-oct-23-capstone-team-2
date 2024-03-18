@@ -8,11 +8,15 @@ async function handleExpiredToken(req, res, next) {
   try {
     // check for valid access token here instead of status code
     // TODO: extract this into a function
-    const response = await axios.get('https://sb2api.servicechannel.com/v3/ApplicationAccess', {
-      headers: {
-        Authorization: `Bearer ${await getAccessToken('sandbox')}`,
+    const response = await axios.get(
+      'https://sb2api.servicechannel.com/v3/test/webhooks/notifications',
+      {URL: 'https://sb2api.servicechannel.com/swagger/ui/o2c-html'},
+      {
+        headers: {
+          Authorization: `Bearer ${await getAccessToken('sandbox')}`,
+        },
       },
-    })
+    )
     console.log('Access Token is still valid')
     next()
   } catch (error) {
