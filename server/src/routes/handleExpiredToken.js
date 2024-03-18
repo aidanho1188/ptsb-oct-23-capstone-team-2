@@ -6,7 +6,6 @@ const getAccessToken = require('../utils/getAccessToken.js')
 
 async function handleExpiredToken(req, res, next) {
   try {
-    // check for valid access token here instead of status code
     // TODO: extract this into a function
     const response = await axios.get(
       'https://sb2api.servicechannel.com/v3/test/webhooks/notifications',
