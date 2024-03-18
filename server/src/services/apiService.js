@@ -2,12 +2,12 @@ require('dotenv').config()
 const axios = require('axios')
 const saveToken = require('../utils/saveToken.js')
 const getAccessToken = require('../utils/getAccessToken.js')
-const clientId = process.env.CLIENT_ID
-const clientSecret = process.env.CLIENT_SECRET
+const clientId = process.env.SB_CLIENT_ID
+const clientSecret = process.env.SB_CLIENT_SECRET
 const grantType = process.env.GRANT_TYPE
 const redirect_uri = process.env.REDIRECT_URI
 const tokenType = process.env.TOKEN_TYPE
-const authCode = decodeURIComponent(process.env.AUTH_CODE)
+const authCode = decodeURIComponent(process.env.SB_AUTH_CODE)
 
 async function fetchToken() {
   try {

@@ -10,7 +10,7 @@ const open = async (req, res, next) => {
     res.json(data)
   } catch (error) {
     console.log(error)
-    // next()
+    next()
   }
 }
 
@@ -21,7 +21,7 @@ const onSite = async (req, res, next) => {
     res.json(data)
   } catch (error) {
     console.log(error)
-    // next()
+    next()
   }
 }
 

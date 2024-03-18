@@ -1,9 +1,9 @@
 const axios = require('axios')
 const getRefreshToken = require('../utils/getRefetchToken.js')
 const saveToken = require('../utils/saveToken.js')
-const clientId = process.env.CLIENT_ID
-const clientSecret = process.env.CLIENT_SECRET
-const tokenType = process.env.TOKEN_TYPE
+const clientId = process.env.SB_CLIENT_ID
+const clientSecret = process.env.SB_CLIENT_SECRET
+const tokenType = process.env.SB_TOKEN_TYPE
 
 async function refetchAccessToken() {
   try {

@@ -8,6 +8,7 @@ function OnSiteStatus() {
   const [workorders, setWorkorders] = useState([])
 
   useEffect(() => {
+    // TODO: remove this if the fetch in Dashboard.jsx is working
     const fetchData = async () => {
       try {
         const response = await axios.get('http://localhost:8080/api/workorders/onSite')
@@ -18,7 +19,7 @@ function OnSiteStatus() {
       }
     }
 
-    fetchData()
+    // fetchData()
   }, [])
 
   return (
