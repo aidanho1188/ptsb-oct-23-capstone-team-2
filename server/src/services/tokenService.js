@@ -5,7 +5,7 @@ const clientId = process.env.SB_CLIENT_ID
 const clientSecret = process.env.SB_CLIENT_SECRET
 const tokenType = process.env.SB_TOKEN_TYPE
 let lastFetchTime = 0
-const cooldownPeriod = 10 * 60 * 1000
+const cooldownPeriod = 60000
 
 async function refetchAccessToken() {
   const currentTime = new Date().getTime()

@@ -4,7 +4,7 @@ import axios from 'axios'
 import React, {useEffect, useState} from 'react'
 import './openWorkorders.css'
 
-function OpenWorkorders(props) {
+function OpenWorkorders() {
   const [workorders, setWorkorders] = useState([])
 
   useEffect(() => {
@@ -18,7 +18,6 @@ function OpenWorkorders(props) {
     }
 
     fetchData()
-    // send data to parent
   }, [])
 
   return (
