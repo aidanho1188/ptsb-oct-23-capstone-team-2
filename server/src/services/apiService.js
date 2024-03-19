@@ -49,7 +49,6 @@ async function fetchData(endpoint, select, filter) {
     ResponseType: 'json',
   })
   data = response.data
-  console.log(data)
   return data
 }
 
