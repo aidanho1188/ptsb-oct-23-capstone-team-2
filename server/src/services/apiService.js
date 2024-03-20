@@ -40,7 +40,7 @@ async function fetchToken() {
  * @returns {Promise<any>} A promise that resolves with the fetched data.
  */
 async function fetchData(endpoint, select, filter) {
-  console.log(`working on fetching data from Service Channel...`)
+  console.log(`Working on fetching data from Service Channel...`)
   const response = await axios.get(`https://sb2api.servicechannel.com/v3/odata/${endpoint}?$select=${select}&$filter=${filter}`, {
     headers: {
       'Content-Type': 'application/json',
