@@ -7,6 +7,14 @@ const clientSecret = process.env.SB_CLIENT_SECRET
 const tokenType = process.env.SB_TOKEN_TYPE
 
 async function refetchAccessToken() {
+  const currentTime = new Date().getTime()
+  if (isOnCooldown()) {
+    console.log('Token is still valid')
+    return
+  } else {
+    lastFetchTime = currentTime
+  }
+
   try {
     const body = `grant_type=refresh_token&refresh_token=${await getRefreshToken('sandbox')}`
 
@@ -23,9 +31,14 @@ async function refetchAccessToken() {
     console.log('New Access Token:', newAccessToken)
     await saveToken(tokenType, newAccessToken, newRefreshToken)
   } catch (error) {
-    // const errorResponse = sendErrorResponse(error);
-    // console.error('Error:', errorResponse);
+    const errorResponse = sendErrorResponse(error)
+    console.error('Error:', errorResponse)
   }
+}
+
+function isOnCooldown() {
+  const currentTime = new Date().getTime()
+  return currentTime - lastFetchTime < cooldownPeriod
 }
 
 module.exports = {refetchAccessToken}

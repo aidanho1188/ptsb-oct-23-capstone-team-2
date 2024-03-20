@@ -13,7 +13,6 @@ function OnSiteStatus() {
         console.log('On Site Workorders fetching data...')
         const response = await axios.get('http://localhost:8080/api/workorders/onSite')
         setWorkorders(response.data.value)
-        console.log(response.data.value)
       } catch (error) {
         console.error('Error fetching data:', error)
       }
