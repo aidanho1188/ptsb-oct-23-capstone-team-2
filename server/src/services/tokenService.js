@@ -5,14 +5,17 @@ const sendErrorResponse = require('../utils/errorHandler.js')
 const clientId = process.env.SB_CLIENT_ID
 const clientSecret = process.env.SB_CLIENT_SECRET
 const tokenType = process.env.SB_TOKEN_TYPE
+const currentTime = new Date().getTime()
+const cooldownPeriod = 10 * 60 * 1000
+let lastFetchTime = 0
 
 async function refetchAccessToken() {
-  const currentTime = new Date().getTime()
   if (isOnCooldown()) {
     console.log('Token is still valid')
     return
   } else {
     lastFetchTime = currentTime
+    console.log(`lastFetchTime: ${lastFetchTime} currentTime: ${currentTime} cooldownPeriod: ${cooldownPeriod}`)
   }
 
   try {
@@ -37,7 +40,6 @@ async function refetchAccessToken() {
 }
 
 function isOnCooldown() {
-  const currentTime = new Date().getTime()
   return currentTime - lastFetchTime < cooldownPeriod
 }
 
