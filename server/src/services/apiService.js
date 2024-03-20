@@ -2,6 +2,7 @@ require('dotenv').config()
 const axios = require('axios')
 const saveToken = require('../utils/saveToken.js')
 const getAccessToken = require('../utils/getAccessToken.js')
+const sendErrorResponse = require('../utils/errorHandler.js')
 const clientId = process.env.SB_CLIENT_ID
 const clientSecret = process.env.SB_CLIENT_SECRET
 const grantType = process.env.GRANT_TYPE
@@ -26,7 +27,8 @@ async function fetchToken() {
     console.log(data)
     await saveToken(tokenType, accessToken, refreshToken)
   } catch (error) {
-    console.error('Error:', error)
+    const errorResponse = sendErrorResponse(error)
+    console.error('Error:', errorResponse)
   }
 }
 
