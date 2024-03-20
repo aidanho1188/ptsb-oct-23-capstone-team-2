@@ -2,14 +2,13 @@ require('dotenv').config()
 const axios = require('axios')
 const saveToken = require('../utils/saveToken.js')
 const getAccessToken = require('../utils/getAccessToken.js')
-const sendErrorResponse = require('../utils/errorHandler.js');
-const clientId = process.env.CLIENT_ID
-const clientSecret = process.env.CLIENT_SECRET
+const sendErrorResponse = require('../utils/errorHandler.js')
+const clientId = process.env.SB_CLIENT_ID
+const clientSecret = process.env.SB_CLIENT_SECRET
 const grantType = process.env.GRANT_TYPE
 const redirect_uri = process.env.REDIRECT_URI
-const tokenType = process.env.TOKEN_TYPE
-const authCode = decodeURIComponent(process.env.AUTH_CODE)
-
+const tokenType = process.env.SB_TOKEN_TYPE
+const authCode = decodeURIComponent(process.env.SB_AUTH_CODE)
 
 async function fetchToken() {
   try {
@@ -28,8 +27,8 @@ async function fetchToken() {
     console.log(data)
     await saveToken(tokenType, accessToken, refreshToken)
   } catch (error) {
-    const errorResponse = sendErrorResponse(error);
-    console.error('Error:', errorResponse);
+    const errorResponse = sendErrorResponse(error)
+    console.error('Error:', errorResponse)
   }
 }
 
@@ -41,7 +40,7 @@ async function fetchToken() {
  * @returns {Promise<any>} A promise that resolves with the fetched data.
  */
 async function fetchData(endpoint, select, filter) {
-  console.log(`working on fetching data from Service Channel...`)
+  console.log(`Working on fetching data from Service Channel...`)
   const response = await axios.get(`https://sb2api.servicechannel.com/v3/odata/${endpoint}?$select=${select}&$filter=${filter}`, {
     headers: {
       'Content-Type': 'application/json',
@@ -50,7 +49,7 @@ async function fetchData(endpoint, select, filter) {
     ResponseType: 'json',
   })
   data = response.data
-  console.log(data)
+  // console.log(data)
   return data
 }
 

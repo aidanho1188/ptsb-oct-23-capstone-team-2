@@ -29,7 +29,8 @@ async function handleExpiredToken(req, res, next) {
       res.status(502).send('Server is down')
     } else {
       console.error('Error:', error)
-      res.status(500).send('Internal Server Error')
+      res.status(error.response.status).send(error.response.statusText)
+      next()
     }
   }
 }

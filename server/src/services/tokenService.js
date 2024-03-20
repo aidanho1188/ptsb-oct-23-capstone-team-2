@@ -1,14 +1,22 @@
 const axios = require('axios')
 const getRefreshToken = require('../utils/getRefetchToken.js')
 const saveToken = require('../utils/saveToken.js')
-const sendErrorResponse = require('../utils/errorHandler.js');
-const clientId = process.env.CLIENT_ID
-const clientSecret = process.env.CLIENT_SECRET
-const tokenType = process.env.TOKEN_TYPE
+const sendErrorResponse = require('../utils/errorHandler.js')
+const clientId = process.env.SB_CLIENT_ID
+const clientSecret = process.env.SB_CLIENT_SECRET
+const tokenType = process.env.SB_TOKEN_TYPE
 
 async function refetchAccessToken() {
+  const currentTime = new Date().getTime()
+  if (isOnCooldown()) {
+    console.log('Token is still valid')
+    return
+  } else {
+    lastFetchTime = currentTime
+  }
+
   try {
-    const body = `grant_type=refresh_token&refresh_token=${await getRefreshToken('production')}`
+    const body = `grant_type=refresh_token&refresh_token=${await getRefreshToken('sandbox')}`
 
     const response = await axios.post('https://sb2login.servicechannel.com/oauth/token', body, {
       headers: {
@@ -23,9 +31,14 @@ async function refetchAccessToken() {
     console.log('New Access Token:', newAccessToken)
     await saveToken(tokenType, newAccessToken, newRefreshToken)
   } catch (error) {
-    const errorResponse = sendErrorResponse(error);
-    console.error('Error:', errorResponse);
+    const errorResponse = sendErrorResponse(error)
+    console.error('Error:', errorResponse)
   }
+}
+
+function isOnCooldown() {
+  const currentTime = new Date().getTime()
+  return currentTime - lastFetchTime < cooldownPeriod
 }
 
 module.exports = {refetchAccessToken}

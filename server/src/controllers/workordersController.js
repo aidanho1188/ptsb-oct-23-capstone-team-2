@@ -6,11 +6,10 @@ const {fetchData} = require('../services/apiService.js')
 const open = async (req, res, next) => {
   try {
     const data = await fetchData('workorders', 'Id,LocationId,Trade,Status', "Status/Primary eq 'OPEN'")
-    // console.log(data)
+    console.log(data)
     res.json(data)
   } catch (error) {
     console.log(error)
-    // next()
   }
 }
 
@@ -21,7 +20,6 @@ const onSite = async (req, res, next) => {
     res.json(data)
   } catch (error) {
     console.log(error)
-    // next()
   }
 }
 const awaitingQuote = async (req, res, next) => {
