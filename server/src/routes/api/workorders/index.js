@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
+const {handleExpiredToken} = require('../../handleExpiredToken')
 const workordersOpen = require('./open')
 const onSite = require('./onSite')
-
 const completed = require('./completed')
 const incomplete = require('./incomplete')
 const awaitingQuote = require('./awaitingQuote')

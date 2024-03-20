@@ -10,6 +10,7 @@ function CompletednWO() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log('Completed Workorders fetching data...')
         const response = await axios.get('http://localhost:8080/api/workorders/completed')
         setWorkorders(response.data.value)
       } catch (error) {

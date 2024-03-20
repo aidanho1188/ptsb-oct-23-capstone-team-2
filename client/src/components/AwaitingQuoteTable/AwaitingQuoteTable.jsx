@@ -10,6 +10,7 @@ function AwaitingQuoteTable() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log('Awaiting Quote Workorders fetching data...')
         const response = await axios.get('http://localhost:8080/api/workorders/awaitingQuote')
         setWorkorders(response.data.value)
         console.log(response.data.value)

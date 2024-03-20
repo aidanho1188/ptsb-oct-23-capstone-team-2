@@ -10,6 +10,7 @@ function IncompleteStatus() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log('Incomplete Workorders fetching data...')
         const response = await axios.get('http://localhost:8080/api/workorders/incomplete')
         setWorkorders(response.data.value)
       } catch (error) {

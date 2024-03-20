@@ -9,17 +9,16 @@ import './dashboard.css'
 import IncompleteStatus from '../../components/IncompleteStatus/IncompleteStatus'
 import AwaitingQuoteTable from '../../components/AwaitingQuoteTable/AwaitingQuoteTable'
 
-
 function Dashboard() {
-  
   return (
     <div className='dashboard'>
       <OpenWorkorders />
       <OnSiteStatus />
       <IncompleteStatus />
       <TablePlaceholder />
-      <CompletednWO />
       <AwaitingQuoteTable />
+      <CompletednWO />
+
       <DashboardChart />
     </div>
   )

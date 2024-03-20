@@ -10,6 +10,7 @@ function OnSiteStatus() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log('On Site Workorders fetching data...')
         const response = await axios.get('http://localhost:8080/api/workorders/onSite')
         setWorkorders(response.data.value)
       } catch (error) {

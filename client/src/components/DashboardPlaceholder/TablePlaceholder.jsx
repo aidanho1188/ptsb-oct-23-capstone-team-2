@@ -10,6 +10,7 @@ function TablePlaceholder() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log('placeholder Workorders fetching data...')
         const response = await axios.get('http://localhost:8080/api/workorders/open')
         setWorkorders(response.data.value)
       } catch (error) {
