@@ -22,6 +22,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    // email.endsWith('@outsideunlmited.com')
     if (email === 'example@example.com' && password === 'password') {
       setErrorMessage('') // successful login
     } else {

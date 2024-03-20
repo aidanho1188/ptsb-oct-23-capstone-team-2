@@ -7,7 +7,7 @@
   padding: 0.5rem;
   height: 100vh;
   width: 100vw;
-  background-image: url('forestbg.jpg');
+  background-image: url('https://www.outsideunlimited.com/wp-content/uploads/2023/08/new-mulch-instalation-scaled.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -44,6 +44,5 @@
 }
 
 .login-layout code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
