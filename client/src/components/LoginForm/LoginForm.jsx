@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import './login.css'
+import { useState } from 'react'
+import './loginForm.css'
+import { FaUser, FaLock } from 'react-icons/fa'
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -29,25 +30,45 @@ const Login = () => {
   }
 
   return (
-    <div className='login-container'>
-      <h2>Login</h2>
+    <div className='login-form-layout'>
+      <h1>Login</h1>
       <form className='login-form' onSubmit={handleSubmit}>
-        <div>
-          <label>Email:</label>
-          <input type='email' value={email} onChange={handleEmailChange} />
+        <div className='input-box'>
+          <input
+            type='email'
+            placeholder='Email'
+            value={email}
+            onChange={handleEmailChange}
+            required
+          />
+          <FaUser className='icon' />
         </div>
-        <div>
-          <label>Password:</label>
+        <div className='input-box'>
           <input
             type={showPassword ? 'text' : 'password'}
+            placeholder='Password'
             value={password}
             onChange={handlePasswordChange}
+            required
           />
+          <FaLock className='icon' />
           <span className='password-toggle' onClick={togglePasswordVisibility}>
             {showPassword ? 'Hide' : 'Show'}
           </span>
         </div>
+        <div className='remember-forgot'>
+          <label>
+            <input type='checkbox' />
+            Remember me
+          </label>
+          <a href='#'>Forgot Password</a>
+        </div>
         <button type='submit'>Login</button>
+        <div className='register-link'>
+          <p>
+            Don&apos;t have an account? <a href='#'>Register</a>
+          </p>
+        </div>
       </form>
       {errorMessage && <div className='error-message'>{errorMessage}</div>}
     </div>

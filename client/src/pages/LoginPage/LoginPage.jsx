@@ -1,10 +1,10 @@
 import React from 'react'
-import Login from '../../components/Login/Login'
+import Login from '../../components/LoginForm/LoginForm'
 import './loginPage.css'
 
 function LoginPage() {
   return (
-    <div>
+    <div className='login-container'>
       <Login />
     </div>
   )
