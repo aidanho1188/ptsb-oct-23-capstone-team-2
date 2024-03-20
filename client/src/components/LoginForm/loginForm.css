@@ -1,0 +1,111 @@
+.login-form-layout {
+  max-width: 450px;
+  width: 100%;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(30px);
+  color: #fff;
+  border-radius: 10px;
+  padding: 30px 40px;
+  margin: 0 auto;
+}
+
+.login-form-layout h1 {
+  font-size: 36px;
+  text-align: center;
+}
+
+.login-form-layout .input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  /* background: salmon; */
+  margin: 30px auto;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #fff;
+  padding: 20px 45px 20px 20px;
+}
+
+.input-box input::placeholder {
+  color: #fff;
+}
+
+.input-box .icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+}
+
+.login-form-layout .remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14.5px;
+  margin: -15px 0 15px;
+}
+
+.remember-forgot label input {
+  accent-color: #fff;
+  margin-right: 4px;
+}
+
+.remember-forgot a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.remember-forgot a:hover {
+  text-decoration: underline;
+}
+
+.login-form-layout button {
+  width: 100%;
+  height: 45px;
+  background: #fff;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+}
+
+.login-form-layout .register-link {
+  font-size: 14.5px;
+  text-align: center;
+  margin: 20px 0 15px;
+}
+
+.register-link p a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-link p a:hover {
+  text-decoration: underline;
+}
+.error-message {
+  color: red;
+  font-size: 14px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}

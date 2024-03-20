@@ -24,7 +24,11 @@ body {
   display: flex;
   width: 100%;
   height: fit-content;
-  background-image: linear-gradient(to bottom right, var(--primary-color), var(--secondary-color));
+  background-image: linear-gradient(
+    to bottom right,
+    var(--primary-color),
+    var(--secondary-color)
+  );
 }
 
 h1 {

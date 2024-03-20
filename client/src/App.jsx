@@ -4,6 +4,7 @@ import Homepage from './pages/Homepage/Homepage.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
 import UpdateStatusPage from './pages/UpdateStatusPage/UpdateStatusPage.jsx'
+import LoginPage from './pages/LoginPage/LoginPage.jsx'
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: '/update-status',
     element: <UpdateStatusPage />,
+  },
+  {
+    path: '/login',
+    element: <LoginPage />,
   },
 ])
 
