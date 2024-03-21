@@ -1,14 +1,14 @@
-const UserToken = require("../models/UserTokenSchema.js");
-const sendErrorResponse = require("../utils/errorHandler.js");
+const UserToken = require('../models/UserTokenSchema.js')
+const sendErrorResponse = require('../utils/errorHandler.js')
 
 async function getAccessToken(tokenType) {
   try {
-    const accessToken = await UserToken.findOne({ tokenType: tokenType });
-    return accessToken.accessToken;
+    const accessToken = await UserToken.findOne({tokenType: tokenType})
+    return accessToken.accessToken
   } catch (error) {
-    const errorResponse = sendErrorResponse(error);
-    console.error("Error:", errorResponse);
+    const errorResponse = sendErrorResponse(error)
+    console.error('getAccessToken Error:', errorResponse)
   }
 }
 
-module.exports = getAccessToken;
+module.exports = getAccessToken
