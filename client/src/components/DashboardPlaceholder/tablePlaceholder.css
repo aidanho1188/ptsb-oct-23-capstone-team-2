@@ -1,11 +1,12 @@
 .scroll {
-  height: 40vh;
+  height: 20vh;
   overflow: hidden;
 }
 
 .table {
   border: 1px solid #e0e0e0;
-  width: 20% !important;
+  width: 27vw !important;
+  height: 5vh !important;
   border-radius: 5px !important;
   background-color: white !important;
   color: black !important;

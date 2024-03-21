@@ -5,7 +5,6 @@
 
 .table {
   border: 1px solid #e0e0e0;
-  width: 20% !important;
 }
 
 .table-container {
@@ -14,7 +13,7 @@
   align-items: stretch !important;
   flex-direction: column;
   width: 100% !important;
-  height: 100%;
+  height: 35vh !important;
   margin: 0;
 }
 
@@ -29,7 +28,6 @@
 }
 
 .table-header > * {
-  /* margin-right: 1em; */
   padding: 0 !important;
 }
 
