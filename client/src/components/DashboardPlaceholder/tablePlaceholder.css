@@ -37,6 +37,7 @@
   padding: 0 !important;
 }
 
-.temp-block {
-  padding-left: 1.25 !important;
+.loading-skeleton > * {
+  margin: 1em 1em 1rem 1em !important;
+  padding: 1rem;
 }

@@ -3,7 +3,7 @@ import {ScrollArea} from '@/components/ui/scroll-area'
 import axios from 'axios'
 import React, {useEffect, useState} from 'react'
 import './awaitingQuote.css'
-
+// TODO: DELETE THIS FILE
 function AwaitingQuoteTable() {
   const [workorders, setWorkorders] = useState([])
 
@@ -46,9 +46,9 @@ function AwaitingQuoteTable() {
             {workorders.map((workorder) => (
               <TableRow key={workorder.Id} className='row'>
                 <TableCell className='font-medium w-[100px]'>{workorder.Id}</TableCell>
-                <TableCell className='temp-block'></TableCell>
+                {/* <TableCell className='temp-block'></TableCell> */}
                 <TableCell>{workorder.Status.Extended || 'None'}</TableCell>
-                <TableCell className='temp-block'></TableCell>
+                {/* <TableCell className='temp-block'></TableCell> */}
                 <TableCell>{workorder.LocationId}</TableCell>
                 <TableCell className='text-right'>{workorder.Trade}</TableCell>
               </TableRow>

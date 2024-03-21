@@ -1,58 +1,59 @@
 import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow} from '@/components/ui/table'
+import {Skeleton} from '@/components/ui/skeleton'
 import {ScrollArea} from '@/components/ui/scroll-area'
 import axios from 'axios'
 import React, {useEffect, useState} from 'react'
 import './tablePlaceholder.css'
 
-function TablePlaceholder() {
+// TODO: RENAME THIS FILE
+function TablePlaceholder({title, data}) {
   const [workorders, setWorkorders] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        console.log('placeholder Workorders fetching data...')
-        const response = await axios.get('http://localhost:8080/api/workorders/open')
-        setWorkorders(response.data.value)
-      } catch (error) {
-        console.error('Error fetching data:', error)
-      }
+    if (data) {
+      setWorkorders(data)
+      setIsLoading(false)
     }
-
-    fetchData()
-  }, [])
+  }, [data])
 
   return (
     <div className='table'>
-      <h2>Open</h2>
+      <h2>{title}</h2>
       <Table className='table-container'>
-        <TableHeader>
-          <ScrollArea>
-            <TableRow className='table-headers'>
-              <TableHead className='px-1' style={{width: '110px'}}>
-                Work Order
-              </TableHead>
-              <TableHead className='px-1'>Status</TableHead>
-              <TableHead className='px-1'>Subscriber</TableHead>
-              <TableHead className='px-1' style={{width: '80px'}}>
-                Trade
-              </TableHead>
-            </TableRow>
-          </ScrollArea>
-        </TableHeader>
         <ScrollArea className='scroll rounded-md border p-4'>
-          <TableCaption>A list of open workorders.</TableCaption>
-          <TableBody>
-            {workorders.map((workorder) => (
-              <TableRow key={workorder.Id} className='row'>
-                <TableCell className='font-medium w-[100px]'>{workorder.Id}</TableCell>
-                <TableCell className='temp-block'></TableCell>
-                <TableCell>{workorder.Status.Primary || 'None'}</TableCell>
-                <TableCell className='temp-block'></TableCell>
-                <TableCell>{workorder.Caller}</TableCell>
-                <TableCell className='text-right'>{workorder.Trade}</TableCell>
+          <TableHeader>
+            <TableRow className='table-headers'>
+              <TableHead className='p-1'>Work Order</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Location Id</TableHead>
+              <TableHead className='text-right'>Trade</TableHead>
+            </TableRow>
+          </TableHeader>
+          {isLoading ? (
+            <TableBody>
+              <TableRow>
+                <TableCell colSpan={4}>
+                  <div className='loading-skeleton'>
+                    <Skeleton className='h-4' />
+                    <Skeleton className='h-4' />
+                  </div>
+                </TableCell>
               </TableRow>
-            ))}
-          </TableBody>
+            </TableBody>
+          ) : (
+            <TableBody>
+              {Array.isArray(data) &&
+                data.map((workorder) => (
+                  <TableRow key={workorder.Id}>
+                    <TableCell className='w-[100px]'>{workorder.Id}</TableCell>
+                    <TableCell>{workorder.Status.Extended || workorder.Status.Primary || 'None'}</TableCell>
+                    <TableCell>{workorder.LocationId}</TableCell>
+                    <TableCell className='text-right'>{workorder.Trade}</TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          )}
         </ScrollArea>
       </Table>
     </div>
