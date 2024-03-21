@@ -5,7 +5,7 @@ import axios from 'axios'
 import React, {useEffect, useState} from 'react'
 import './tablePlaceholder.css'
 
-// TODO: RENAME THIS FILE
+// TODO: RENAME THIS COMPONENT
 function TablePlaceholder({title, data}) {
   const [workorders, setWorkorders] = useState([])
   const [isLoading, setIsLoading] = useState(true)
