@@ -8,7 +8,7 @@ function NavMenu() {
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuLink href='#' className='nav-link'>
+            <NavigationMenuLink href='/workorder-checkin' className='nav-link'>
               <GroupIcon /> Check In
             </NavigationMenuLink>
           </NavigationMenuItem>
