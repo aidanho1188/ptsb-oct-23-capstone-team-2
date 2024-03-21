@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import {useState} from 'react'
 import './loginForm.css'
-import { FaUser, FaLock } from 'react-icons/fa'
+import {FaUser, FaLock} from 'react-icons/fa'
 import axios from 'axios'
 
 const Login = () => {
@@ -24,25 +24,26 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     //get data from form and send to server
-    const response = await axios.post('http://localhost:8080/auth/login', {
-      username: username,
-      password: password,
-    })
-    // expecting reponse to return
-    // res.status(200).json({
-    //   success: true,
-    //   message: 'Login Successful',
-    //   user,
-    //   accessToken,
-    // })
 
-    // userName.endsWith('@outsideunlmited.com')
-    if (response.success === true) {
-      // save user to local storage
-      localStorage.setItem('user', JSON.stringify(response.user))
-      alert(response.message)
-    } else {
-      setErrorMessage('Invalid userName or password. Please try again.') // failed login
+    try {
+      const response = await axios.post('http://localhost:8080/auth/login', {
+        username: username,
+        password: password,
+      })
+      console.log('response', response.data)
+      // userName.endsWith('@outsideunlmited.com')
+      if (response.data.success === true) {
+        // save user to local storage
+        localStorage.setItem('user', JSON.stringify(response.data.user))
+        setErrorMessage(response.data.message)
+        // redirect to home page
+        window.location = '/'
+      } else if (response.data.success === false) {
+        setErrorMessage(response.data.message)
+      }
+    } catch (error) {
+      console.log('error', error)
+      setErrorMessage(error.response.data.message)
     }
   }
 
@@ -51,23 +52,11 @@ const Login = () => {
       <h1>Login</h1>
       <form className='login-form' onSubmit={handleSubmit}>
         <div className='input-box'>
-          <input
-            type='userName'
-            placeholder='userName'
-            value={username}
-            onChange={handleUsernameChange}
-            required
-          />
+          <input type='username' placeholder='Username' value={username} onChange={handleUsernameChange} required />
           <FaUser className='icon' />
         </div>
         <div className='input-box'>
-          <input
-            type={showPassword ? 'text' : 'password'}
-            placeholder='Password'
-            value={password}
-            onChange={handlePasswordChange}
-            required
-          />
+          <input type={showPassword ? 'text' : 'password'} placeholder='Password' value={password} onChange={handlePasswordChange} required />
           <FaLock className='icon' />
           <span className='password-toggle' onClick={togglePasswordVisibility}>
             {showPassword ? 'Hide' : 'Show'}
