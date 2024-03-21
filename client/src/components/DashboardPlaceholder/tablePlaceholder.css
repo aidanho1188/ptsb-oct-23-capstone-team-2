@@ -1,11 +1,12 @@
 .scroll {
-  height: 40vh;
+  height: 30vh;
   overflow: hidden;
 }
 
 .table {
   border: 1px solid #e0e0e0;
-  width: 20% !important;
+  width: 27vw !important;
+  height: 5vh !important;
   border-radius: 5px !important;
   background-color: white !important;
   color: black !important;
@@ -36,6 +37,7 @@
   padding: 0 !important;
 }
 
-.temp-block {
-  padding-left: 1.25 !important;
+.loading-skeleton > * {
+  margin: 1em 1em 1rem 1em !important;
+  padding: 1rem;
 }

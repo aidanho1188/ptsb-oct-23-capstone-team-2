@@ -4,7 +4,7 @@ const {refetchAccessToken} = require('../services/tokenService.js')
 const axios = require('axios')
 const getAccessToken = require('../utils/getAccessToken.js')
 let accessToken = getAccessToken('sandbox')
-let expiryTime = 10 * 60 * 1000
+let expiryTime = 9 * 60 * 1000
 
 async function handleExpiredToken(req, res, next) {
   try {
@@ -25,7 +25,7 @@ async function handleExpiredToken(req, res, next) {
       expiryTime = Date.now() + response.expires_in * 1000
     }
   } catch (error) {
-    if (error.response.status === 401) {
+    if (error.response.status === 401 || error.response.status === 504) {
       console.log('Attempting to refresh token')
       await refetchAccessToken()
       next()

@@ -12,3 +12,7 @@
   padding: 1rem;
   cursor: pointer;
 }
+
+.nav-link svg {
+  margin-right: 0.5rem;
+}

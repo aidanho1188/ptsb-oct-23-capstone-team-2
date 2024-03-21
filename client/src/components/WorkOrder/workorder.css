@@ -1,12 +1,22 @@
 .order-layout {
-  /* display: flex; */
-  flex-direction: column;
-  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
+  width: 100%;
+}
+
+.order-layout > * {
   width: 35vw;
-  margin: auto 0;
 }
 
 .work-order-layout .flex.flex-col.space-y-3 > * {
-  line-height: 5;
+  line-height: 4.6em;
+}
+
+.form-btn {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  gap: 1rem;
 }

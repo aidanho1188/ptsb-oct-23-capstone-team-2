@@ -1,27 +1,73 @@
 const express = require('express')
-const apiService = require('../services/apiService')
 const tokenService = require('../services/tokenService')
+const User = require('../models/UserSchema.js')
+const bcrypt = require('bcrypt')
+const sendErrorResponse = require('../utils/errorHandler.js')
+const salt = 12
 
 // function for login
-const login = (req, res, next) => {
-  next()
-  if (req.body.username === 'test' && req.body.password === 'test') {
-    // next()
-    // TODO: get work order information for dashboard
-    // business logic to get access token
-    // failed to fetch using current token(apiService.fetchToken())
-    // return 401 and handle it in handle401.js
-    // tokenService.fetchAccessToken()
-  } else {
-    res.status(401).send('Unauthorized')
+const login = async (req, res, next) => {
+  try {
+    const {username, password} = req.body
+
+    const foundUser = await User.findOne({username})
+    if (!foundUser) {
+      console.log('foundUser', foundUser)
+      return res.status(401).json({success: false, message: 'Invalid Username or Password'})
+    }
+    const passwordMatch = await checkPassword(password, foundUser.password)
+    if (!passwordMatch) {
+      return res.status(401).json({success: false, message: 'Invalid Username or Password'})
+    } else {
+      const accessToken = tokenService.refetchAccessToken()
+
+      return res.status(200).json({
+        success: true,
+        message: 'Login Successful',
+        user: foundUser,
+        accessToken,
+      })
+    }
+  } catch (err) {
+    sendErrorResponse(err, res)
   }
-  // apiService.fetchToken()
-  // tokenService.fetchAccessToken()
 }
 
+async function checkPassword(password, hash) {
+  try {
+    const isMatched = await bcrypt.compare(password, hash)
+    console.log('isMatched', isMatched)
+    return isMatched
+  } catch (err) {
+    console.error(err)
+    return false
+  }
+}
 // function for logout
 const logout = (req, res, next) => {
   res.send('You have been logged out')
 }
 
-module.exports = {login, logout}
+const register = async (req, res, next) => {
+  try {
+    const {username, firstName, lastName, password} = req.body
+    if (!username || !firstName || !lastName || !password) {
+      throw new Error('Incomplete Data')
+    }
+
+    const newUser = new User({
+      username,
+      firstName,
+      lastName,
+      password: bcrypt.hashSync(password, salt),
+    })
+    await newUser.save()
+
+    return res.status(201).json({message: 'User Created', data: {newUser}})
+  } catch (err) {
+    console.log(err)
+    res.status(500).json({error: 'Internal Server Error'})
+  }
+}
+
+module.exports = {login, logout, register}

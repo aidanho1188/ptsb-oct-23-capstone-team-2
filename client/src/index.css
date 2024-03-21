@@ -17,6 +17,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: thin;
+  scrollbar-gutter: 0.5rem;
+  scrollbar-color: var(--primary-color) var(--secondary-color);
 }
 
 body {
@@ -24,11 +27,7 @@ body {
   display: flex;
   width: 100%;
   height: fit-content;
-  background-image: linear-gradient(
-    to bottom right,
-    var(--primary-color),
-    var(--secondary-color)
-  );
+  background-image: linear-gradient(to bottom right, var(--primary-color), var(--secondary-color));
 }
 
 h1 {
