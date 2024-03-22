@@ -2,14 +2,19 @@
 //TODO: import checkin search response component
 import './checkinPageLayout.css'
 import WorkorderSearch from '../../components/WorkorderSearch/WorkorderSearch'
+import FormResponse from '../../components/FormResponse/FormResponse'
 
 function CheckinPageLayout() {
   return (
     <div className='checkin-page-layout'>
-        <div>
-        <WorkorderSearch />
-        </div>
-        {/* div for checkin search response component */}
+      <WorkorderSearch />
+      <div className='popup-form'>
+        {/* 50% */}
+        <FormResponse />
+
+        {/* this will be a component with 50%*/}
+        <div className=''>gps checkin form</div>
+      </div>
     </div>
   )
 }
