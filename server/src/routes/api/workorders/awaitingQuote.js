@@ -1,8 +1,6 @@
 const express = require('express')
+const router = express.Router()
 const workordersController = require('../../../controllers/workordersController')
-// const {handleExpiredToken} = require('../../handleExpiredToken')
 
-const workordersRouter = express.Router()
-
-workordersRouter.get('/', workordersController.awaitingQuote)
-module.exports = workordersRouter
+router.get('/', workordersController.awaitingQuote)
+module.exports = router

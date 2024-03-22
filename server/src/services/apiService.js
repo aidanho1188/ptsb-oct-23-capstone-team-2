@@ -17,10 +17,35 @@ async function fetchData(endpoint, select, filter) {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${await getAccessToken(tokenType)}`,
     },
-    ResponseType: 'json',
+    responsetype: 'json',
   })
   const data = response.data
   return data
 }
 
-module.exports = {fetchData}
+async function sendStatusUpdateRequest(workOrderId, primary = 'string', extended = 'string', note = 'string', actor = 'string', declineReasonId = 0, customDeclineReason = 'string') {
+  console.log(`Working on updating work order from Service Channel...`)
+  const response = await axios.put(
+    `https://sb2api.servicechannel.com/v3/odata/workorders/${workOrderId}/status`,
+    {
+      Status: {
+        Primary: primary,
+        Extended: extended,
+      },
+      Note: note,
+      Actor: actor,
+      DeclineReasonId: declineReasonId,
+      CustomDeclineReason: customDeclineReason,
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${await getAccessToken(tokenType)}`,
+      },
+      responsetype: 'json',
+    })
+  const data = response.data
+  return data
+}
+
+module.exports = {fetchData, sendStatusUpdateRequest}
