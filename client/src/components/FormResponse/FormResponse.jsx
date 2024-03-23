@@ -50,6 +50,7 @@ function FormResponse({formState, isLoading}) {
         </CardHeader>
         <Separator />
         <CardContent>
+          <br />
           <p>Waiting for form submission...</p>
         </CardContent>
       </Card>
@@ -63,6 +64,7 @@ function FormResponse({formState, isLoading}) {
       </CardHeader>
       <Separator />
       <CardContent>
+        <br />
         <p>
           <strong>Work Order Id:</strong> {formState.data.id}
         </p>

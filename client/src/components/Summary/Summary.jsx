@@ -19,7 +19,7 @@ function Summary({title, data}) {
 
   return (
     <div className='summary-layout'>
-      <h2>{title}</h2>
+      <h2>Recent Updates</h2>
       <Table className='summary-table-container'>
         <ScrollArea className='summary-scroll rounded-md border p-4'>
           <TableHeader>
@@ -28,16 +28,21 @@ function Summary({title, data}) {
               <TableHead>Previous Status</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Location Id</TableHead>
-              <TableHead className='text-right'>Trade</TableHead>
+              <TableHead>Trade</TableHead>
+              <TableHead className='text-right'>Caller Date</TableHead>
             </TableRow>
           </TableHeader>
           {isLoading ? (
             <TableBody>
               <TableRow>
-                <TableCell colSpan={5}>
+                <TableCell colSpan={6}>
                   <div className='summary-loading-skeleton'>
-                    <Skeleton className='h-4' />
-                    <Skeleton className='h-4' />
+                    <Skeleton className='space-y-3 h-4 rounded-xl' />
+                    <Skeleton className='h-4 rounded-xl' />
+                    <Skeleton className='h-4 rounded-xl' />
+                    <Skeleton className='h-4 rounded-xl' />
+                    <Skeleton className='h-4 rounded-xl' />
+                    <Skeleton className='h-4 rounded-xl' />
                   </div>
                 </TableCell>
               </TableRow>
