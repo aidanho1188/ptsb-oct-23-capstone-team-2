@@ -53,4 +53,13 @@ const completed = async (req, res, next) => {
   }
 }
 
-module.exports = {open, onSite, incomplete, awaitingQuote, completed}
+const getWorkOrder = async (req, res, next) => {
+  try {
+    const data = await fetchWorkOrder(req.params.workOrderId)
+    res.json(data)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+module.exports = {open, onSite, incomplete, awaitingQuote, completed, getWorkOrder}
