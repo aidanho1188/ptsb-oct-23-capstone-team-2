@@ -5,6 +5,7 @@ import './updateStatusPage.css'
 
 function UpdateStatus() {
   return (
+    
     <div className='update-status-container'>
       <NavBar />
       <BackToDashboard />

@@ -1,7 +1,7 @@
 const express = require('express')
 const axios = require('axios')
 const getAccessToken = require('../utils/getAccessToken.js')
-const {fetchData, sendStatusUpdateRequest} = require('../services/apiService.js')
+const {fetchData, sendStatusUpdateRequest, fetchWorkOrder} = require('../services/apiService.js')
 
 const open = async (req, res, next) => {
   try {
@@ -54,15 +54,25 @@ const completed = async (req, res, next) => {
 
 const updateWorkOrderStatus = async (req, res, next) => {
   try {
-    console.log(req.body.status.split('/'))
     const primary = req.body.status.split('/')[0]
     const extended = req.body.status.split('/')[1]
     const data = await sendStatusUpdateRequest(req.params.workOrderId, primary, extended)
     console.log('data6: workorder update')
     res.json(data)
   } catch (error) {
+    res.json(error)
     console.log(error)
   }
 }
 
-module.exports = {open, onSite, incomplete, awaitingQuote, completed, updateWorkOrderStatus}
+const getWorkOrder = async (req, res, next) => {
+  try {
+    const data = await fetchWorkOrder(req.params.workOrderId)
+    console.log('data7: get workorder')
+    res.json(data)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+module.exports = {open, onSite, incomplete, awaitingQuote, completed, updateWorkOrderStatus, getWorkOrder}

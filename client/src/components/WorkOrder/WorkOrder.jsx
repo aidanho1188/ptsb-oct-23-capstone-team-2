@@ -8,31 +8,41 @@ import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/c
 import axios from 'axios'
 import './workorder.css'
 
-export function WorkOrder() {
+export function WorkOrder({onFormStateChange}) {
   const [workOrderId, setWorkOrderId] = React.useState('')
   const [status, setStatus] = React.useState('')
-  const [data, setData] = React.useState('')
+  // const [data, setData] = React.useState('')
 
-  const handleWorkOrderIdChange = (e) => {
-    setWorkOrderId(e.target.value)
+  const handleWorkOrderIdChange = (evt) => {
+    setWorkOrderId(evt.target.value)
   }
 
-  const handleStatusChange = (e) => {
-    console.log('status:', e.target.value)
-    setStatus(e.target.value)
+  const handleStatusChange = (selectItem) => {
+    // console.log('status:', selectItem)
+    setStatus(selectItem)
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
     const url = `http://localhost:8080/api/workorders/updateStatus/${workOrderId}`
-    console.log('status:', status)
-    console.log('workOrderId:', workOrderId)
+    // console.log('status:', status)
+    // console.log('workOrderId:', workOrderId)
     try {
       const response = await axios.patch(url, {
         status: status,
       })
-      setData(response.data.value)
-      console.log(response.data.value)
+      // setData(response.data)
+      if (response.status === 200) {
+        const data = {
+          ...response.data,
+          status: status,
+        }
+        onFormStateChange(data)
+        console.log('Response:', data)
+      } else {
+        console.log('Error:', response)
+        throw new Error(response)
+      }
     } catch (error) {
       console.error(`Error fetching data from ${url}: `, error)
     }
@@ -54,15 +64,15 @@ export function WorkOrder() {
               <div className='flex flex-col space-y-3'>
                 <Label htmlFor='status'>Status</Label>
                 <div className='form-input'>
-                  <Select>
+                  <Select onValueChange={handleStatusChange}>
                     <SelectTrigger id='status'>
-                      <SelectValue value='Select Status' placeholder='Select Status' onChange={handleStatusChange} />
+                      <SelectValue placeholder='Select Status' />
                     </SelectTrigger>
                     <SelectContent position='Select'>
                       <SelectItem value='In Progress/Dispatch Confirmed'>IN PROGRESS / DISPATCHED CONFIRMED</SelectItem>
                       <SelectItem value='In Progress/On Site'>IN PROGRESS / ON SITE</SelectItem>
                       <SelectItem value='In Progress/Parts On Order'>IN PROGRESS / PARTS ON ORDER</SelectItem>
-                      <SelectItem value='In Progress/Incomplete'>IN PROGRESS / INCOMPLETE</SelectItem>
+                      <SelectItem value='IN PROGRESS/INCOMPLETE'>IN PROGRESS / INCOMPLETE</SelectItem>
                       <SelectItem value='In Progress/Unsatisfactory'>IN PROGRESS / UNSATISFACTORY</SelectItem>
                       <SelectItem value='In Progress/Waiting for Quote'>IN PROGRESS / WAITING FOR QUOTE</SelectItem>
                       <SelectItem value='In Progress/Proposal Approved'>IN PROGRESS / PROPOSAL APPROVED</SelectItem>
@@ -73,9 +83,7 @@ export function WorkOrder() {
                       <SelectItem value='Invoiced'>INVOICED</SelectItem>
                     </SelectContent>
                   </Select>
-                  <Button type='submit' className='submit'>
-                    Submit
-                  </Button>
+                  <Button className='submit'>Submit</Button>
                 </div>
               </div>
             </div>

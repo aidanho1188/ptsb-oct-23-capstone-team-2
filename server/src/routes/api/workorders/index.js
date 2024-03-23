@@ -17,4 +17,7 @@ router.use('/completed', completed)
 router.use('/awaitingQuote', awaitingQuote)
 router.use('/updateStatus', updateStatus)
 
+// localhost:8080/api/workorders/workOrderId
+router.get('/:workOrderId', workordersController.getWorkOrder)
+
 module.exports = router
