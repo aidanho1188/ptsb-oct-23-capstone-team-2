@@ -1,17 +1,25 @@
 .summary-layout {
   width: 100%;
-  height: max-content;
+  min-height: 75vh;
 }
 
-.summary-layout h1 {
+.summary-layout h2 {
   text-align: center;
 }
 
-.summary-card-layout {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  border: 1px solid white;
-  margin: 1rem;
+.summary-table-container {
+  background-color: white;
+  border-radius: 5px;
+  color: black;
+  min-height: 75vh !important;
+}
+
+.summary-loading-skeleton > * {
+  margin: 1em 1em 1rem 1em !important;
+  padding: 1rem;
+}
+
+.summary-scroll {
+  overflow: hidden;
+  height: 75vh;
 }

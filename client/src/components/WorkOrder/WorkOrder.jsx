@@ -8,36 +8,33 @@ import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/c
 import axios from 'axios'
 import './workorder.css'
 
-export function WorkOrder({onFormStateChange}) {
+export function WorkOrder({onFormStateChange, onLoading}) {
   const [workOrderId, setWorkOrderId] = React.useState('')
   const [status, setStatus] = React.useState('')
-  // const [data, setData] = React.useState('')
 
   const handleWorkOrderIdChange = (evt) => {
     setWorkOrderId(evt.target.value)
   }
 
   const handleStatusChange = (selectItem) => {
-    // console.log('status:', selectItem)
     setStatus(selectItem)
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    onLoading(true)
     const url = `http://localhost:8080/api/workorders/updateStatus/${workOrderId}`
-    // console.log('status:', status)
-    // console.log('workOrderId:', workOrderId)
     try {
       const response = await axios.patch(url, {
         status: status,
       })
-      // setData(response.data)
       if (response.status === 200) {
         const data = {
-          ...response.data,
+          ...response,
           status: status,
         }
         onFormStateChange(data)
+        onLoading(false)
         console.log('Response:', data)
       } else {
         console.log('Error:', response)
@@ -64,7 +61,7 @@ export function WorkOrder({onFormStateChange}) {
               <div className='flex flex-col space-y-3'>
                 <Label htmlFor='status'>Status</Label>
                 <div className='form-input'>
-                  <Select onValueChange={handleStatusChange}>
+                  <Select onValueChange={handleStatusChange} required>
                     <SelectTrigger id='status'>
                       <SelectValue placeholder='Select Status' />
                     </SelectTrigger>
