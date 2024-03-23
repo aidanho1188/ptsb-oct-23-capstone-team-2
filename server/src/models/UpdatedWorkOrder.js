@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const WorkorderUpdateSchema = new mongoose.Schema({
+const UpdateWorkOrderSchema = new mongoose.Schema({
   workorderId: {
     type: String,
     required: true,
@@ -11,9 +11,8 @@ const WorkorderUpdateSchema = new mongoose.Schema({
   data: {},
   time: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 })
 
-
-module.exports = mongoose.model('WorkOrderUpdate', WorkorderUpdateSchema)
+module.exports = mongoose.model('UpdateWorkOrder', UpdateWorkOrderSchema)

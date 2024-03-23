@@ -1,6 +1,7 @@
 const express = require('express')
 const axios = require('axios')
 const getAccessToken = require('../utils/getAccessToken.js')
+const saveUpdatedWorkOrder = require('../utils/saveUpdatedWorkOrder.js')
 const {fetchData, sendStatusUpdateRequest, fetchWorkOrder} = require('../services/apiService.js')
 
 const open = async (req, res, next) => {
@@ -56,9 +57,12 @@ const updateWorkOrderStatus = async (req, res, next) => {
   try {
     const primary = req.body.status.split('/')[0]
     const extended = req.body.status.split('/')[1]
-    const data = await sendStatusUpdateRequest(req.params.workOrderId, primary, extended)
+    const res = await sendStatusUpdateRequest(req.params.workOrderId, primary, extended)
     console.log('data6: workorder update')
-    res.json(data)
+    if (res.data.results !== '' && res.statusText === 'OK') {
+      saveUpdatedWorkOrder(res)
+    }
+    res.json(res)
   } catch (error) {
     res.json(error)
     console.log(error)

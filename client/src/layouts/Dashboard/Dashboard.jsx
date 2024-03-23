@@ -17,8 +17,10 @@ function Dashboard() {
       try {
         const response = await axios.get(url)
         setData(response.data.value)
-        console.log(typeof response.data.value)
       } catch (error) {
+        if (error.response.status === 502) {
+          alert('Service Channel is down. Please try again later.')
+        }
         console.error(`Error fetching data from ${url}: `, error)
       }
     }

@@ -29,13 +29,14 @@ function Summary({title, data}) {
               <TableHead>Status</TableHead>
               <TableHead>Location Id</TableHead>
               <TableHead>Trade</TableHead>
-              <TableHead className='text-right'>Caller Date</TableHead>
+              <TableHead>Caller Date</TableHead>
+              <TableHead className='text-right'>Update Date</TableHead>
             </TableRow>
           </TableHeader>
           {isLoading ? (
             <TableBody>
               <TableRow>
-                <TableCell colSpan={6}>
+                <TableCell colSpan={7}>
                   <div className='summary-loading-skeleton'>
                     <Skeleton className='space-y-3 h-4 rounded-xl' />
                     <Skeleton className='h-4 rounded-xl' />
