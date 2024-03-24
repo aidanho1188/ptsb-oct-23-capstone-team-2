@@ -8,11 +8,15 @@ const UpdateWorkOrderSchema = new mongoose.Schema({
   status: {
     type: String,
   },
-  data: {},
-  time: {
+  preStatus: {type: String},
+  newStatus: {type: String},
+  locationId: {type: Number},
+  trade: {type: String},
+  callDate: {type: Date},
+  updatedTime: {
     type: Date,
     default: Date.now,
   },
 })
 
-module.exports = mongoose.model('UpdateWorkOrder', UpdateWorkOrderSchema)
+module.exports = mongoose.model('UpdatedWorkOrder', UpdateWorkOrderSchema)
