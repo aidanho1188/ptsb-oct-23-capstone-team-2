@@ -3,6 +3,7 @@
 import './checkinPageLayout.css'
 import WorkorderSearch from '../../components/WorkorderSearch/WorkorderSearch'
 import FormResponse from '../../components/FormResponse/FormResponse'
+import GpsForm from '../../components/Gps/GpsForm'
 
 function CheckinPageLayout() {
   return (
@@ -16,7 +17,7 @@ function CheckinPageLayout() {
 
         {/* this will be a component with 50%*/}
         <div className='gps-form' style={{ width: '50%' }}>
-          gps checkin form
+          <GpsForm  />
         </div>
       </div>
     </div>

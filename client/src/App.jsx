@@ -8,6 +8,7 @@ import WorkorderCheckinPage from './pages/WorkorderCheckinPage/WorkorderCheckinP
 import WorkorderCheckoutPage from './pages/WorkorderCheckoutPage/WorkorderCheckoutPage.jsx'
 import LoginPage from './pages/LoginPage/LoginPage.jsx'
 
+
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
   {
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
     path: '/login',
     element: <LoginPage />,
   }
+
 ])
 
 function App() {
