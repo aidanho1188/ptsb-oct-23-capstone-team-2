@@ -22,7 +22,7 @@ function Summary({isResponseLoading}) {
     }
 
     fetchData()
-  }, [])
+  }, [isResponseLoading])
 
   return (
     <div className='summary-layout'>
