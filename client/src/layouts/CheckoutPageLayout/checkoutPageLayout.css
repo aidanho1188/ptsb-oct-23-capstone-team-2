@@ -1,17 +1,31 @@
 .checkout-page-layout {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
-  
-  .popup-form {
-    width: 80%;
-    min-height: 70vh;
-    display: flex;
-    flex-direction: row;
-    background-color: #00541a;
-    border-radius: 5px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.popup-form {
+  width: 80%;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: row;
+  background-color: #00541a;
+  border-radius: 5px;
+  flex: 1;
+}
+
+.form-response,
+.gps-form {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.gps-form {
+  width: 100%;
+  padding: 20px;
+}
