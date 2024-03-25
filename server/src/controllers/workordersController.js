@@ -3,6 +3,7 @@ const axios = require('axios')
 const getAccessToken = require('../utils/getAccessToken.js')
 const saveUpdatedWorkOrder = require('../utils/saveUpdatedWorkOrder.js')
 const {fetchData, sendStatusUpdateRequest, fetchWorkOrder} = require('../services/apiService.js')
+const getupdateWorkOrders = require('../utils/getUpdatedWorkOrder.js')
 
 const open = async (req, res, next) => {
   try {
@@ -73,6 +74,15 @@ const updateWorkOrderStatus = async (req, res, next) => {
   }
 }
 
+const getRecentsWorkorders = async (req, res, next) => {
+  try {
+    const data = await getupdateWorkOrders(req, res)
+    res.json(data)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const getWorkOrder = async (req, res, next) => {
   try {
     const data = await fetchWorkOrder(req.params.workOrderId)
@@ -83,4 +93,4 @@ const getWorkOrder = async (req, res, next) => {
   }
 }
 
-module.exports = {open, onSite, incomplete, awaitingQuote, completed, updateWorkOrderStatus, getWorkOrder}
+module.exports = {open, onSite, incomplete, awaitingQuote, completed, updateWorkOrderStatus, getWorkOrder, getRecentsWorkorders}

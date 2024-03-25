@@ -10,12 +10,19 @@ function Summary({isResponseLoading}) {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const response = axios.get('/api/workorders/updated')
-    if (data) {
-      setWorkorders(data)
-      setIsLoading(false)
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/api/workorders/recents')
+        setWorkorders(response.data)
+        setIsLoading(false)
+        console.log('Summary:', response.data)
+      } catch (error) {
+        console.error('Error fetching data: ', error)
+      }
     }
-  }, [data])
+
+    fetchData()
+  }, [])
 
   return (
     <div className='summary-layout'>
@@ -23,14 +30,16 @@ function Summary({isResponseLoading}) {
       <Table className='summary-table-container'>
         <ScrollArea className='summary-scroll rounded-md border p-4'>
           <TableHeader>
+            {/* add card hover */}
             <TableRow className='table-headers'>
               <TableHead className='w-[100px]'>Work Order</TableHead>
               <TableHead>Previous Status</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Location Id</TableHead>
+              {/*  combine these */}
               <TableHead>Trade</TableHead>
-              <TableHead>Caller Date</TableHead>
-              <TableHead className='text-right'>Updated Date</TableHead>
+              <TableHead>Call Date</TableHead>
+              <TableHead className='text-right'>Updated Time</TableHead>
             </TableRow>
           </TableHeader>
           {isLoading ? (
@@ -50,16 +59,16 @@ function Summary({isResponseLoading}) {
             </TableBody>
           ) : (
             <TableBody>
-              {Array.isArray(data) &&
-                data.map((workorder) => (
-                  <TableRow key={workorder.Id}>
-                    <TableCell className='w-[100px]'>{workorder.Id}</TableCell>
-                    <TableCell>{workorder.Status.Extended || workorder.Status.Primary || 'None'}</TableCell>
-                    <TableCell>{workorder.Status.Extended || workorder.Status.Primary || 'None'}</TableCell>
-                    <TableCell>{workorder.LocationId}</TableCell>
-                    <TableCell>{workorder.Trade}</TableCell>
-                    <TableCell>{workorder.CallDate}</TableCell>
-                    <TableCell className='text-right'>{workorder.UpdatedDate}</TableCell>
+              {Array.isArray(workorders) &&
+                workorders.map((workorder) => (
+                  <TableRow key={workorder.workorderId}>
+                    <TableCell className='w-[100px]'>{workorder.workorderId}</TableCell>
+                    <TableCell>{workorder.preStatus || 'None'}</TableCell>
+                    <TableCell>{workorder.newStatus || 'None'}</TableCell>
+                    <TableCell>{workorder.locationId}</TableCell>
+                    <TableCell>{workorder.trade}</TableCell>
+                    <TableCell>{workorder.callDate}</TableCell>
+                    <TableCell className='text-right'>{workorder.updatedTime}</TableCell>
                   </TableRow>
                 ))}
             </TableBody>

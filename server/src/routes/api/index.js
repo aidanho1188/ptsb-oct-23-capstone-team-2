@@ -3,6 +3,6 @@ const {handleExpiredToken} = require('../handleExpiredToken')
 const router = express.Router()
 const workordersRoutes = require('./workorders')
 
-router.use('/workorders',handleExpiredToken, workordersRoutes)
+router.use('/workorders', workordersRoutes)
 
 module.exports = router
