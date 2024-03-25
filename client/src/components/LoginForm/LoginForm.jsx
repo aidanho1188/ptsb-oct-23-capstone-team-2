@@ -1,15 +1,16 @@
 import {useState} from 'react'
 import './loginForm.css'
 import {FaUser, FaLock} from 'react-icons/fa'
+import axios from 'axios'
 
 const Login = () => {
-  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value)
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value)
   }
 
   const handlePasswordChange = (e) => {
@@ -20,13 +21,29 @@ const Login = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // email.endsWith('@outsideunlmited.com')
-    if (email === 'example@example.com' && password === 'password') {
-      setErrorMessage('') // successful login
-    } else {
-      setErrorMessage('Invalid email or password. Please try again.') // failed login
+    //get data from form and send to server
+
+    try {
+      const response = await axios.post('http://localhost:8080/auth/login', {
+        username: username,
+        password: password,
+      })
+      console.log('response', response.data)
+      // userName.endsWith('@outsideunlmited.com')
+      if (response.data.success === true) {
+        // save user to local storage
+        localStorage.setItem('user', JSON.stringify(response.data.user))
+        setErrorMessage(response.data.message)
+        // redirect to home page
+        window.location = '/'
+      } else if (response.data.success === false) {
+        setErrorMessage(response.data.message)
+      }
+    } catch (error) {
+      console.log('error', error)
+      setErrorMessage(error.response.data.message)
     }
   }
 
@@ -35,7 +52,7 @@ const Login = () => {
       <h1>Login</h1>
       <form className='login-form' onSubmit={handleSubmit}>
         <div className='input-box'>
-          <input type='email' placeholder='Email' value={email} onChange={handleEmailChange} required />
+          <input type='username' placeholder='Username' value={username} onChange={handleUsernameChange} required />
           <FaUser className='icon' />
         </div>
         <div className='input-box'>
