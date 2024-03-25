@@ -5,12 +5,12 @@ import axios from 'axios'
 import React, {useEffect, useState} from 'react'
 import './summary.css'
 
-// TODO: RENAME THIS COMPONENT
-function Summary({title, data}) {
+function Summary({isResponseLoading}) {
   const [workorders, setWorkorders] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    const response = axios.get('/api/workorders/updated')
     if (data) {
       setWorkorders(data)
       setIsLoading(false)
@@ -30,7 +30,7 @@ function Summary({title, data}) {
               <TableHead>Location Id</TableHead>
               <TableHead>Trade</TableHead>
               <TableHead>Caller Date</TableHead>
-              <TableHead className='text-right'>Update Date</TableHead>
+              <TableHead className='text-right'>Updated Date</TableHead>
             </TableRow>
           </TableHeader>
           {isLoading ? (
@@ -55,8 +55,11 @@ function Summary({title, data}) {
                   <TableRow key={workorder.Id}>
                     <TableCell className='w-[100px]'>{workorder.Id}</TableCell>
                     <TableCell>{workorder.Status.Extended || workorder.Status.Primary || 'None'}</TableCell>
+                    <TableCell>{workorder.Status.Extended || workorder.Status.Primary || 'None'}</TableCell>
                     <TableCell>{workorder.LocationId}</TableCell>
-                    <TableCell className='text-right'>{workorder.Trade}</TableCell>
+                    <TableCell>{workorder.Trade}</TableCell>
+                    <TableCell>{workorder.CallDate}</TableCell>
+                    <TableCell className='text-right'>{workorder.UpdatedDate}</TableCell>
                   </TableRow>
                 ))}
             </TableBody>

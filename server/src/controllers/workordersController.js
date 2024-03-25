@@ -63,7 +63,7 @@ const updateWorkOrderStatus = async (req, res, next) => {
     console.log(response)
     // console.log(req.body.status)
     if (response.result !== '') {
-      console.log('saving updated work order...')
+      console.log('Saving updated work order...')
       saveUpdatedWorkOrder(response)
     }
     res.json(response)

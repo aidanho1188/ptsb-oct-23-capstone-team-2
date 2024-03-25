@@ -15,7 +15,7 @@ function UpdateStatusLayout() {
         <FormResponse formState={formState} isLoading={isLoading} />
       </div>
       <div className='right-column'>
-        <Summary />
+        <Summary isResponseLoading={isLoading} />
       </div>
     </div>
   )
