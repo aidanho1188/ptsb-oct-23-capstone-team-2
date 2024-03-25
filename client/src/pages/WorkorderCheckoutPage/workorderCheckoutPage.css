@@ -1,4 +1,4 @@
-.workorder-checkin-page-container {
+.workorder-checkout-page-container {
     display: flex;
     flex-direction: column;
     /* width: 100vw;
@@ -6,7 +6,7 @@
     padding: .5rem;
   }
 
-.checkin-page-title {
+.checkout-page-title {
     text-align: center;
     font-size: 2em;
 }
