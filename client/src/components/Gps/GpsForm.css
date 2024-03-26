@@ -1,0 +1,28 @@
+.gps-layout {
+  padding: 25px;
+  background-color: #fff;
+  border-radius: 12px;
+  width: 100% !important;
+}
+
+.gps-layout form {
+  display: flex;
+  flex-direction: column;
+  width: 100% !important;
+}
+
+.gps-layout form .space-y-8 > * {
+  margin-bottom: 20px;
+}
+
+.gps-layout form .space-y-8 > :last-child {
+  margin-bottom: 0;
+}
+
+.input-field {
+  width: 80%;
+}
+
+.form-label {
+  width: auto;
+}

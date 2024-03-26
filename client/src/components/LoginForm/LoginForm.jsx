@@ -1,6 +1,6 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import './loginForm.css'
-import {FaUser, FaLock} from 'react-icons/fa'
+import { FaUser, FaLock } from 'react-icons/fa'
 import axios from 'axios'
 
 const Login = () => {
@@ -52,11 +52,23 @@ const Login = () => {
       <h1>Login</h1>
       <form className='login-form' onSubmit={handleSubmit}>
         <div className='input-box'>
-          <input type='username' placeholder='Username' value={username} onChange={handleUsernameChange} required />
+          <input
+            type='username'
+            placeholder='Username'
+            value={username}
+            onChange={handleUsernameChange}
+            required
+          />
           <FaUser className='icon' />
         </div>
         <div className='input-box'>
-          <input type={showPassword ? 'text' : 'password'} placeholder='Password' value={password} onChange={handlePasswordChange} required />
+          <input
+            type={showPassword ? 'text' : 'password'}
+            placeholder='Password'
+            value={password}
+            onChange={handlePasswordChange}
+            required
+          />
           <FaLock className='icon' />
           <span className='password-toggle' onClick={togglePasswordVisibility}>
             {showPassword ? 'Hide' : 'Show'}

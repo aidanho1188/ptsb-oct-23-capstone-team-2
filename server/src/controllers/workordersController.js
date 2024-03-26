@@ -86,7 +86,6 @@ const getRecentsWorkorders = async (req, res, next) => {
 const getWorkOrder = async (req, res, next) => {
   try {
     const data = await fetchWorkOrder(req.params.workOrderId)
-    console.log('data7: get workorder')
     res.json(data)
   } catch (error) {
     console.log(error)
