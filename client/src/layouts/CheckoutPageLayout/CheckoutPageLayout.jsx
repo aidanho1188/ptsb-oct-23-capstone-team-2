@@ -8,12 +8,22 @@ function CheckoutPageLayout() {
     <div className='checkout-page-layout'>
       <WorkorderSearch />
       <div className='popup-form'>
-        {/* 50% */}
-        <FormResponse />
+        <div
+          className='form-response'
+          style={{
+            width: '50%',
+            height: '100%',
+            display: 'flex',
+            lineHeight: '3.0'
+          }}
+        >
+          {/* 50% */}
+          <FormResponse style={{ flex: 1 }} />
+        </div>
 
         {/* this will be a component with 50%*/}
-        <div className=''>
-          <GpsForm  />
+        <div className='gps-form' style={{ width: '50%' }}>
+          <GpsForm />
         </div>
       </div>
     </div>
