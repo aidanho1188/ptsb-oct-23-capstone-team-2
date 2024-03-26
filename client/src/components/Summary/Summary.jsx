@@ -9,6 +9,12 @@ function Summary({isResponseLoading}) {
   const [workorders, setWorkorders] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
+  function reformatTime(time) {
+    let date = new Date(time)
+    let formattedDate = date.toLocaleString()
+    return formattedDate
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -34,8 +40,8 @@ function Summary({isResponseLoading}) {
             <TableRow className='table-headers'>
               <TableHead className='w-[100px]'>Work Order</TableHead>
               <TableHead>Previous Status</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead>Location Id</TableHead>
+              <TableHead>Current Status</TableHead>
+              <TableHead>Location ID</TableHead>
               {/*  combine these */}
               <TableHead>Trade</TableHead>
               <TableHead>Call Date</TableHead>
@@ -67,8 +73,8 @@ function Summary({isResponseLoading}) {
                     <TableCell>{workorder.newStatus || 'None'}</TableCell>
                     <TableCell>{workorder.locationId}</TableCell>
                     <TableCell>{workorder.trade}</TableCell>
-                    <TableCell>{workorder.callDate}</TableCell>
-                    <TableCell className='text-right'>{workorder.updatedTime}</TableCell>
+                    <TableCell>{reformatTime(workorder.callDate)}</TableCell>
+                    <TableCell className='text-right'>{reformatTime(workorder.updatedTime)}</TableCell>
                   </TableRow>
                 ))}
             </TableBody>

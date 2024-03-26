@@ -1,6 +1,6 @@
 const express = require('express')
 const tokenService = require('../services/tokenService')
-const User = require('../models/UserSchema.js')
+const User = require('../models/User.js')
 const bcrypt = require('bcrypt')
 const sendErrorResponse = require('../utils/errorHandler.js')
 const salt = 12
