@@ -1,0 +1,14 @@
+.workorder-checkin-page-container {
+    display: flex;
+    flex-direction: column;
+    /* width: 100vw;
+    height: 100vh; */
+    padding: .5rem;
+  }
+
+.checkin-page-title {
+    text-align: center;
+    font-size: 2em;
+}
+  
+  

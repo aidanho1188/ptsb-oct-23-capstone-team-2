@@ -1,0 +1,17 @@
+.checkout-page-layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .popup-form {
+    width: 80%;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: row;
+    background-color: #00541a;
+    border-radius: 5px;
+  }
+  
