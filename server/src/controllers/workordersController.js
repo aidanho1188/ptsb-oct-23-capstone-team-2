@@ -1,7 +1,9 @@
 const express = require('express')
 const axios = require('axios')
 const getAccessToken = require('../utils/getAccessToken.js')
-const {fetchData} = require('../services/apiService.js')
+const saveUpdatedWorkOrder = require('../utils/saveUpdatedWorkOrder.js')
+const {fetchData, sendStatusUpdateRequest, fetchWorkOrder} = require('../services/apiService.js')
+const getupdateWorkOrders = require('../utils/getUpdatedWorkOrder.js')
 
 const open = async (req, res, next) => {
   try {
@@ -24,7 +26,7 @@ const onSite = async (req, res, next) => {
 }
 const awaitingQuote = async (req, res, next) => {
   try {
-    const data = await fetchData('workorders', 'Id,LocationId,Trade,Status', "Status/Extended eq 'Awaiting Quote'")
+    const data = await fetchData('workorders', 'Id,LocationId,Trade,Status', "Status/Extended eq 'WAITING FOR QUOTE'")
     console.log('data3: awaiting quote workorders')
     res.json(data)
   } catch (error) {
@@ -34,19 +36,47 @@ const awaitingQuote = async (req, res, next) => {
 
 const incomplete = async (req, res, next) => {
   try {
-    const data = await fetchData('workorders', 'Id,LocationId,Trade,Status', "Status/Extended eq 'Incomplete'")
+    const data = await fetchData('workorders', 'Id,LocationId,Trade,Status', "Status/Extended eq 'INCOMPLETE'")
     console.log('data4: incomplete workorders')
     res.json(data)
   } catch (error) {
     console.log(error)
-    // next()
   }
 }
 
 const completed = async (req, res, next) => {
   try {
-    const data = await fetchData('workorders', 'Id,LocationId,Trade,Status', "Status/Primary eq 'Completed'")
+    const data = await fetchData('workorders', 'Id,LocationId,Trade,Status', "Status/Primary eq 'COMPLETED'")
     console.log('data5: completed workorders')
+    res.json(data)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const updateWorkOrderStatus = async (req, res, next) => {
+  try {
+    const primary = req.body.status.split('/')[0]
+    const extended = req.body.status.split('/')[1]
+    const response = await sendStatusUpdateRequest(req.params.workOrderId, primary, extended)
+    console.log('data6: workorder update')
+    // check if status is updated
+    console.log(response)
+    // console.log(req.body.status)
+    if (response.result !== '') {
+      console.log('Saving updated work order...')
+      saveUpdatedWorkOrder(response)
+    }
+    res.json(response)
+  } catch (error) {
+    res.json(error)
+    console.log(error)
+  }
+}
+
+const getRecentsWorkorders = async (req, res, next) => {
+  try {
+    const data = await getupdateWorkOrders(req, res)
     res.json(data)
   } catch (error) {
     console.log(error)
@@ -62,4 +92,4 @@ const getWorkOrder = async (req, res, next) => {
   }
 }
 
-module.exports = {open, onSite, incomplete, awaitingQuote, completed, getWorkOrder}
+module.exports = {open, onSite, incomplete, awaitingQuote, completed, updateWorkOrderStatus, getWorkOrder, getRecentsWorkorders}

@@ -1,5 +1,5 @@
 const express = require('express')
-const userToken = require('../models/UserTokenSchema.js')
+const UserToken = require('../models/UserToken.js')
 const {refetchAccessToken} = require('../services/tokenService.js')
 const axios = require('axios')
 const getAccessToken = require('../utils/getAccessToken.js')

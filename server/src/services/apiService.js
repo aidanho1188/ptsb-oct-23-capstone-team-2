@@ -17,7 +17,7 @@ async function fetchData(endpoint, select, filter) {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${await getAccessToken(tokenType)}`,
     },
-    ResponseType: 'json',
+    responsetype: 'json',
   })
   const data = response.data
   return data
@@ -30,10 +30,36 @@ async function fetchWorkOrder(workOrderId) {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${await getAccessToken(tokenType)}`,
     },
-    ResponseType: 'json',
+    responsetype: 'json',
   })
   const data = response.data
   return data
 }
 
-module.exports = {fetchData, fetchWorkOrder}
+async function sendStatusUpdateRequest(workOrderId, primary, extended, note, actor, declineReasonId, customDeclineReason) {
+  console.log(`Working on updating work order from Service Channel...`)
+  const response = await axios.put(
+    `https://sb2api.servicechannel.com/v3/workorders/${workOrderId}/status`,
+    {
+      Status: {
+        Primary: primary,
+        Extended: extended,
+      },
+      Note: note,
+      Actor: actor,
+      DeclineReasonId: declineReasonId,
+      CustomDeclineReason: customDeclineReason,
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${await getAccessToken(tokenType)}`,
+      },
+      responsetype: 'json',
+    },
+  )
+  const data = response.data
+  return data
+}
+
+module.exports = {fetchData, sendStatusUpdateRequest, fetchWorkOrder}
