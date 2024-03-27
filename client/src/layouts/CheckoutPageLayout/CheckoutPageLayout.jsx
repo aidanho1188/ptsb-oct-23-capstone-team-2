@@ -9,11 +9,13 @@ function CheckoutPageLayout() {
       <WorkorderSearch />
       <div className='popup-form'>
         {/* 50% */}
-        <FormResponse />
+        <div className='form-response' style={{width: '50%'}}>
+          <FormResponse />
+        </div>
 
         {/* this will be a component with 50%*/}
-        <div className=''>
-          <GpsForm  />
+        <div className='gps-form' style={{width: '50%'}}>
+          <GpsForm btnName={'Check Out'} />
         </div>
       </div>
     </div>
