@@ -6,7 +6,7 @@ import './formResponse.css'
 
 function FormResponse({form, formState, isLoading}) {
   // get userId from local storage
-  // const userId = JSON.parse(localStorage.getItem("userId"));
+  // const userId = JSON.parse(localStorage.getItem("userId")); can only get after login
 
   // when isLoading is false(when data is loaded), fetchLocation and fetchWorkActivity should be called
   function fetchLocation(locationId) {
