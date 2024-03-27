@@ -5,18 +5,28 @@ import {Separator} from '@/components/ui/separator'
 
 import './formResponse.css'
 
-function FormResponse({formState, isLoading}) {
+function FormResponse({form, formState, isLoading}) {
   function handleResponse(formState) {
-    if (formState.statusText === 'OK') {
-      if (formState.data.result === '') {
-        return 'Nothing changed.'
-      } else if (formState.data.status) {
-        return formState.data.message
+
+    console.log("data:", formState)
+    if (form === 'updateStatus') {
+      if (formState.statusText === 'OK') {
+        if (formState.data.result === '') {
+          return 'Nothing changed.'
+        } else if (formState.data.status) {
+          return formState.data.message
+        } else {
+          return formState.data.result
+        }
       } else {
-        return formState.data.result
+        return formState.data.message
       }
-    } else {
-      return formState.data.message
+    } else if (form === 'workOrderSearch') { 
+      if (formState.statusText === 'OK') {
+        return "Work Order found!"
+      } else {
+        return "Work Order not found!"
+      }
     }
   }
 
@@ -66,10 +76,16 @@ function FormResponse({formState, isLoading}) {
       <CardContent>
         <br />
         <p>
-          <strong>Work Order Id:</strong> {formState.data.id}
+          <strong>Work Order Id:</strong> {formState.data.Id}
         </p>
         <p>
-          <strong>Status:</strong> {formState.status}
+          <strong>Status:</strong> {formState.data.Status.Extended || "None" }
+        </p>
+        <p>
+          <strong>Location ID:</strong> {formState.data.LocationId}
+        </p>
+        <p>
+          <strong>Trade:</strong> {formState.data.Trade}
         </p>
       </CardContent>
     </Card>

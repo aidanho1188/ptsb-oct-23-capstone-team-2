@@ -21,6 +21,6 @@ router.use('/updateStatus', handleExpiredToken, updateStatus)
 router.use('/recents', recents)
 
 // localhost:8080/api/workorders/workOrderId
-router.get('/:workOrderId', workordersController.getWorkOrder)
+router.get('/:workOrderId', handleExpiredToken, workordersController.getWorkOrder)
 
 module.exports = router

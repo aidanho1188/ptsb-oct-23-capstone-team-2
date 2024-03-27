@@ -84,6 +84,7 @@ const getRecentsWorkorders = async (req, res, next) => {
 }
 
 const getWorkOrder = async (req, res, next) => {
+  console.log('Getting work order by id');
   try {
     const data = await fetchWorkOrder(req.params.workOrderId)
     res.json(data)

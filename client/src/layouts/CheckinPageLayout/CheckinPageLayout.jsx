@@ -2,18 +2,20 @@ import './checkinPageLayout.css'
 import WorkorderSearch from '../../components/WorkorderSearch/WorkorderSearch'
 import FormResponse from '../../components/FormResponse/FormResponse'
 import GpsForm from '../../components/Gps/GpsForm'
+import { useState } from 'react'
 
 function CheckinPageLayout() {
+  const [workorderInfo, setWorkorderInfo] = useState(null); //state to store workorder info
+  const [isLoading, setIsLoading] = useState(false)
+
   return (
     <div className='checkin-page-layout'>
-      <WorkorderSearch />
+      <WorkorderSearch setWorkorderInfo={setWorkorderInfo} setIsLoading={setIsLoading} />
       <div className='popup-form'>
         <div className='form-response' style={{width: '50%'}}>
-          {/* 50% */}
-          <FormResponse />
+          <FormResponse form={"workOrderSearch"} formState={workorderInfo} isLoading={isLoading}/>
         </div>
 
-        {/* this will be a component with 50%*/}
         <div className='gps-form' style={{width: '50%'}}>
           <GpsForm btnName={'Check In'} />
         </div>
