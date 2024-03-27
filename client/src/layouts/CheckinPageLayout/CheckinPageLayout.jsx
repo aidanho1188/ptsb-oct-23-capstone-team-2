@@ -1,5 +1,3 @@
-//TODO: import checkin component
-//TODO: import checkin search response component
 import './checkinPageLayout.css'
 import WorkorderSearch from '../../components/WorkorderSearch/WorkorderSearch'
 import FormResponse from '../../components/FormResponse/FormResponse'
