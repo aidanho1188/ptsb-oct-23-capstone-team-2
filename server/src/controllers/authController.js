@@ -48,6 +48,9 @@ const logout = (req, res, next) => {
   res.send('You have been logged out')
 }
 
+// TODO: On register get the userId and save it to this new user
+// do a fetch request to the 3rd part API, /users/current/profile
+// this will get the current user's profile based on our current access token
 const register = async (req, res, next) => {
   try {
     const {username, firstName, lastName, password} = req.body
