@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import WorkOrder from '../../components/WorkOrder/WorkOrder'
-import FormResponse from '../../components/FormResponse/FormResponse'
+import FormResponse from '../../components/FormResponse/UpdateStatusFormResponse.jsx'
 import Summary from '../../components/Summary/Summary'
 import './updateStatusLayout.css'
 
@@ -12,7 +12,7 @@ function UpdateStatusLayout() {
     <div className='update-status-layout'>
       <div className='left-column'>
         <WorkOrder onFormStateChange={setFormState} onLoading={setIsLoading} />
-        <FormResponse form={"updateStatus"} formState={formState} isLoading={isLoading} />
+        <FormResponse form={'updateStatus'} formState={formState} isLoading={isLoading} />
       </div>
       <div className='right-column'>
         <Summary isResponseLoading={isLoading} />

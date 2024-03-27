@@ -9,7 +9,9 @@
 .gps-layout form {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   width: 100% !important;
+  height: 100% !important;
 }
 
 .gps-layout form .space-y-8 > * {

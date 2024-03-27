@@ -13,7 +13,7 @@ function GpsForm({btnName}) {
     <div className='gps-layout'>
       <Form {...form}>
         <form className='space-y-8'>
-          <FormField
+          {/* <FormField
             control={form.control}
             name='GPS'
             render={({field}) => (
@@ -25,15 +25,15 @@ function GpsForm({btnName}) {
                 <FormMessage />
               </FormItem>
             )}
-          />
+          /> */}
           <FormField
             control={form.control}
             name='UserID'
             render={({field}) => (
               <FormItem>
-                <FormLabel>UserID</FormLabel>
+                <FormLabel>User ID</FormLabel>
                 <FormControl>
-                  <Input placeholder='Enter UserID' {...field} />
+                  <Input placeholder='Enter User ID' {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
