@@ -1,20 +1,12 @@
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-import { Button } from '../ui/button'
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '../ui/form'
-import { Input } from '../ui/input'
+import {zodResolver} from '@hookform/resolvers/zod'
+import {useForm} from 'react-hook-form'
+import {z} from 'zod'
+import {Button} from '../ui/button'
+import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from '../ui/form'
+import {Input} from '../ui/input'
 import './GpsForm.css'
 
-function GpsForm() {
+function GpsForm({btnName}) {
   const form = useForm()
 
   return (
@@ -24,7 +16,7 @@ function GpsForm() {
           <FormField
             control={form.control}
             name='GPS'
-            render={({ field }) => (
+            render={({field}) => (
               <FormItem>
                 <FormLabel>GPS</FormLabel>
                 <FormControl>
@@ -37,7 +29,7 @@ function GpsForm() {
           <FormField
             control={form.control}
             name='UserID'
-            render={({ field }) => (
+            render={({field}) => (
               <FormItem>
                 <FormLabel>UserID</FormLabel>
                 <FormControl>
@@ -51,7 +43,7 @@ function GpsForm() {
           <FormField
             control={form.control}
             name='TechsCount'
-            render={({ field }) => (
+            render={({field}) => (
               <FormItem>
                 <FormLabel>TechsCount</FormLabel>
                 <FormControl>
@@ -64,7 +56,7 @@ function GpsForm() {
           <FormField
             control={form.control}
             name='Latitude'
-            render={({ field }) => (
+            render={({field}) => (
               <FormItem>
                 <FormLabel>Latitude</FormLabel>
                 <FormControl>
@@ -77,7 +69,7 @@ function GpsForm() {
           <FormField
             control={form.control}
             name='Longitude'
-            render={({ field }) => (
+            render={({field}) => (
               <FormItem>
                 <FormLabel>Longitude</FormLabel>
                 <FormControl>
@@ -88,7 +80,7 @@ function GpsForm() {
             )}
           />
           <br></br>
-          <Button type='submit'>Submit</Button>
+          <Button type='submit'>{btnName}</Button>
         </form>
       </Form>
     </div>

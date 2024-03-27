@@ -1,9 +1,15 @@
 .form-response-layout {
   width: 35vw;
-  height: 50%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: flex-start;
   text-align: left;
+}
+
+.form-loading-skeleton > * {
+  width: 30vw !important;
+  margin: 1em 1em 1rem 1em !important;
+  padding: 1rem;
 }

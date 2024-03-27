@@ -11,12 +11,10 @@
   min-height: 70vh;
   display: flex;
   flex-direction: row;
-  background-color: #00541a;
-  border-radius: 5px;
   flex: 1;
 }
 
-.checkout-response,
+.form-response,
 .gps-form {
   flex: 1;
   display: flex;
@@ -27,5 +25,5 @@
 
 .gps-form {
   width: 100%;
-  padding: 20px;
+  /* padding: 20px; */
 }
