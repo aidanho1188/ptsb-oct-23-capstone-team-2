@@ -60,16 +60,13 @@ const updateWorkOrderStatus = async (req, res, next) => {
     const extended = req.body.status.split('/')[1]
     const response = await sendStatusUpdateRequest(req.params.workOrderId, primary, extended)
     console.log('data6: workorder update')
-    // check if status is updated
-    console.log(response)
-    // console.log(req.body.status)
-    if (response.result !== '') {
+    if (!response.ErrorCode && response.result && response.result !== '') {
       console.log('Saving updated work order...')
       saveUpdatedWorkOrder(response)
     }
     res.json(response)
   } catch (error) {
-    res.json(error)
+    res.json({error})
     console.log(error)
   }
 }

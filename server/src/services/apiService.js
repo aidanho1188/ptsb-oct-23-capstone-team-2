@@ -26,7 +26,7 @@ async function fetchData(endpoint, select, filter) {
 async function fetchWorkOrder(workOrderId, select) {
   console.log(`Working on fetching data from Service Channel...`)
   try {
-    const response = await axios.get(`https://sb2api.servicechannel.com/v3/odata/workorders(${workOrderId})?$select=Id,LocationId,Trade,Status`, {
+    const response = await axios.get(`https://sb2api.servicechannel.com/v3/odata/workorders(${workOrderId})?$select=${select}`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${await getAccessToken(tokenType)}`,
@@ -56,28 +56,33 @@ async function fetchLocation(locationId) {
 
 async function sendStatusUpdateRequest(workOrderId, primary, extended, note, actor, declineReasonId, customDeclineReason) {
   console.log(`Working on updating work order from Service Channel...`)
-  const response = await axios.put(
-    `https://sb2api.servicechannel.com/v3/workorders/${workOrderId}/status`,
-    {
-      Status: {
-        Primary: primary,
-        Extended: extended,
+  try {
+    const response = await axios.put(
+      `https://sb2api.servicechannel.com/v3/workorders/${workOrderId}/status`,
+      {
+        Status: {
+          Primary: primary,
+          Extended: extended,
+        },
+        Note: note,
+        Actor: actor,
+        DeclineReasonId: declineReasonId,
+        CustomDeclineReason: customDeclineReason,
       },
-      Note: note,
-      Actor: actor,
-      DeclineReasonId: declineReasonId,
-      CustomDeclineReason: customDeclineReason,
-    },
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${await getAccessToken(tokenType)}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${await getAccessToken(tokenType)}`,
+        },
+        responsetype: 'json',
       },
-      responsetype: 'json',
-    },
-  )
-  const data = response.data
-  return data
+    )
+    const data = response.data
+    return data
+  } catch (error) {
+    console.error('Error Update work order:', error.response.data)
+    return error.response.data
+  }
 }
 
 module.exports = {fetchData, sendStatusUpdateRequest, fetchWorkOrder, fetchLocation}
