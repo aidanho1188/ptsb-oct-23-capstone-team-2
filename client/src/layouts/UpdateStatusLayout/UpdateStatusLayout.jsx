@@ -12,7 +12,7 @@ function UpdateStatusLayout() {
     <div className='update-status-layout'>
       <div className='left-column'>
         <WorkOrder onFormStateChange={setFormState} onLoading={setIsLoading} />
-        <FormResponse form={'updateStatus'} formState={formState} isLoading={isLoading} />
+        <FormResponse formState={formState} isLoading={isLoading} />
       </div>
       <div className='right-column'>
         <Summary isResponseLoading={isLoading} />

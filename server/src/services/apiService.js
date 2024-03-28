@@ -23,7 +23,7 @@ async function fetchData(endpoint, select, filter) {
   return data
 }
 
-async function fetchWorkOrder(workOrderId, select) {
+async function fetchWorkOrder(workOrderId, select = 'Id,LocationId,Trade,Status') {
   console.log(`Working on fetching data from Service Channel...`)
   try {
     const response = await axios.get(`https://sb2api.servicechannel.com/v3/odata/workorders(${workOrderId})?$select=${select}`, {

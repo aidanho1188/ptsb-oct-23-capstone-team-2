@@ -23,6 +23,7 @@ function WorkorderSearch({setWorkorderInfo, setIsLoading}) {
 
       // if success, fetch longitude and latitude and userID
       if (!response.data.ErrorCode) {
+        console.log('Work order info:', response.data)
         const [locationData, userID] = await Promise.all([axios.get(`http://localhost:8080/api/workorders/locations/${response.data.LocationId}`), axios.get(`http://localhost:8080/api/userId`)])
         data = {
           workorder: response,

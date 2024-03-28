@@ -66,7 +66,7 @@ function FormResponse({form, formState, isLoading}) {
           <strong>User ID:</strong> {(formState.userId && formState.userId.data) || ''}
         </p>
         <p>
-          <strong>Work Order Id:</strong> {(formState.workorder && formState.workorder.data && formState.workorder.data.Id) || ''}
+          <strong>Work Order ID:</strong> {(formState.workorder && formState.workorder.data && formState.workorder.data.Id) || ''}
         </p>
         <p>
           <strong>Status:</strong> {(formState.workorder && formState.workorder.data.Status && `${formState.workorder.data.Status.Primary} ${formState.workorder.data.Status.Extended ? '/' + formState.workorder.data.Status.Extended : ''}`) || ''}
