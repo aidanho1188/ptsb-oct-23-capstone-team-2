@@ -6,6 +6,7 @@ const {
   fetchData,
   sendStatusUpdateRequest,
   fetchWorkOrder,
+  fetchGPSRadius,
 } = require("../services/apiService.js");
 const getupdateWorkOrders = require("../utils/getUpdatedWorkOrder.js");
 
