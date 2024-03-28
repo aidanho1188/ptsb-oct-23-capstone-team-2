@@ -20,10 +20,10 @@ router.use('/awaitingQuote', handleExpiredToken, awaitingQuote)
 router.use('/updateStatus', handleExpiredToken, updateStatus)
 router.use('/recents', recents)
 
-// localhost:8080/api/workorders/workOrderId
-router.get('/:workOrderId', handleExpiredToken, workordersController.getWorkOrder)
+// localhost:8080/api/workorders/locations/locationId
+router.get('/locations/:locationId', handleExpiredToken, workordersController.getLocation)
 
-// localhost:8080/api/workorders/GPSRadius
-router.get('/:api/workorders/GPSRadius', handleExpiredToken, workordersController.getGPSRadius)
+// localhost:8080/api/workorders/workOrderId
+router.get('/:workOrderId', handleExpiredToken, workordersController.getWorkOrderByID)
 
 module.exports = router
