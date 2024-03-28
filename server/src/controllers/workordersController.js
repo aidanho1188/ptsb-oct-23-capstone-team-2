@@ -7,7 +7,7 @@ const getupdateWorkOrders = require('../utils/getUpdatedWorkOrder.js')
 
 const open = async (req, res, next) => {
   try {
-    const data = await fetchData('workorders', 'Id,LocationId,Trade,Status', "Status/Primary eq 'OPEN'")
+    const data = await fetchData('workorders', 'Id,LocationId,Trade,Status,CallDate,UpdatedDate', "Status/Primary eq 'OPEN'")
     console.log('data1: open workorders')
     res.json(data)
   } catch (error) {
@@ -17,7 +17,7 @@ const open = async (req, res, next) => {
 
 const onSite = async (req, res, next) => {
   try {
-    const data = await fetchData('workorders', 'Id,LocationId,Trade,Status', "Status/Extended eq 'ON SITE'")
+    const data = await fetchData('workorders', 'Id,LocationId,Trade,Status,CallDate,UpdatedDate', "Status/Extended eq 'ON SITE'")
     console.log('data2: on site workorders')
     res.json(data)
   } catch (error) {
@@ -26,7 +26,7 @@ const onSite = async (req, res, next) => {
 }
 const awaitingQuote = async (req, res, next) => {
   try {
-    const data = await fetchData('workorders', 'Id,LocationId,Trade,Status', "Status/Extended eq 'WAITING FOR QUOTE'")
+    const data = await fetchData('workorders', 'Id,LocationId,Trade,Status,CallDate,UpdatedDate', "Status/Extended eq 'WAITING FOR QUOTE'")
     console.log('data3: awaiting quote workorders')
     res.json(data)
   } catch (error) {
@@ -36,7 +36,7 @@ const awaitingQuote = async (req, res, next) => {
 
 const incomplete = async (req, res, next) => {
   try {
-    const data = await fetchData('workorders', 'Id,LocationId,Trade,Status', "Status/Extended eq 'INCOMPLETE'")
+    const data = await fetchData('workorders', 'Id,LocationId,Trade,Status,CallDate,UpdatedDate', "Status/Extended eq 'INCOMPLETE'")
     console.log('data4: incomplete workorders')
     res.json(data)
   } catch (error) {
@@ -46,7 +46,7 @@ const incomplete = async (req, res, next) => {
 
 const completed = async (req, res, next) => {
   try {
-    const data = await fetchData('workorders', 'Id,LocationId,Trade,Status', "Status/Primary eq 'COMPLETED'")
+    const data = await fetchData('workorders', 'Id,LocationId,Trade,Status,CallDate,UpdatedDate', "Status/Primary eq 'COMPLETED'")
     console.log('data5: completed workorders')
     res.json(data)
   } catch (error) {
