@@ -23,57 +23,66 @@ async function fetchData(endpoint, select, filter) {
   return data
 }
 
-async function fetchWorkOrder(workOrderId) {
+async function fetchWorkOrder(workOrderId, select = 'Id,LocationId,Trade,Status') {
   console.log(`Working on fetching data from Service Channel...`)
-  const response = await axios.get(`https://sb2api.servicechannel.com/v3/odata/workorders(${workOrderId})?$select=Id,LocationId,Trade,Status,Location`, {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${await getAccessToken(tokenType)}`,
-    },
-    responsetype: 'json',
-  })
-  const data = response.data
-  return data
-}
-
-async function fetchGPSRadius(workOrderId) {
-  console.log(`Working on fetching data from Service Channel...`)
-  const response = await axios.get(`https://sb2api.servicechannel.com/v3/workorders/${workOrderId}/GPSRadius`, {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${await getAccessToken(tokenType)}`,
-    },
-    responsetype: 'json',
-  })
-  const data = response.data
-  return data
-}
-
-
-async function sendStatusUpdateRequest(workOrderId, primary, extended, note, actor, declineReasonId, customDeclineReason) {
-  console.log(`Working on updating work order from Service Channel...`)
-  const response = await axios.put(
-    `https://sb2api.servicechannel.com/v3/workorders/${workOrderId}/status`,
-    {
-      Status: {
-        Primary: primary,
-        Extended: extended,
-      },
-      Note: note,
-      Actor: actor,
-      DeclineReasonId: declineReasonId,
-      CustomDeclineReason: customDeclineReason,
-    },
-    {
+  try {
+    const response = await axios.get(`https://sb2api.servicechannel.com/v3/odata/workorders(${workOrderId})?$select=${select}`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${await getAccessToken(tokenType)}`,
       },
       responsetype: 'json',
+    })
+    const data = response.data
+    return data
+  } catch (error) {
+    console.error('Error fetching work order:', error.response.data)
+    return error.response.data
+  }
+}
+
+async function fetchLocation(locationId) {
+  console.log(`Working on fetching data from Service Channel...`)
+  const response = await axios.get(`https://sb2api.servicechannel.com/v3/locations/${locationId}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${await getAccessToken(tokenType)}`,
     },
-  )
+    responsetype: 'json',
+  })
   const data = response.data
   return data
 }
 
-module.exports = {fetchData, sendStatusUpdateRequest, fetchWorkOrder, fetchGPSRadius}
+async function sendStatusUpdateRequest(workOrderId, primary, extended, note, actor, declineReasonId, customDeclineReason) {
+  console.log(`Working on updating work order from Service Channel...`)
+  try {
+    const response = await axios.put(
+      `https://sb2api.servicechannel.com/v3/workorders/${workOrderId}/status`,
+      {
+        Status: {
+          Primary: primary,
+          Extended: extended,
+        },
+        Note: note,
+        Actor: actor,
+        DeclineReasonId: declineReasonId,
+        CustomDeclineReason: customDeclineReason,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${await getAccessToken(tokenType)}`,
+        },
+        responsetype: 'json',
+      },
+    )
+    const data = response.data
+    return data
+  } catch (error) {
+    console.error('Error Update work order:', error.response.data)
+    return error.response.data
+  }
+}
+
+module.exports = {fetchData, sendStatusUpdateRequest, fetchWorkOrder, fetchLocation}
