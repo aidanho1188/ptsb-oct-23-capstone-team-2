@@ -1,6 +1,6 @@
 import './checkoutPageLayout.css'
 import WorkorderSearch from '../../components/WorkorderSearch/WorkorderSearch'
-import CheckOutResponse from '../../components/CheckOutResponse/CheckOutResponse'
+import FormResponse from '../../components/FormResponse/FormResponse'
 import GpsForm from '../../components/Gps/GpsForm'
 
 function CheckoutPageLayout() {
@@ -10,7 +10,7 @@ function CheckoutPageLayout() {
       <div className='popup-form'>
         <div className='checkout-response' style={{ width: '50%' }}>
           {/* 50% */}
-          <CheckOutResponse />
+          <FormResponse />
         </div>
 
         {/* this will be a component with 50%*/}

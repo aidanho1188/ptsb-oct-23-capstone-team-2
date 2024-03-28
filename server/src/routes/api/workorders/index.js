@@ -23,4 +23,7 @@ router.use('/recents', recents)
 // localhost:8080/api/workorders/workOrderId
 router.get('/:workOrderId', handleExpiredToken, workordersController.getWorkOrder)
 
+// localhost:8080/api/workorders/GPSRadius
+router.get('/:api/workorders/GPSRadius', handleExpiredToken, workordersController.getGPSRadius)
+
 module.exports = router

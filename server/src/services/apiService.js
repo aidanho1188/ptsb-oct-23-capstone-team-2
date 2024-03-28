@@ -25,7 +25,7 @@ async function fetchData(endpoint, select, filter) {
 
 async function fetchWorkOrder(workOrderId) {
   console.log(`Working on fetching data from Service Channel...`)
-  const response = await axios.get(`https://sb2api.servicechannel.com/v3/odata/workorders(${workOrderId})?$select=Id,LocationId,Trade,Status`, {
+  const response = await axios.get(`https://sb2api.servicechannel.com/v3/odata/workorders(${workOrderId})?$select=Id,LocationId,Trade,Status,Location`, {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${await getAccessToken(tokenType)}`,
@@ -35,6 +35,20 @@ async function fetchWorkOrder(workOrderId) {
   const data = response.data
   return data
 }
+
+async function fetchGPSRadius(workOrderId) {
+  console.log(`Working on fetching data from Service Channel...`)
+  const response = await axios.get(`https://sb2api.servicechannel.com/v3/workorders/${workOrderId}/GPSRadius`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${await getAccessToken(tokenType)}`,
+    },
+    responsetype: 'json',
+  })
+  const data = response.data
+  return data
+}
+
 
 async function sendStatusUpdateRequest(workOrderId, primary, extended, note, actor, declineReasonId, customDeclineReason) {
   console.log(`Working on updating work order from Service Channel...`)
@@ -62,4 +76,4 @@ async function sendStatusUpdateRequest(workOrderId, primary, extended, note, act
   return data
 }
 
-module.exports = {fetchData, sendStatusUpdateRequest, fetchWorkOrder}
+module.exports = {fetchData, sendStatusUpdateRequest, fetchWorkOrder, fetchGPSRadius}
