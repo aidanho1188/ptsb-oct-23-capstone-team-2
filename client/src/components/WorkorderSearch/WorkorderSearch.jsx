@@ -13,7 +13,7 @@ function WorkorderSearch({setWorkorderInfo, setIsLoading}) {
   }
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     console.log('Getting work order info... with id: ', workorderId)
     setIsLoading(true)
@@ -34,7 +34,7 @@ function WorkorderSearch({setWorkorderInfo, setIsLoading}) {
       setWorkorderInfo(data)
       setIsLoading(false)
     } catch (error) {
-      console.error('Error fetching work order:', error)
+      console.error("Error fetching work order:", error);
     }
   }
 
