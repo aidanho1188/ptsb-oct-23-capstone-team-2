@@ -7,6 +7,7 @@ import UpdateStatusPage from './pages/UpdateStatusPage/UpdateStatusPage.jsx'
 import WorkorderCheckinPage from './pages/WorkorderCheckinPage/WorkorderCheckinPage.jsx'
 import WorkorderCheckoutPage from './pages/WorkorderCheckoutPage/WorkorderCheckoutPage.jsx'
 import LoginPage from './pages/LoginPage/LoginPage.jsx'
+import CreateWorkorderPage from './pages/CreateWorkorderPage/CreateWorkorderPage.jsx'
 
 
 const queryClient = new QueryClient()
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <LoginPage />,
+  },
+  {
+    path: '/create-workorder',
+    element: <CreateWorkorderPage  />
   }
 
 ])
