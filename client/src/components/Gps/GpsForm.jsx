@@ -1,89 +1,63 @@
-import {zodResolver} from '@hookform/resolvers/zod'
-import {useForm} from 'react-hook-form'
-import {z} from 'zod'
 import {Button} from '../ui/button'
-import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from '../ui/form'
 import {Input} from '../ui/input'
+import {useForm} from 'react-hook-form'
+import {useEffect} from 'react'
 import './GpsForm.css'
 
-function GpsForm({btnName}) {
-  const form = useForm()
+function GpsForm({btnName, formState, isLoading}) {
+  const {register, handleSubmit, reset} = useForm({
+    defaultValues: {workTypeId: 1, userId: '', techsCount: 1, Latitude: '', Longitude: ''},
+  })
+
+  const onSubmit = async (event) => {
+    event.preventDefault
+    // 
+  }
+
+  useEffect(() => {
+    if (formState && formState.userId && formState.location) {
+      console.log('location:', formState.location.data)
+      reset({
+        workTypeId: 1,
+        userId: formState.userId.data,
+        techsCount: 1,
+        latitude: formState.location.data.Latitude,
+        longitude: formState.location.data.Longitude,
+      })
+    }
+  }, [isLoading])
 
   return (
     <div className='gps-layout'>
-      <Form {...form}>
-        <form className='space-y-8'>
-          <FormField
-            control={form.control}
-            name='workTypeId'
-            render={({field}) => (
-              <FormItem>
-                <FormLabel>Work Type ID</FormLabel>
-                <FormControl>
-                  <Input placeholder='Work Type ID' {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <label htmlFor='workTypeId'>Work Type ID</label>
+          <Input placeholder='Enter Work Type ID' {...register('workTypeId')} required />
+        </div>
 
-          <FormField
-            control={form.control}
-            name='UserID'
-            render={({field}) => (
-              <FormItem>
-                <FormLabel>User ID</FormLabel>
-                <FormControl>
-                  <Input placeholder='Enter User ID' {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+        <div>
+          <label htmlFor='userId'>User ID</label>
+          <Input placeholder='Enter User ID' {...register('userId')} required />
+        </div>
 
-          <FormField
-            control={form.control}
-            name='techsCount'
-            render={({field}) => (
-              <FormItem>
-                <FormLabel>Number of Technicians</FormLabel>
-                <FormControl>
-                  <Input placeholder='Number of Technicians Present' {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name='Latitude'
-            render={({field}) => (
-              <FormItem>
-                <FormLabel>Latitude</FormLabel>
-                <FormControl>
-                  <Input placeholder='Latitude' {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name='Longitude'
-            render={({field}) => (
-              <FormItem>
-                <FormLabel>Longitude</FormLabel>
-                <FormControl>
-                  <Input placeholder='Longitude' {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <br></br>
-          <Button type='submit'>{btnName}</Button>
-        </form>
-      </Form>
+        <div>
+          <label htmlFor='techsCount'>Number of Technicians Present</label>
+          <Input placeholder='Number of Technicians Present' {...register('techsCount')} required />
+        </div>
+
+        <div>
+          <label htmlFor='latitude'>Latitude</label>
+          <Input placeholder='Latitude' {...register('latitude')} required />
+        </div>
+
+        <div>
+          <label htmlFor='longitude'>Longitude</label>
+          <Input placeholder='Longitude' {...register('longitude')} required />
+        </div>
+
+        <br></br>
+        <Button type='submit'>{btnName}</Button>
+      </form>
     </div>
   )
 }

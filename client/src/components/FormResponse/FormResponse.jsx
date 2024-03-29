@@ -9,10 +9,10 @@ function FormResponse({form, formState, isLoading}) {
     console.log('data:', formState)
     console.log('formState:', formState)
     console.log('formState.workorder:', formState.workorder)
-    if (!formState.workorder.data.ErrorCode) {
+    if (!formState.workorder.data.ErrorCode && typeof formState.workorder.data !== 'string') {
       return `<strong>Success</strong>: Work Order found!`
     } else {
-      return `<strong>Failed</strong>: ${formState.workorder.data.ErrorMessage}`
+      return `<strong>Failed</strong>: ${formState.workorder.data.ErrorMessage || formState.workorder.data}`
     }
   }
 
