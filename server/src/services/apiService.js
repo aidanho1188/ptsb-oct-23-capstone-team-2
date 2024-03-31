@@ -85,4 +85,34 @@ async function sendStatusUpdateRequest(workOrderId, primary, extended, note, act
   }
 }
 
-module.exports = {fetchData, sendStatusUpdateRequest, fetchWorkOrder, fetchLocation}
+async function sendCheckInRequest(req) {
+  console.log(`Working on checking in work order from Service Channel...`)
+  const workOrderId = req.params.workOrderId
+  const {WorkTypeId, UserId, TechsCount, Latitude, Longitude} = req.body
+  try {
+    const response = await axios.post(
+      `https://sb2api.servicechannel.com/v3/workorders/${workOrderId}/universalCheckIn`,
+      {
+        WorkTypeId: WorkTypeId,
+        UserId: UserId,
+        TechsCount: TechsCount,
+        Latitude: Latitude,
+        Longitude: Longitude,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${await getAccessToken(tokenType)}`,
+        },
+        responsetype: 'json',
+      },
+    )
+    const data = response.data
+    return data
+  } catch (error) {
+    console.error('Error checking in work order:', error.response.data)
+    return error.response.data
+  }
+}
+
+module.exports = {fetchData, sendStatusUpdateRequest, fetchWorkOrder, fetchLocation, sendCheckInRequest}

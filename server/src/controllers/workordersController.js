@@ -2,7 +2,7 @@ const express = require('express')
 const axios = require('axios')
 const getAccessToken = require('../utils/getAccessToken.js')
 const saveUpdatedWorkOrder = require('../utils/saveUpdatedWorkOrder.js')
-const {fetchData, sendStatusUpdateRequest, fetchWorkOrder, fetchLocation} = require('../services/apiService.js')
+const {fetchData, sendStatusUpdateRequest, fetchWorkOrder, fetchLocation, sendCheckInRequest} = require('../services/apiService.js')
 const getupdateWorkOrders = require('../utils/getUpdatedWorkOrder.js')
 
 const open = async (req, res, next) => {
@@ -99,6 +99,17 @@ const getLocation = async (req, res, next) => {
   }
 }
 
+const checkIn = async (req, res, next) => {
+  try {
+    const response = await sendCheckInRequest(req)
+    console.log('data7: check in')
+    console.log(response)
+    res.json(response)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 module.exports = {
   open,
   onSite,
@@ -109,4 +120,5 @@ module.exports = {
   getWorkOrderByID,
   getRecentsWorkorders,
   getLocation,
+  checkIn,
 }

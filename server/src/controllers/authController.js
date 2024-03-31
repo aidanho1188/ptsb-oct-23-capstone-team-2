@@ -73,4 +73,7 @@ const register = async (req, res, next) => {
   }
 }
 
-module.exports = {login, logout, register}
+function getAccess() {
+  tokenService.fetchToken()
+}
+module.exports = {login, logout, register, getAccess}
