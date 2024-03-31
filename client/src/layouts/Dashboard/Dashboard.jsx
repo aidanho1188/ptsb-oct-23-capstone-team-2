@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import TablePlaceholder from '../../components/DashboardPlaceholder/TablePlaceholder'
 import DashboardChart from '../../components/DashboardChart/DashboardChart'
+import DashboardHoverCard from '../../components/DashboardHoverCard/DashboardHoverCard'
 import './dashboard.css'
 
 function Dashboard() {
@@ -11,6 +12,8 @@ function Dashboard() {
   const [missedCheckInData, setMissedCheckInData] = useState()
   const [awaitingQuoteData, setAwaitingQuoteData] = useState()
   const [completedData, setCompletedData] = useState()
+
+  const [hoveredWorkOrderId, setHoveredWorkOrderId] = useState(null)
 
   useEffect(() => {
     const fetchData = async (url, setData) => {
@@ -35,14 +38,15 @@ function Dashboard() {
 
   return (
     <div className='dashboard'>
-      <TablePlaceholder title='Open' data={openWorkOrdersData} />
-      <TablePlaceholder title='On Site' data={onSiteData} />
-      <TablePlaceholder title='Incomplete' data={incompleteData} />
-      <TablePlaceholder title='Missed Check In' data={missedCheckInData} />
-      <TablePlaceholder title='Awaiting For Quote' data={awaitingQuoteData} />
-      <TablePlaceholder title='Completed' data={completedData} />
+      <TablePlaceholder title='Open' data={openWorkOrdersData} onHover={setHoveredWorkOrderId} />
+      <TablePlaceholder title='On Site' data={onSiteData} onHover={setHoveredWorkOrderId} />
+      <TablePlaceholder title='Incomplete' data={incompleteData} onHover={setHoveredWorkOrderId} />
+      <TablePlaceholder title='Missed Check In' data={missedCheckInData} onHover={setHoveredWorkOrderId} />
+      <TablePlaceholder title='Awaiting For Quote' data={awaitingQuoteData} onHover={setHoveredWorkOrderId} />
+      <TablePlaceholder title='Completed' data={completedData} onHover={setHoveredWorkOrderId} />
 
       <DashboardChart />
+      {hoveredWorkOrderId && (<DashboardHoverCard workOrderId={hoveredWorkOrderId} />)}
     </div>
   )
 }

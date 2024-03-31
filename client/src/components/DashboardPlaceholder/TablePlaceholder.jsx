@@ -6,11 +6,13 @@ import React, {useEffect, useState} from 'react'
 import './tablePlaceholder.css'
 
 // TODO: RENAME THIS COMPONENT
-function TablePlaceholder({title, data}) {
+function TablePlaceholder({title, data, onHover}) {
   const [workorders, setWorkorders] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    setIsLoading(!data)
+
     if (data) {
       setWorkorders(data)
       setIsLoading(false)
@@ -45,7 +47,11 @@ function TablePlaceholder({title, data}) {
             <TableBody>
               {Array.isArray(data) &&
                 data.map((workorder) => (
-                  <TableRow key={workorder.Id}>
+                  <TableRow 
+                  key={workorder.Id}
+                  onMouseEnter={() => onHover(workorder.Id)} //trigger onHover event
+                  onMouseLeave={() => onHover(null)} //reset after hovering over workorder
+                  >
                     <TableCell className='w-[100px]'>{workorder.Id}</TableCell>
                     <TableCell>{workorder.Status.Extended || workorder.Status.Primary || 'None'}</TableCell>
                     <TableCell>{workorder.LocationId}</TableCell>
