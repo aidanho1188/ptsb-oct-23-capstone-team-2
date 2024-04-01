@@ -43,8 +43,8 @@ function Summary({isResponseLoading}) {
               <TableHead>Current Status</TableHead>
               <TableHead>Location ID</TableHead>
               {/*  combine these */}
-              <TableHead>Trade</TableHead>
-              <TableHead>Call Date</TableHead>
+              {/* <TableHead>Trade</TableHead>
+              <TableHead>Call Date</TableHead> */}
               <TableHead className='text-right'>Updated Time</TableHead>
             </TableRow>
           </TableHeader>
@@ -72,8 +72,8 @@ function Summary({isResponseLoading}) {
                     <TableCell>{workorder.preStatus || 'None'}</TableCell>
                     <TableCell>{workorder.newStatus || 'None'}</TableCell>
                     <TableCell>{workorder.locationId}</TableCell>
-                    <TableCell>{workorder.trade}</TableCell>
-                    <TableCell>{reformatTime(workorder.callDate)}</TableCell>
+                    {/* <TableCell>{workorder.trade}</TableCell>
+                    <TableCell>{reformatTime(workorder.callDate)}</TableCell> */}
                     <TableCell className='text-right'>{reformatTime(workorder.updatedTime)}</TableCell>
                   </TableRow>
                 ))}
