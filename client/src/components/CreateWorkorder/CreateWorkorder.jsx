@@ -1,98 +1,130 @@
-import React, { useState } from 'react'; // Import useState
-import { Button } from '@/components/ui/button';
-import { Calendar } from '@/components/ui/calendar';
-import { useForm } from 'react-hook-form';
-import { Form, FormItem, FormLabel, Popover, PopoverTrigger, FormControl } from '@/components/ui/form';
+import { Button } from '@/components/ui/button'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import * as React from 'react'
+import { CalendarIcon } from '@radix-ui/react-icons'
+import { format } from 'date-fns'
 
-export function CreateWorkorder() {
+import { cn } from '@/lib/utils'
+import { Calendar } from '@/components/ui/calendar'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 
+export function createWorkorder() {
+  const [date, setDate] = React.useState(new Date())
 
   return (
     <Tabs defaultValue='account' className='w-[400px]'>
-      <TabsList className='grid w-full grid-cols-2'>
-        <TabsTrigger value='account'>Create Work Order</TabsTrigger>
-      </TabsList>
+      {/* <TabsList className='grid w-full grid-cols-2'>
+        <TabsTrigger value='account'>New Work Order</TabsTrigger>
+      </TabsList> */}
       <TabsContent value='account'>
         <Card>
           <CardHeader>
             <CardTitle>New Work Order</CardTitle>
-            <CardDescription>Create a new work order here.</CardDescription>
+            <CardDescription>Creating a new work order form</CardDescription>
           </CardHeader>
           <CardContent className='space-y-2'>
             <div className='space-y-1'>
-              <Label htmlFor='contract'>Contract Information</Label>
-              <Input id='contract' defaultValue='Contract Info' />
+              <Label htmlFor='name'>Work Order Number</Label>
+              <Input id='name' placeholder='#00000000' />
             </div>
+            <Label htmlFor='name'>Call Date</Label>
+            <br></br>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant={'outline'}
+                  className={cn(
+                    'w-[240px] justify-start text-left font-normal',
+                    !date && 'text-muted-foreground',
+                  )}
+                >
+                  <CalendarIcon className='mr-2 h-4 w-4' />
+                  {date ? format(date, 'PPP') : <span>Pick a date</span>}
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className='w-auto p-0' align='start'>
+                <Calendar
+                  mode='single'
+                  selected={date}
+                  onSelect={setDate}
+                  initialFocus
+                />
+              </PopoverContent>
+            </Popover>
             <div className='space-y-1'>
-              <Label htmlFor='category'>Category</Label>
-              {/* dropdown here on categories */}
+              <Label htmlFor='username'>Priority</Label>
+              <RadioGroup defaultValue='comfortable'>
+                <div className='flex items-center space-x-2'>
+                  <RadioGroupItem value='default' id='r1' />
+                  <Label htmlFor='r1'>Low Priority</Label>
+                </div>
+                <div className='flex items-center space-x-2'>
+                  <RadioGroupItem value='comfortable' id='r2' />
+                  <Label htmlFor='r2'>Standard Priority</Label>
+                </div>
+                <div className='flex items-center space-x-2'>
+                  <RadioGroupItem value='compact' id='r3' />
+                  <Label htmlFor='r3'>High Priority</Label>
+                </div>
+                <div className='space-y-1'>
+                  <Label htmlFor='name'>Contact Information</Label>
+                  <Input id='name' placeholder='Contact Info' />
+                </div>
+                <div className='flex flex-col space-y-1.5'>
+                  <Label htmlFor='framework'>Category</Label>
+                  <Select>
+                    <SelectTrigger id='framework'>
+                      <SelectValue placeholder='Select' />
+                    </SelectTrigger>
+                    <SelectContent position='popper'>
+                      <SelectItem value='next'>Category1</SelectItem>
+                      <SelectItem value='sveltekit'>Category2</SelectItem>
+                      <SelectItem value='astro'>Category4</SelectItem>
+                      <SelectItem value='nuxt'>Category5</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className='space-y-1'>
+                  <Label htmlFor='name'>Problem Code</Label>
+                  <Input id='name' placeholder='Enter problem code' />
+                </div>
+                <div className='space-y-1'>
+                  <Label htmlFor='file'>Attach Image</Label>
+                  <Input type='file' id='file' accept='image/*' />
+                  <Input id='name' placeholder='Description' />
+                </div>
+              </RadioGroup>
             </div>
-            <Select>
-              <SelectTrigger id='framework'>
-                <SelectValue placeholder='Select' />
-              </SelectTrigger>
-              <SelectContent position='popper'>
-                <SelectItem value='next'>Category1</SelectItem>
-                <SelectItem value='sveltekit'>Category2</SelectItem>
-                <SelectItem value='astro'>Category3</SelectItem>
-                <SelectItem value='nuxt'>Category4</SelectItem>
-              </SelectContent>
-            </Select>
-            <div className='space-y-1'>
-              <Label htmlFor='contract'>Contract Information</Label>
-              <Input id='contract' defaultValue='Contract Info' />
-            </div>
-            <br />
-            <Label htmlFor='contract'>Priority</Label>
-            <RadioGroup defaultValue='comfortable'>
-              <div className='flex items-center space-x-2'>
-                <RadioGroupItem value='default' id='r1' />
-                <Label htmlFor='r1'>High Priority</Label>
-              </div>
-              <div className='flex items-center space-x-2'>
-                <RadioGroupItem value='comfortable' id='r2' />
-                <Label htmlFor='r2'>Medium Priority</Label>
-              </div>
-              <div className='flex items-center space-x-2'>
-                <RadioGroupItem value='compact' id='r3' />
-                <Label htmlFor='r3'>Low Priority</Label>
-              </div>
-            </RadioGroup>
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                <FormItem>
-                  <FormLabel>Select a date:</FormLabel>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <FormControl>
-                        <Button variant={'outline'}>
-                          <span>Pick a date</span>
-                        </Button>
-                      </FormControl>
-                    </PopoverTrigger>
-                    <PopoverContent className='w-auto p-0' align='start'>
-                      <Calendar
-                        mode='single'
-                        onSelect={handleDateSelect}
-                        selected={selectedDate}
-                        initialFocus
-                      />
-                    </PopoverContent>
-                  </Popover>
-                </FormItem>
-                <FormItem>
-                  <Button type='submit'>Submit</Button>
-                </FormItem>
-              </form>
-            </Form>
           </CardContent>
           <CardFooter>
-            <Button type='submit'>Submit New Work Order</Button>
+            <Button>Save changes</Button>
           </CardFooter>
         </Card>
       </TabsContent>
     </Tabs>
-  );
+  )
 }
 
-export default CreateWorkorder;
+export default createWorkorder
