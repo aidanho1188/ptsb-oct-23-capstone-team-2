@@ -2,9 +2,10 @@ import {Button} from '../ui/button'
 import {Input} from '../ui/input'
 import {useForm} from 'react-hook-form'
 import {useEffect} from 'react'
+import axios from 'axios'
 import './GpsForm.css'
 
-function GpsForm({btnName, formState, isLoading}) {
+function GpsForm({btnName, formState, isLoading, setIsLoading}) {
   const {register, handleSubmit, reset} = useForm({
     defaultValues: {workTypeId: 1, userId: '', techsCount: 1, latitude: '', longitude: ''},
   })
@@ -15,7 +16,31 @@ function GpsForm({btnName, formState, isLoading}) {
     // localhost:8080/api/workorders/checkIn/:workorderId
     const workorderId = formState.workorder.data.Id
     // send these data with the body
-    const {workTypeId, userId, techsCount, latitude, longitude} = event.target
+    const {workTypeId, userId, techsCount, latitude, longitude} = event
+    setIsLoading(true)
+    const response = await axios.post(
+      `http://localhost:8080/api/workorders/checkIn/${workorderId}`,
+      {
+        workTypeId: workTypeId.value,
+        userId: userId.value,
+        techsCount: techsCount.value,
+        latitude: latitude.value,
+        longitude: longitude.value,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        responsetype: 'json',
+      },
+    )
+    console.log(' check in response:', response)
+    if (response.data.success === true) {
+      formState.success = `Check In Successful ${response.MechanicId}`
+    } else {
+      formState.workorder = response.data
+    }
+    setIsLoading(false)
   }
 
   useEffect(() => {

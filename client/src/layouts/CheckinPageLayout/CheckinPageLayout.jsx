@@ -17,7 +17,7 @@ function CheckinPageLayout() {
         </div>
 
         <div className='gps-form' style={{width: '50%'}}>
-          <GpsForm btnName={'Check In'} formState={workorderInfo} isLoading={isLoading} />
+          <GpsForm btnName={'Check In'} formState={workorderInfo} isLoading={isLoading} setIsLoading={setIsLoading} />
         </div>
       </div>
     </div>

@@ -103,21 +103,21 @@ const checkIn = async (req, res, next) => {
   try {
     const response = await sendCheckInRequest(req)
     console.log('data7: check in')
+    let result = {success: null, message: '', data: response}
     if (response && response.hasOwnProperty('MechanicId')) {
-      let result = {
+      result = {
         success: true,
         message: 'Check in successful',
         data: response,
       }
-      res.json(result)
     } else {
-      let result = {
+      result = {
         success: false,
         message: 'Check in failed',
         data: response,
       }
-      res.json(result)
     }
+    res.json(result)
   } catch (error) {
     console.log(error)
   }

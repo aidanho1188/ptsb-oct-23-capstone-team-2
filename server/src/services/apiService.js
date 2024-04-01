@@ -110,7 +110,7 @@ async function sendCheckInRequest(req) {
     const data = response.data
     return data
   } catch (error) {
-    console.error('Error checking in work order:', error.response.data)
+    console.log('Error checking in work order:', error.response.data)
     return error.response.data
   }
 }
