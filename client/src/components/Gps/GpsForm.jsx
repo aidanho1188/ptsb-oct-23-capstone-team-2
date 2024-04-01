@@ -6,12 +6,16 @@ import './GpsForm.css'
 
 function GpsForm({btnName, formState, isLoading}) {
   const {register, handleSubmit, reset} = useForm({
-    defaultValues: {workTypeId: 1, userId: '', techsCount: 1, Latitude: '', Longitude: ''},
+    defaultValues: {workTypeId: 1, userId: '', techsCount: 1, latitude: '', longitude: ''},
   })
 
   const onSubmit = async (event) => {
     event.preventDefault
-    // 
+    // send workorder id in the url params
+    // localhost:8080/api/workorders/checkIn/:workorderId
+    const workorderId = formState.workorder.data.Id
+    // send these data with the body
+    const {workTypeId, userId, techsCount, latitude, longitude} = event.target
   }
 
   useEffect(() => {
