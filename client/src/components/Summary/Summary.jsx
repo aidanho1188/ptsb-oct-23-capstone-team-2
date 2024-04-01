@@ -75,9 +75,9 @@ function Summary({isResponseLoading}) {
                         </HoverCardTrigger>
                         <HoverCardContent className="card-main-content">
                           <div>
-                            <p>Additional info here</p>
-                            <p>Additional info here</p>
-                            <p>Additional info here</p>
+                            <p><strong>Work Order:</strong> {workorder.workorderId}</p>
+                            <p><strong>Call Date:</strong> {reformatTime(workorder.callDate) || 'Invalid Date'}</p>
+                            <p><strong>Trade:</strong> {workorder.trade}</p>
                           </div>
                         </HoverCardContent>
                       </HoverCard>

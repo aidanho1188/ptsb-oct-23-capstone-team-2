@@ -32,6 +32,12 @@ function TablePlaceholder({ title, data, onHover }) {
     }
   }, [data]);
 
+  function reformatTime(time) {
+    let date = new Date(time)
+    let formattedDate = date.toLocaleString()
+    return formattedDate
+  }
+
   return (
     <div className="table">
       <h2>{title}</h2>
@@ -68,9 +74,9 @@ function TablePlaceholder({ title, data, onHover }) {
                         </HoverCardTrigger>
                         <HoverCardContent className="card-main-content">
                           <div>
-                            <p>Additional info here</p>
-                            <p>Additional info here</p>
-                            <p>Additional info here</p>
+                            <p><strong>Work Order:</strong> {workorder.Id}</p>
+                            <p><strong>Call Date:</strong> {reformatTime(workorder.CallDate)}</p>
+                            <p><strong>Last Updated:</strong> {reformatTime(workorder.UpdatedDate)}</p>
                           </div>
                         </HoverCardContent>
                       </HoverCard>

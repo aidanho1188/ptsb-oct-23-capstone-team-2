@@ -17,7 +17,7 @@ async function fetchData(endpoint, select, filter) {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${await getAccessToken(tokenType)}`,
     },
-    responsetype: 'json',
+    responseType: 'json',
   })
   const data = response.data
   return data
@@ -30,7 +30,7 @@ async function fetchWorkOrder(workOrderId, select) {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${await getAccessToken(tokenType)}`,
     },
-    responsetype: 'json',
+    responseType: 'json',
   })
   const data = response.data
   return data
@@ -55,7 +55,7 @@ async function sendStatusUpdateRequest(workOrderId, primary, extended, note, act
         'Content-Type': 'application/json',
         Authorization: `Bearer ${await getAccessToken(tokenType)}`,
       },
-      responsetype: 'json',
+      responseType: 'json',
     },
   )
   const data = response.data
