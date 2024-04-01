@@ -1,6 +1,7 @@
 import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow} from '@/components/ui/table'
 import {Skeleton} from '@/components/ui/skeleton'
 import {ScrollArea} from '@/components/ui/scroll-area'
+import {HoverCard, HoverCardTrigger, HoverCardContent} from '@/components/ui/hover-card'
 import axios from 'axios'
 import React, {useEffect, useState} from 'react'
 import './summary.css'
@@ -31,58 +32,74 @@ function Summary({isResponseLoading}) {
   }, [isResponseLoading])
 
   return (
-    <div className='summary-layout'>
+    <div className="summary-layout">
       <h2>Recent Updates</h2>
-      <Table className='summary-table-container'>
-        <ScrollArea className='summary-scroll rounded-md border p-4'>
+      <Table className="summary-table-container">
+        <ScrollArea className="summary-scroll rounded-md border p-4">
           <TableHeader>
             {/* add card hover */}
-            <TableRow className='table-headers'>
-              <TableHead className='w-[100px]'>Work Order</TableHead>
+            <TableRow className="table-headers">
+              <TableHead className="w-[100px]">Work Order</TableHead>
               <TableHead>Previous Status</TableHead>
               <TableHead>Current Status</TableHead>
               <TableHead>Location ID</TableHead>
-              {/*  combine these */}
               <TableHead>Trade</TableHead>
               <TableHead>Call Date</TableHead>
-              <TableHead className='text-right'>Updated Time</TableHead>
+              <TableHead className="text-right">Updated Time</TableHead>
             </TableRow>
           </TableHeader>
-          {isLoading ? (
-            <TableBody>
+          <TableBody>
+            {isLoading ? (
               <TableRow>
                 <TableCell colSpan={7}>
-                  <div className='summary-loading-skeleton'>
-                    <Skeleton className='space-y-3 h-4 rounded-xl' />
-                    <Skeleton className='h-4 rounded-xl' />
-                    <Skeleton className='h-4 rounded-xl' />
-                    <Skeleton className='h-4 rounded-xl' />
-                    <Skeleton className='h-4 rounded-xl' />
-                    <Skeleton className='h-4 rounded-xl' />
+                  <div className="summary-loading-skeleton">
+                    <Skeleton className="space-y-3 h-4 rounded-xl" />
+                    <Skeleton className="h-4 rounded-xl" />
+                    <Skeleton className="h-4 rounded-xl" />
+                    <Skeleton className="h-4 rounded-xl" />
+                    <Skeleton className="h-4 rounded-xl" />
+                    <Skeleton className="h-4 rounded-xl" />
                   </div>
                 </TableCell>
               </TableRow>
-            </TableBody>
-          ) : (
-            <TableBody>
-              {Array.isArray(workorders) &&
-                workorders.map((workorder) => (
-                  <TableRow key={workorder.workorderId}>
-                    <TableCell className='w-[100px]'>{workorder.workorderId}</TableCell>
-                    <TableCell>{workorder.preStatus || 'None'}</TableCell>
-                    <TableCell>{workorder.newStatus || 'None'}</TableCell>
-                    <TableCell>{workorder.locationId}</TableCell>
-                    <TableCell>{workorder.trade}</TableCell>
-                    <TableCell>{reformatTime(workorder.callDate)}</TableCell>
-                    <TableCell className='text-right'>{reformatTime(workorder.updatedTime)}</TableCell>
-                  </TableRow>
-                ))}
-            </TableBody>
-          )}
+            ) : (
+              <>
+                {Array.isArray(workorders) &&
+                  workorders.map((workorder) => (
+                    <TableRow key={workorder.workorderId}>
+                      <HoverCard>
+                        <HoverCardTrigger>
+                          <TableCell className="w-[100px]">
+                            {workorder.workorderId}
+                          </TableCell>
+                        </HoverCardTrigger>
+                        <HoverCardContent className="card-main-content">
+                          <div>
+                            <p>Additional info here</p>
+                            <p>Additional info here</p>
+                            <p>Additional info here</p>
+                          </div>
+                        </HoverCardContent>
+                      </HoverCard>
+                      <TableCell>{workorder.preStatus || "None"}</TableCell>
+                      <TableCell>{workorder.newStatus || "None"}</TableCell>
+                      <TableCell>{workorder.locationId}</TableCell>
+                      <TableCell>{workorder.trade}</TableCell>
+                      <TableCell>
+                        {reformatTime(workorder.callDate)}
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {reformatTime(workorder.updatedTime)}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+              </>
+            )}
+          </TableBody>
         </ScrollArea>
       </Table>
     </div>
-  )
+  );
 }
 
 export default Summary
