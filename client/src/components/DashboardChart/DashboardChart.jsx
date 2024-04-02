@@ -17,12 +17,12 @@ function DashboardChart() {
       'Work Orders': 8,
     },
     {
-      name: 'Completed',
-      'Work Orders': 12,
-    },
-    {
       name: 'Incomplete',
       'Work Orders': 3,
+    },
+    {
+      name: 'Completed',
+      'Work Orders': 12,
     },
     {
       name: 'Awaiting Quote',
