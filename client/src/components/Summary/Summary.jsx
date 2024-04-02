@@ -78,6 +78,9 @@ function Summary({isResponseLoading}) {
                               <strong>Call Date:</strong> {reformatTime(workorder.callDate) || 'Invalid Date'}
                             </p>
                             <p>
+                              <strong>Category:</strong> {workorder.category}
+                            </p>
+                            <p>
                               <strong>Trade:</strong> {workorder.trade}
                             </p>
                           </div>

@@ -63,6 +63,9 @@ function TablePlaceholder({title, data, onHover}) {
                             <strong>Work Order:</strong> {workorder.Id}
                           </p>
                           <p>
+                            <strong>Full Status:</strong> {`${workorder.Status.Primary} ${workorder.Status.Extended ? '/ ' + workorder.Status.Extended : ''}`}
+                          </p>
+                          <p>
                             <strong>Call Date:</strong> {reformatTime(workorder.CallDate)}
                           </p>
                           <p>
