@@ -1,46 +1,53 @@
-import {zodResolver} from '@hookform/resolvers/zod'
-import {useForm} from 'react-hook-form'
-import {z} from 'zod'
-
+import {useState} from 'react'
+import axios from 'axios'
 import {Button} from '@/components/ui/button'
-import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from '@/components/ui/form'
 import {Input} from '@/components/ui/input'
 
 import './workorderSearch.css'
 
-const formSchema = z.object({
-  username: z.string().min(2, {
-    message: 'Username must be at least 2 characters.',
-  }),
-})
+function WorkorderSearch({setWorkorderInfo, setIsLoading}) {
+  const [workorderId, setWorkorderId] = useState('') //state to store workorder id
 
-function WorkorderSearch() {
-  const form = useForm()
+  const handleInputChange = (event) => {
+    setWorkorderId(event.target.value) //update workorderId state with input value
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+
+    console.log('Getting work order info... with id: ', workorderId)
+    setIsLoading(true)
+    try {
+      const response = await axios.get(`http://localhost:8080/api/workorders/${workorderId}`)
+      let data = {workorder: response, location: null, userId: null}
+
+      // if success, fetch longitude and latitude and userID
+      if (!response.data.ErrorCode && typeof response.data !== 'string') {
+        console.log('Work order info:', response.data)
+        const [locationData, userID] = await Promise.all([axios.get(`http://localhost:8080/api/workorders/locations/${response.data.LocationId}`), axios.get(`http://localhost:8080/api/userId`)])
+        data = {
+          workorder: response,
+          location: locationData,
+          userId: userID,
+          success: 'Work order found!',
+        }
+      }
+      setWorkorderInfo(data)
+      setIsLoading(false)
+    } catch (error) {
+      console.error('Error fetching work order:', error)
+    }
+  }
 
   return (
-    <div className='search-form'>
-      <div className='search-form-container'>
-        <h4 className='search-form-title'>Work Order: </h4>
-        <Form {...form} className='bg-gray-100 p-4 rounded-lg'>
-          <form className='space-y-8'>
-            <FormField
-              control={form.control}
-              name='Workorder ID'
-              render={({field}) => (
-                <FormItem>
-                  <FormControl>
-                    <Input placeholder='Enter work order ID...' {...field} className='search-input' />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </form>
-        </Form>
-      </div>
-      <div className='search-btn'>
-        <Button type='search'>Search</Button>
-      </div>
+    <div className='search-form-container'>
+      <h4 className='search-form-title'>Work Order: </h4>
+      <form className='form-container space-y-8' onSubmit={handleSubmit}>
+        <Input placeholder='Enter work order ID...' onChange={handleInputChange} className='search-input' required />
+        <Button type='search' className='search-btn'>
+          Search
+        </Button>
+      </form>
     </div>
   )
 }
