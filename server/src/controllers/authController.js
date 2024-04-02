@@ -20,7 +20,7 @@ const login = async (req, res, next) => {
       return res.status(401).json({success: false, message: 'Invalid Username or Password'})
     } else {
       const accessToken = tokenService.refetchAccessToken()
-
+      tokenService.fetchToken();
       return res.status(200).json({
         success: true,
         message: 'Login Successful',
