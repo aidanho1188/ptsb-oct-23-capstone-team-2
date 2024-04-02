@@ -32,33 +32,31 @@ function Summary({isResponseLoading}) {
   }, [isResponseLoading])
 
   return (
-    <div className="summary-layout">
+    <div className='summary-layout'>
       <h2>Recent Updates</h2>
-      <Table className="summary-table-container">
-        <ScrollArea className="summary-scroll rounded-md border p-4">
+      <Table className='summary-table-container'>
+        <ScrollArea className='summary-scroll rounded-md border p-4'>
           <TableHeader>
             {/* add card hover */}
-            <TableRow className="table-headers">
-              <TableHead className="w-[100px]">Work Order</TableHead>
+            <TableRow className='table-headers'>
+              <TableHead className='w-[100px]'>Work Order</TableHead>
               <TableHead>Previous Status</TableHead>
               <TableHead>Current Status</TableHead>
               <TableHead>Location ID</TableHead>
-              <TableHead>Trade</TableHead>
-              <TableHead>Call Date</TableHead>
-              <TableHead className="text-right">Updated Time</TableHead>
+              <TableHead className='text-right'>Updated Time</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {isLoading ? (
               <TableRow>
                 <TableCell colSpan={7}>
-                  <div className="summary-loading-skeleton">
-                    <Skeleton className="space-y-3 h-4 rounded-xl" />
-                    <Skeleton className="h-4 rounded-xl" />
-                    <Skeleton className="h-4 rounded-xl" />
-                    <Skeleton className="h-4 rounded-xl" />
-                    <Skeleton className="h-4 rounded-xl" />
-                    <Skeleton className="h-4 rounded-xl" />
+                  <div className='summary-loading-skeleton'>
+                    <Skeleton className='space-y-3 h-4 rounded-xl' />
+                    <Skeleton className='h-4 rounded-xl' />
+                    <Skeleton className='h-4 rounded-xl' />
+                    <Skeleton className='h-4 rounded-xl' />
+                    <Skeleton className='h-4 rounded-xl' />
+                    <Skeleton className='h-4 rounded-xl' />
                   </div>
                 </TableCell>
               </TableRow>
@@ -69,28 +67,26 @@ function Summary({isResponseLoading}) {
                     <TableRow key={workorder.workorderId}>
                       <HoverCard>
                         <HoverCardTrigger>
-                          <TableCell className="w-[100px]">
-                            {workorder.workorderId}
-                          </TableCell>
+                          <TableCell className='w-[100px]'>{workorder.workorderId}</TableCell>
                         </HoverCardTrigger>
-                        <HoverCardContent className="card-main-content">
+                        <HoverCardContent className='card-main-content'>
                           <div>
-                            <p><strong>Work Order:</strong> {workorder.workorderId}</p>
-                            <p><strong>Call Date:</strong> {reformatTime(workorder.callDate) || 'Invalid Date'}</p>
-                            <p><strong>Trade:</strong> {workorder.trade}</p>
+                            <p>
+                              <strong>Work Order:</strong> {workorder.workorderId}
+                            </p>
+                            <p>
+                              <strong>Call Date:</strong> {reformatTime(workorder.callDate) || 'Invalid Date'}
+                            </p>
+                            <p>
+                              <strong>Trade:</strong> {workorder.trade}
+                            </p>
                           </div>
                         </HoverCardContent>
                       </HoverCard>
-                      <TableCell>{workorder.preStatus || "None"}</TableCell>
-                      <TableCell>{workorder.newStatus || "None"}</TableCell>
+                      <TableCell>{workorder.preStatus || 'None'}</TableCell>
+                      <TableCell>{workorder.newStatus || 'None'}</TableCell>
                       <TableCell>{workorder.locationId}</TableCell>
-                      <TableCell>{workorder.trade}</TableCell>
-                      <TableCell>
-                        {reformatTime(workorder.callDate)}
-                      </TableCell>
-                      <TableCell className="text-right">
-                        {reformatTime(workorder.updatedTime)}
-                      </TableCell>
+                      <TableCell className='text-right'>{reformatTime(workorder.updatedTime)}</TableCell>
                     </TableRow>
                   ))}
               </>
@@ -99,7 +95,7 @@ function Summary({isResponseLoading}) {
         </ScrollArea>
       </Table>
     </div>
-  );
+  )
 }
 
 export default Summary
