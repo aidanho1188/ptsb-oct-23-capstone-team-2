@@ -9,7 +9,7 @@ async function saveUpdatedWorkOrder(updatedRes) {
   const [preStatus, newStatus] = getStatus(updatedRes.result)
 
   try {
-    const {LocationId: locationId, Trade: trade, CallDate: callDate} = await fetchWorkOrder(workorderId, 'LocationId,Trade,CallDate')
+    const {LocationId: locationId, Trade: trade, CallDate: callDate, Category: category} = await fetchWorkOrder(workorderId, 'LocationId,Trade,CallDate,Category')
     const updatedWorkOrder = new UpdatedWorkOrder({
       workorderId,
       preStatus,
@@ -17,6 +17,7 @@ async function saveUpdatedWorkOrder(updatedRes) {
       locationId,
       trade,
       callDate,
+      category,
     })
     await updatedWorkOrder.save()
     console.log('Updated work order:', updatedWorkOrder)

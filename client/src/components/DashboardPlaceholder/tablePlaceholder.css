@@ -33,11 +33,14 @@
 }
 
 .table-header > * {
-  /* margin-right: 1em; */
   padding: 0 !important;
 }
 
 .loading-skeleton > * {
   margin: 1em 1em 1rem 1em !important;
   padding: 1rem;
+}
+
+.card-main-content {
+  width: fit-content !important;
 }

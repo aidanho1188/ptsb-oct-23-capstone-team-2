@@ -17,7 +17,7 @@ async function fetchData(endpoint, select, filter) {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${await getAccessToken(tokenType)}`,
     },
-    responsetype: 'json',
+    responseType: 'json',
   })
   const data = response.data
   return data
@@ -48,7 +48,7 @@ async function fetchLocation(locationId) {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${await getAccessToken(tokenType)}`,
     },
-    responsetype: 'json',
+    responseType: 'json',
   })
   const data = response.data
   return data

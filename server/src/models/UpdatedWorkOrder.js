@@ -13,6 +13,7 @@ const UpdateWorkOrderSchema = new mongoose.Schema({
   locationId: {type: Number},
   trade: {type: String},
   callDate: {type: Date},
+  category: {type: String},
   updatedTime: {
     type: Date,
     default: Date.now,
