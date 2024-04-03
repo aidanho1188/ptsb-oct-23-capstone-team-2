@@ -31,7 +31,7 @@ function GpsForm({btnName, formState, isLoading, setIsLoading}) {
         headers: {
           'Content-Type': 'application/json',
         },
-        responsetype: 'json',
+        responseType: 'json',
       },
     )
     console.log(' check in response:', response)

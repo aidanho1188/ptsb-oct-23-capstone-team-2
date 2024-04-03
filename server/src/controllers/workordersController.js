@@ -2,7 +2,7 @@ const express = require('express')
 const axios = require('axios')
 const getAccessToken = require('../utils/getAccessToken.js')
 const saveUpdatedWorkOrder = require('../utils/saveUpdatedWorkOrder.js')
-const {fetchData, sendStatusUpdateRequest, fetchWorkOrder, fetchLocation, sendCheckInRequest} = require('../services/apiService.js')
+const {fetchData, sendStatusUpdateRequest, fetchWorkOrder, fetchLocation, sendCheckInRequest, sendCheckOutRequest} = require('../services/apiService.js')
 const getupdateWorkOrders = require('../utils/getUpdatedWorkOrder.js')
 
 const open = async (req, res, next) => {
@@ -102,7 +102,7 @@ const getLocation = async (req, res, next) => {
 const checkIn = async (req, res, next) => {
   try {
     const response = await sendCheckInRequest(req)
-    console.log('data7: check in')
+    console.log('verifying req send for check in')
     let result = {success: null, message: '', data: response}
     if (response && response.hasOwnProperty('MechanicId')) {
       result = {
@@ -123,6 +123,30 @@ const checkIn = async (req, res, next) => {
   }
 }
 
+const checkOut = async (req, res, next) => {
+  try {
+    const response = await sendCheckOutRequest(req)
+    console.log('verifying req send for check out')
+    let result = {success: null, message: '', data: response}
+    if (response && response.hasOwnProperty('MechanicId')) {
+      result = {
+        success: true,
+        message: 'Check out successful',
+        data: response,
+      }
+    } else {
+      result = {
+        success: false,
+        message: 'Check out failed',
+        data: response,
+      }
+    }
+    res.json(result)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 module.exports = {
   open,
   onSite,
@@ -134,4 +158,5 @@ module.exports = {
   getRecentsWorkorders,
   getLocation,
   checkIn,
+  checkOut,
 }

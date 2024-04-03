@@ -31,7 +31,7 @@ async function fetchWorkOrder(workOrderId, select = 'Id,LocationId,Trade,Status'
         'Content-Type': 'application/json',
         Authorization: `Bearer ${await getAccessToken(tokenType)}`,
       },
-      responsetype: 'json',
+      responseType: 'json',
     })
     const data = response.data
     return data
@@ -74,7 +74,7 @@ async function sendStatusUpdateRequest(workOrderId, primary, extended, note, act
           'Content-Type': 'application/json',
           Authorization: `Bearer ${await getAccessToken(tokenType)}`,
         },
-        responsetype: 'json',
+        responseType: 'json',
       },
     )
     const data = response.data
@@ -104,7 +104,7 @@ async function sendCheckInRequest(req) {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${await getAccessToken(tokenType)}`,
         },
-        responsetype: 'json',
+        responseType: 'json',
       },
     )
     const data = response.data
@@ -115,4 +115,37 @@ async function sendCheckInRequest(req) {
   }
 }
 
-module.exports = {fetchData, sendStatusUpdateRequest, fetchWorkOrder, fetchLocation, sendCheckInRequest}
+async function sendCheckOutRequest(req) {
+  console.log(`Working on checking out work order from Service Channel...`)
+  const workOrderId = req.params.workOrderId
+  const {WorkTypeId, PrimaryStatus, ExtendedStatus, ActionStatus, Resolution, UserId, Latitude, Longitude} = req.body
+  try {
+    const response = await axios.post(
+      `https://sb2api.servicechannel.com/v3/workorders/${workOrderId}/universalCheckOut`,
+      {
+        WorkTypeId: WorkTypeId,
+        PrimaryStatus: PrimaryStatus,
+        ExtendedStatus: ExtendedStatus,
+        ActionStatus: ActionStatus,
+        Resolution: Resolution,
+        UserId: UserId,
+        Latitude: Latitude,
+        Longitude: Longitude,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${await getAccessToken(tokenType)}`,
+        },
+        responseType: 'json',
+      },
+    )
+    const data = response.data
+    return data
+  } catch (error) {
+    console.log('Error checking out work order:', error.response.data)
+    return error.response.data
+  }
+}
+
+module.exports = {fetchData, sendStatusUpdateRequest, fetchWorkOrder, fetchLocation, sendCheckInRequest, sendCheckOutRequest}
