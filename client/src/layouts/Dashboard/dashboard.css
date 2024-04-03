@@ -9,5 +9,6 @@
   background-color: #0000;
   margin: 1em;
   padding: 0.5em;
+  flex: 1 1 30%;
   table-layout: fixed;
 }

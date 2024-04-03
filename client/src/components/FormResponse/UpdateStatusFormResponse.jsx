@@ -4,15 +4,13 @@ import {Skeleton} from '@/components/ui/skeleton'
 import {Separator} from '@/components/ui/separator'
 import './formResponse.css'
 
-function FormResponse({form, formState, isLoading}) {
+function FormResponse({formState, isLoading}) {
   function handleResponse(formState) {
     console.log('data:', formState)
-    console.log('formState:', formState)
-    console.log('formState.workorder:', formState.workorder)
-    if (!formState.workorder.data.ErrorCode && typeof formState.workorder.data !== 'string') {
-      return `<strong>Success</strong>: ${formState.success}`
+    if (!formState.data.ErrorCode) {
+      return `<strong>Success</strong>: ${formState.data.result}`
     } else {
-      return `<strong>Failed</strong>: ${formState.workorder.data.ErrorMessage || formState.workorder.data}`
+      return `<strong>Failed</strong>: ${formState.data.ErrorMessage}`
     }
   }
 
@@ -61,27 +59,8 @@ function FormResponse({form, formState, isLoading}) {
       <Separator />
       <CardContent>
         <br />
-        {/* TODO: shorten these dot notation! */}
         <p>
-          <strong>User ID:</strong> {(formState.userId && formState.userId.data) || ''}
-        </p>
-        <p>
-          <strong>Work Order ID:</strong> {(formState.workorder && formState.workorder.data && formState.workorder.data.Id) || ''}
-        </p>
-        <p>
-          <strong>Status:</strong> {(formState.workorder && formState.workorder.data.Status && `${formState.workorder.data.Status.Primary} ${formState.workorder.data.Status.Extended ? '/' + formState.workorder.data.Status.Extended : ''}`) || ''}
-        </p>
-        <p>
-          <strong>Location ID:</strong> {(formState.workorder && formState.workorder.data.LocationId) || ''}
-        </p>
-        <p>
-          <strong>Trade:</strong> {(formState.workorder && formState.workorder.data.Trade) || ''}
-        </p>
-        <p>
-          <strong>Latitude:</strong> {(formState.location && formState.location.data && formState.location.data.Latitude) || ''}
-        </p>
-        <p>
-          <strong>Longitude:</strong> {(formState.location && formState.location.data && formState.location.data.Longitude) || ''}
+          <strong>Work Order Id:</strong> {formState.data.id}
         </p>
       </CardContent>
     </Card>

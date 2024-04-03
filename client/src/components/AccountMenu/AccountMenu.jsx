@@ -1,12 +1,5 @@
-import { Button } from '@/components/ui/button'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+import {Button} from '@/components/ui/button'
+import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger} from '@/components/ui/dropdown-menu'
 import './accountmenu.css'
 
 const AccountMenu = () => {
@@ -19,12 +12,12 @@ const AccountMenu = () => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className='dropdown-menu-content'>
-          <DropdownMenuLabel>Subscription</DropdownMenuLabel>
+          <DropdownMenuLabel>Name</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem>Billing</DropdownMenuItem>
-          <DropdownMenuItem>Team</DropdownMenuItem>
-          <DropdownMenuItem>Login</DropdownMenuItem>
+          {/* <DropdownMenuItem>Billing</DropdownMenuItem> */}
+          {/* <DropdownMenuItem>Team</DropdownMenuItem> */}
+          <DropdownMenuItem>Logout</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

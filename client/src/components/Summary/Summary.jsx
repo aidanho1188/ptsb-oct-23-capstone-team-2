@@ -1,6 +1,7 @@
 import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow} from '@/components/ui/table'
 import {Skeleton} from '@/components/ui/skeleton'
 import {ScrollArea} from '@/components/ui/scroll-area'
+import {HoverCard, HoverCardTrigger, HoverCardContent} from '@/components/ui/hover-card'
 import axios from 'axios'
 import React, {useEffect, useState} from 'react'
 import './summary.css'
@@ -42,14 +43,11 @@ function Summary({isResponseLoading}) {
               <TableHead>Previous Status</TableHead>
               <TableHead>Current Status</TableHead>
               <TableHead>Location ID</TableHead>
-              {/*  combine these */}
-              <TableHead>Trade</TableHead>
-              <TableHead>Call Date</TableHead>
               <TableHead className='text-right'>Updated Time</TableHead>
             </TableRow>
           </TableHeader>
-          {isLoading ? (
-            <TableBody>
+          <TableBody>
+            {isLoading ? (
               <TableRow>
                 <TableCell colSpan={7}>
                   <div className='summary-loading-skeleton'>
@@ -62,23 +60,41 @@ function Summary({isResponseLoading}) {
                   </div>
                 </TableCell>
               </TableRow>
-            </TableBody>
-          ) : (
-            <TableBody>
-              {Array.isArray(workorders) &&
-                workorders.map((workorder) => (
-                  <TableRow key={workorder.workorderId}>
-                    <TableCell className='w-[100px]'>{workorder.workorderId}</TableCell>
-                    <TableCell>{workorder.preStatus || 'None'}</TableCell>
-                    <TableCell>{workorder.newStatus || 'None'}</TableCell>
-                    <TableCell>{workorder.locationId}</TableCell>
-                    <TableCell>{workorder.trade}</TableCell>
-                    <TableCell>{reformatTime(workorder.callDate)}</TableCell>
-                    <TableCell className='text-right'>{reformatTime(workorder.updatedTime)}</TableCell>
-                  </TableRow>
-                ))}
-            </TableBody>
-          )}
+            ) : (
+              <>
+                {Array.isArray(workorders) &&
+                  workorders.map((workorder) => (
+                    <TableRow key={workorder.workorderId}>
+                      <HoverCard>
+                        <HoverCardTrigger>
+                          <TableCell className='w-[100px]'>{workorder.workorderId}</TableCell>
+                        </HoverCardTrigger>
+                        <HoverCardContent className='card-main-content'>
+                          <div>
+                            <p>
+                              <strong>Work Order:</strong> {workorder.workorderId}
+                            </p>
+                            <p>
+                              <strong>Call Date:</strong> {reformatTime(workorder.callDate) || 'Invalid Date'}
+                            </p>
+                            <p>
+                              <strong>Category:</strong> {workorder.category}
+                            </p>
+                            <p>
+                              <strong>Trade:</strong> {workorder.trade}
+                            </p>
+                          </div>
+                        </HoverCardContent>
+                      </HoverCard>
+                      <TableCell>{workorder.preStatus || 'None'}</TableCell>
+                      <TableCell>{workorder.newStatus || 'None'}</TableCell>
+                      <TableCell>{workorder.locationId}</TableCell>
+                      <TableCell className='text-right'>{reformatTime(workorder.updatedTime)}</TableCell>
+                    </TableRow>
+                  ))}
+              </>
+            )}
+          </TableBody>
         </ScrollArea>
       </Table>
     </div>
