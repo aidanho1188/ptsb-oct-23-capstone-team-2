@@ -1,0 +1,21 @@
+/* WorkActivity.css */
+
+.card-container {
+  margin: 20px;
+  padding: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px; /* Add gap between grid items */
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.space-y-1-5 > * + * {
+  margin-top: 1.5rem; /* Adjust the space between elements */
+}

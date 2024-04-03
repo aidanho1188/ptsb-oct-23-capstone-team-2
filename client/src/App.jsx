@@ -8,6 +8,7 @@ import WorkorderCheckinPage from './pages/WorkorderCheckinPage/WorkorderCheckinP
 import WorkorderCheckoutPage from './pages/WorkorderCheckoutPage/WorkorderCheckoutPage.jsx'
 import LoginPage from './pages/LoginPage/LoginPage.jsx'
 import CreateWorkorderPage from './pages/CreateWorkorderPage/CreateWorkorderPage.jsx'
+import WorkActivityPage from './pages/WorkActivityPage/WorkActivity.jsx'
 
 
 const queryClient = new QueryClient()
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: '/create-workorder',
     element: <CreateWorkorderPage  />
+  },
+  {
+    path: '/work-activity',
+    element: <WorkActivityPage />,
   }
 
 ])
