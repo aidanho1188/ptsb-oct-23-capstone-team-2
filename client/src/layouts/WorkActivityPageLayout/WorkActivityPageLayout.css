@@ -1,6 +1,14 @@
-.search-component {
+/* .search-component {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+} */
+
+.activity-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }

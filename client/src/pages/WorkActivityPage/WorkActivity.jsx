@@ -4,7 +4,7 @@ import BackToDashboard from "../../components/BackToDashboard/BackToDashboard";
 
 function WorkActivityPage() {
   return (
-    <div>
+    <div className="work-activity-page-layout">
       <NavBar />
       <BackToDashboard  />
 

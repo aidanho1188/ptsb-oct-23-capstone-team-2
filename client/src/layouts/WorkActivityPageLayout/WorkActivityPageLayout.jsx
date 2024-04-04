@@ -1,15 +1,16 @@
-import WorkActivity from "../../components/WorkActivity/WorkActivity";
-import SearchID from "../../components/SearchID/SearchID";
+import WorkActivity from '../../components/WorkActivity/WorkActivity'
+import SearchID from '../../components/SearchID/SearchID'
+import './WorkActivityPageLayout.css'
 
 function WorkActivityPage() {
   return (
-    <div>
-      <div className='search-component'>
-        <SearchID />
-      </div>
-      <div className='acitvity-component'>
-        <WorkActivity />
-      </div>
+    <div className='activity-layout'>
+      {/* <div className='search-component'> */}
+      <SearchID />
+      {/* </div> */}
+      {/* <div className='activity-component'> */}
+      <WorkActivity />
+      {/* </div> */}
     </div>
   )
 }
