@@ -1,9 +1,14 @@
-import WorkActivity from '../../components/WorkActivity/WorkActivity'
+import WorkActivityPageLayout from "../../layouts/WorkActivityPageLayout/WorkActivityPageLayout";
+import NavBar from "../../layouts/Navbar/NavBar";
+import BackToDashboard from "../../components/BackToDashboard/BackToDashboard";
 
 function WorkActivityPage() {
   return (
     <div>
-      <WorkActivity  />
+      <NavBar />
+      <BackToDashboard  />
+
+      <WorkActivityPageLayout  />
     </div>
   );
 }
