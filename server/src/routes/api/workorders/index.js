@@ -8,7 +8,8 @@ const incomplete = require('./incomplete')
 const awaitingQuote = require('./awaitingQuote')
 const updateStatus = require('./updateStatus')
 const recents = require('./recents')
-// const {handleExpiredToken} = require('../../handleExpiredToken')
+const checkIn = require('./checkIn')
+const checkOut = require('./checkOut')
 
 const router = express.Router()
 
@@ -18,9 +19,17 @@ router.use('/incomplete', handleExpiredToken, incomplete)
 router.use('/completed', handleExpiredToken, completed)
 router.use('/awaitingQuote', handleExpiredToken, awaitingQuote)
 router.use('/updateStatus', handleExpiredToken, updateStatus)
+// localhost:8080/api/workorders/checkIn/workOrderId
+router.use('/checkIn', handleExpiredToken, checkIn)
+router.use('/checkOut', handleExpiredToken, checkOut)
+
+// get recent work orders from DB
 router.use('/recents', recents)
 
+// localhost:8080/api/workorders/locations/locationId
+router.get('/locations/:locationId', handleExpiredToken, workordersController.getLocation)
+
 // localhost:8080/api/workorders/workOrderId
-router.get('/:workOrderId', workordersController.getWorkOrder)
+router.get('/:workOrderId', handleExpiredToken, workordersController.getWorkOrderByID)
 
 module.exports = router

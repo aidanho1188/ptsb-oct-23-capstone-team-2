@@ -28,17 +28,9 @@ export function WorkOrder({onFormStateChange, onLoading}) {
       const response = await axios.patch(url, {
         status: status,
       })
-      if (response.status === 200) {
-        const data = {
-          ...response,
-          status: status,
-        }
-        onFormStateChange(data)
+      if (response.data.hasOwnProperty('ErrorCode') === false && typeof response.data !== 'string') {
+        onFormStateChange(response)
         onLoading(false)
-        console.log('Response:', data)
-      } else {
-        console.log('Error:', response)
-        throw new Error(response)
       }
     } catch (error) {
       console.error(`Error fetching data from ${url}: `, error)

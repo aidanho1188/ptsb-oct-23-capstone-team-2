@@ -3,29 +3,33 @@ import {Input} from '../ui/input'
 import {useForm} from 'react-hook-form'
 import {useEffect} from 'react'
 import axios from 'axios'
-import './GpsForm.css'
+import './GpsCheckoutForm.css'
 
-function GpsForm({btnName, formState, isLoading, setIsLoading}) {
+function GpsCheckoutForm({btnName, formState, isLoading, setIsLoading}) {
   const {register, handleSubmit, reset} = useForm({
-    defaultValues: {workTypeId: 1, userId: 0, techsCount: 1, latitude: 0, longitude: 0},
+    defaultValues: {workTypeId: 1, primaryStatus: 'NoStatusChange', extendedStatus: '', actionStatus: 'Complete', resolution: '', userId: 0, latitude: 0, longitude: 0},
   })
 
   const onSubmit = async (event) => {
     event.preventDefault
     // send workorder id in the url params
-    // localhost:8080/api/workorders/checkIn/:workorderId
+    // localhost:8080/api/workorders/checkOut/:workorderId
     const workorderId = formState.workorder.data.Id
     // send these data with the body
-    const {workTypeId, userId, techsCount, latitude, longitude} = event
+    const {workTypeId, primaryStatus, extendedStatus, actionStatus, resolution, userId, latitude, longitude} = event
     setIsLoading(true)
+    console.log('workorderId:', workorderId)
     const response = await axios.post(
-      `http://localhost:8080/api/workorders/checkIn/${workorderId}`,
+      `http://localhost:8080/api/workorders/checkOut/${workorderId}`,
       {
-        workTypeId: workTypeId.value,
-        userId: userId.value,
-        techsCount: techsCount.value,
-        latitude: latitude.value,
-        longitude: longitude.value,
+        WorkTypeId: workTypeId,
+        PrimaryStatus: primaryStatus,
+        ExtendedStatus: extendedStatus,
+        ActionStatus: actionStatus,
+        Resolution: resolution,
+        UserId: userId,
+        Latitude: latitude,
+        Longitude: longitude,
       },
       {
         headers: {
@@ -34,9 +38,9 @@ function GpsForm({btnName, formState, isLoading, setIsLoading}) {
         responseType: 'json',
       },
     )
-    console.log(' check in response:', response)
+    console.log(' check out response:', response)
     if (response.data.success === true) {
-      formState.success = `Check In Successful!`
+      formState.success = `Check Out Successful!`
     } else {
       formState.workorder = response.data
     }
@@ -45,11 +49,9 @@ function GpsForm({btnName, formState, isLoading, setIsLoading}) {
 
   useEffect(() => {
     if (formState && formState.userId && formState.location) {
-      console.log('location:', formState.location.data)
       reset({
         workTypeId: 1,
         userId: formState.userId.data,
-        techsCount: 1,
         latitude: formState.location.data.Latitude,
         longitude: formState.location.data.Longitude,
       })
@@ -65,13 +67,28 @@ function GpsForm({btnName, formState, isLoading, setIsLoading}) {
         </div>
 
         <div>
-          <label htmlFor='userId'>User ID</label>
-          <Input placeholder='Enter User ID' {...register('userId')} required />
+          <label htmlFor='primaryStatus'>Primary Status</label>
+          <Input placeholder="Work Order's Primary Status" {...register('primaryStatus')} />
         </div>
 
         <div>
-          <label htmlFor='techsCount'>Number of Technicians Present</label>
-          <Input placeholder='Number of Technicians Present' {...register('techsCount')} required />
+          <label htmlFor='extendedStatus'>Extended Status</label>
+          <Input placeholder="Work Order's Extended Status" {...register('extendedStatus')} />
+        </div>
+
+        <div>
+          <label htmlFor='actionStatus'>Action Status</label>
+          <Input placeholder='Current Action Status' {...register('actionStatus')} />
+        </div>
+
+        <div>
+          <label htmlFor='resolution'>Resolution</label>
+          <Input placeholder="Work Order's Resolution" {...register('resolution')} />
+        </div>
+
+        <div>
+          <label htmlFor='userId'>User ID</label>
+          <Input placeholder='Enter User ID' {...register('userId')} required />
         </div>
 
         <div>
@@ -90,4 +107,4 @@ function GpsForm({btnName, formState, isLoading, setIsLoading}) {
     </div>
   )
 }
-export default GpsForm
+export default GpsCheckoutForm

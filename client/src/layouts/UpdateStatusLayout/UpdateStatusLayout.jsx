@@ -1,12 +1,12 @@
-import React, {useState, useEffect} from 'react'
+import {useState} from 'react'
 import WorkOrder from '../../components/WorkOrder/WorkOrder'
-import FormResponse from '../../components/FormResponse/FormResponse'
+import FormResponse from '../../components/FormResponse/UpdateStatusFormResponse.jsx'
 import Summary from '../../components/Summary/Summary'
 import './updateStatusLayout.css'
 
 function UpdateStatusLayout() {
-  const [formState, setFormState] = React.useState(null)
-  const [isLoading, setIsLoading] = React.useState(false)
+  const [formState, setFormState] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   return (
     <div className='update-status-layout'>

@@ -1,21 +1,24 @@
 import './checkoutPageLayout.css'
 import WorkorderSearch from '../../components/WorkorderSearch/WorkorderSearch'
 import FormResponse from '../../components/FormResponse/FormResponse'
-import GpsForm from '../../components/Gps/GpsForm'
+import GpsCheckoutForm from '../../components/Gps/GpsCheckoutForm'
+import {useState} from 'react'
 
 function CheckoutPageLayout() {
+  const [workorderInfo, setWorkorderInfo] = useState(null) //state to store workorder info
+  const [isLoading, setIsLoading] = useState(false)
+
   return (
     <div className='checkout-page-layout'>
-      <WorkorderSearch />
+      <WorkorderSearch setWorkorderInfo={setWorkorderInfo} setIsLoading={setIsLoading} />
       <div className='popup-form'>
-        {/* 50% */}
-        <div className='form-response' style={{width: '50%'}}>
-          <FormResponse />
+        <div className='form-response' style={{ width: '50%' }}>
+          <FormResponse formState={workorderInfo} isLoading={isLoading} />
         </div>
 
-        {/* this will be a component with 50%*/}
-        <div className='gps-form' style={{width: '50%'}}>
-          <GpsForm btnName={'Check Out'} />
+        <div className='gps-form' style={{ width: '50%' }}>
+          {/* create & use a separate GPSCheckoutForm */}
+          <GpsCheckoutForm btnName={'Check Out'} formState={workorderInfo} isLoading={isLoading} setIsLoading={setIsLoading} />
         </div>
       </div>
     </div>

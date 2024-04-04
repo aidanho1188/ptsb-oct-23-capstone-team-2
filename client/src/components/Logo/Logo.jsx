@@ -1,4 +1,5 @@
 import {Button} from '@/components/ui/button'
+import logo from '@/assets/logo.svg'
 import './logo.css'
 
 function Logo() {
@@ -8,7 +9,7 @@ function Logo() {
 
   return (
     <div className='logo-layout'>
-      <img src='https://www.outsideunlimited.com/wp-content/uploads/2023/07/logo.svg' alt='Logo' onClick={handleClick} />
+      <img src={logo} alt='Logo' onClick={handleClick} />
     </div>
   )
 }
