@@ -13,7 +13,7 @@ function NavMenu() {
                 <path d='M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'></path>
                 <circle cx='8.5' cy='7' r='4'></circle>
                 <polyline points='17 11 19 13 23 9'></polyline>
-              </svg>{' '}
+              </svg>
               Check In
             </NavigationMenuLink>
           </NavigationMenuItem>
@@ -27,6 +27,15 @@ function NavMenu() {
                 <line x1='23' y1='8' x2='18' y2='13'></line>
               </svg>
               Check Out
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+
+          <NavigationMenuItem>
+            <NavigationMenuLink href='/workorder-create' className='nav-link'>
+              <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='#61CE70' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
+                <path d='M3 3h18v18H3zM12 8v8m-4-4h8' />
+              </svg>
+              Create Work Order
             </NavigationMenuLink>
           </NavigationMenuItem>
 
