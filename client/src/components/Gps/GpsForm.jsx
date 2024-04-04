@@ -7,7 +7,7 @@ import './GpsForm.css'
 
 function GpsForm({btnName, formState, isLoading, setIsLoading}) {
   const {register, handleSubmit, reset} = useForm({
-    defaultValues: {workTypeId: 1, userId: '', techsCount: 1, latitude: '', longitude: ''},
+    defaultValues: {workTypeId: 1, userId: 0, techsCount: 1, latitude: 0, longitude: 0},
   })
 
   const onSubmit = async (event) => {
@@ -36,7 +36,7 @@ function GpsForm({btnName, formState, isLoading, setIsLoading}) {
     )
     console.log(' check in response:', response)
     if (response.data.success === true) {
-      formState.success = `Check In Successful ${response.MechanicId}`
+      formState.success = `Check In Successful!`
     } else {
       formState.workorder = response.data
     }
