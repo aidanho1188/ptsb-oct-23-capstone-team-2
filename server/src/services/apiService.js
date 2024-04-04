@@ -119,6 +119,7 @@ async function sendCheckOutRequest(req) {
   console.log(`Working on checking out work order from Service Channel...`)
   const workOrderId = req.params.workOrderId
   const {WorkTypeId, PrimaryStatus, ExtendedStatus, ActionStatus, Resolution, UserId, Latitude, Longitude} = req.body
+
   try {
     const response = await axios.post(
       `https://sb2api.servicechannel.com/v3/workorders/${workOrderId}/universalCheckOut`,
@@ -131,6 +132,7 @@ async function sendCheckOutRequest(req) {
         UserId: UserId,
         Latitude: Latitude,
         Longitude: Longitude,
+        CheckOutTime: new Date().toISOString(),
       },
       {
         headers: {
@@ -140,9 +142,11 @@ async function sendCheckOutRequest(req) {
         responseType: 'json',
       },
     )
+    console.log('response:', response)
     const data = response.data
     return data
   } catch (error) {
+    console.log(error)
     console.log('Error checking out work order:', error.response.data)
     return error.response.data
   }
