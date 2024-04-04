@@ -9,6 +9,7 @@ const awaitingQuote = require('./awaitingQuote')
 const updateStatus = require('./updateStatus')
 const recents = require('./recents')
 const checkIn = require('./checkIn')
+const checkOut = require('./checkOut')
 
 const router = express.Router()
 
@@ -20,6 +21,7 @@ router.use('/awaitingQuote', handleExpiredToken, awaitingQuote)
 router.use('/updateStatus', handleExpiredToken, updateStatus)
 // localhost:8080/api/workorders/checkIn/workOrderId
 router.use('/checkIn', handleExpiredToken, checkIn)
+router.use('/checkOut', handleExpiredToken, checkOut)
 
 // get recent work orders from DB
 router.use('/recents', recents)
