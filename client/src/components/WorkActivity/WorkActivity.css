@@ -1,0 +1,41 @@
+/* WorkActivity.css */
+
+.card-container {
+  margin: 20px;
+  padding: 20px;
+  height: 100%;
+  width: 100%;
+}
+
+.activity-scroll {
+  overflow: hidden;
+  height: 75vh;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.space-y-1-5 > * + * {
+  margin-top: 1.5rem; /* Adjust the space between elements */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+  grid-gap: 20px; /* Add gap between grid items */
+}
+
+@media (max-width: 768px) {
+  /* Media query to adjust layout on smaller screens */
+  .grid {
+    grid-template-columns: repeat(1, 1fr); /* Change to single column layout */
+  }
+}
