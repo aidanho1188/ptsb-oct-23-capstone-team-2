@@ -18,14 +18,15 @@ function GpsForm({btnName, formState, isLoading, setIsLoading}) {
     // send these data with the body
     const {workTypeId, userId, techsCount, latitude, longitude} = event
     setIsLoading(true)
+    // console.log('workTypeId: ', workTypeId)
     const response = await axios.post(
       `http://localhost:8080/api/workorders/checkIn/${workorderId}`,
       {
-        workTypeId: workTypeId.value,
-        userId: userId.value,
-        techsCount: techsCount.value,
-        latitude: latitude.value,
-        longitude: longitude.value,
+        workTypeId: workTypeId,
+        userId: userId,
+        techsCount: techsCount,
+        latitude: latitude,
+        longitude: longitude,
       },
       {
         headers: {
@@ -38,6 +39,7 @@ function GpsForm({btnName, formState, isLoading, setIsLoading}) {
     if (response.data.success === true) {
       formState.success = `Check In Successful!`
     } else {
+      // this is bad
       formState.workorder = response.data
     }
     setIsLoading(false)

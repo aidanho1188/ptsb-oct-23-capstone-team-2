@@ -18,7 +18,8 @@ function GpsCheckoutForm({btnName, formState, isLoading, setIsLoading}) {
     // send these data with the body
     const {workTypeId, primaryStatus, extendedStatus, actionStatus, resolution, userId, latitude, longitude} = event
     setIsLoading(true)
-    console.log('workorderId:', workorderId)
+    // console.log('event: ', event)
+    // console.log('primaryStatus', primaryStatus.value)
     const response = await axios.post(
       `http://localhost:8080/api/workorders/checkOut/${workorderId}`,
       {
