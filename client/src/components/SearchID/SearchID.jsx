@@ -1,15 +1,9 @@
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-import { Button } from '@/components/ui/button'
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
+import {zodResolver} from '@hookform/resolvers/zod'
+import {useForm} from 'react-hook-form'
+import {z} from 'zod'
+import {Button} from '@/components/ui/button'
+import {Form, FormControl, FormField, FormItem, FormMessage} from '@/components/ui/form'
+import {Input} from '@/components/ui/input'
 import './SearchID.css'
 
 const formSchema = z.object({
@@ -30,15 +24,11 @@ function SearchID() {
             <FormField
               control={form.control}
               name='Workorder ID'
-              render={({ field }) => (
+              render={({field}) => (
                 <FormItem>
                   <div className='search-bar'>
                     <FormControl>
-                      <Input
-                        placeholder='Enter work order ID...'
-                        {...field}
-                        className='search-input'
-                      />
+                      <Input placeholder='Enter work order ID...' {...field} className='search-input' />
                     </FormControl>
                     <FormMessage />
                   </div>
@@ -47,9 +37,9 @@ function SearchID() {
             />
           </form>
         </Form>
-      </div>
-      <div className='search-btn'>
-        <Button type='search'>Search</Button>
+        <div className='search-btn'>
+          <Button type='search'>Search</Button>
+        </div>
       </div>
     </div>
   )

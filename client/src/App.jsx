@@ -33,17 +33,17 @@ const router = createBrowserRouter([
     element: <LoginPage />,
   },
   {
-
     path: '/create-workorder',
-    element: <CreateWorkorderPage  />
+    element: <CreateWorkorderPage />,
   },
   {
     path: '/work-activity',
     element: <WorkActivityPage />,
   },
+  {
     path: '/workorder-create',
     element: <CreateWorkorderPage />,
-  }
+  },
 ])
 
 function App() {
