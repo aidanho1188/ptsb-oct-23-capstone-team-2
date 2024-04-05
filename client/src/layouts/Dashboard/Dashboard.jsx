@@ -1,50 +1,65 @@
-import React, {useState, useEffect} from 'react'
-import axios from 'axios'
-import TablePlaceholder from '../../components/DashboardPlaceholder/TablePlaceholder'
-import DashboardChart from '../../components/DashboardChart/DashboardChart'
-import './dashboard.css'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import DashboardCards from "../../components/DashboardCards/DashboardCards";
+import DashboardChart from "../../components/DashboardChart/DashboardChart";
+import "./dashboard.css";
 
 function Dashboard() {
-  const [openWorkOrdersData, setOpenWorkOrdersData] = useState()
-  const [onSiteData, setOnSiteData] = useState()
-  const [incompleteData, setIncompleteData] = useState()
-  const [missedCheckInData, setMissedCheckInData] = useState()
-  const [awaitingQuoteData, setAwaitingQuoteData] = useState()
-  const [completedData, setCompletedData] = useState()
+  const [openWorkOrdersData, setOpenWorkOrdersData] = useState();
+  const [onSiteData, setOnSiteData] = useState();
+  const [incompleteData, setIncompleteData] = useState();
+  const [missedCheckInData, setMissedCheckInData] = useState();
+  const [awaitingQuoteData, setAwaitingQuoteData] = useState();
+  const [completedData, setCompletedData] = useState();
 
   useEffect(() => {
     const fetchData = async (url, setData) => {
       try {
-        const response = await axios.get(url)
-        setData(response.data.value)
+        const response = await axios.get(url);
+        setData(response.data.value);
       } catch (error) {
         if (error.response.status === 502) {
-          alert('Service Channel is down. Please try again later.')
+          alert("Service Channel is down. Please try again later.");
         }
-        console.error(`Error fetching data from ${url}: `, error)
+        console.error(`Error fetching data from ${url}: `, error);
       }
-    }
+    };
 
-    fetchData('http://localhost:8080/api/workorders/open', setOpenWorkOrdersData)
-    fetchData('http://localhost:8080/api/workorders/onSite', setOnSiteData)
-    fetchData('http://localhost:8080/api/workorders/incomplete', setIncompleteData)
-    fetchData('http://localhost:8080/api/workorders/open', setMissedCheckInData)
-    fetchData('http://localhost:8080/api/workorders/awaitingQuote', setAwaitingQuoteData)
-    fetchData('http://localhost:8080/api/workorders/completed', setCompletedData)
-  }, [])
+    fetchData(
+      "http://localhost:8080/api/workorders/open",
+      setOpenWorkOrdersData
+    );
+    fetchData("http://localhost:8080/api/workorders/onSite", setOnSiteData);
+    fetchData(
+      "http://localhost:8080/api/workorders/incomplete",
+      setIncompleteData
+    );
+    fetchData(
+      "http://localhost:8080/api/workorders/open",
+      setMissedCheckInData
+    );
+    fetchData(
+      "http://localhost:8080/api/workorders/awaitingQuote",
+      setAwaitingQuoteData
+    );
+    fetchData(
+      "http://localhost:8080/api/workorders/completed",
+      setCompletedData
+    );
+  }, []);
 
   return (
-    <div className='dashboard'>
-      <TablePlaceholder title='Open' data={openWorkOrdersData} />
-      <TablePlaceholder title='On Site' data={onSiteData} />
-      <TablePlaceholder title='Incomplete' data={incompleteData} />
-      <TablePlaceholder title='Missed Check In' data={missedCheckInData} />
-      <TablePlaceholder title='Awaiting For Quote' data={awaitingQuoteData} />
-      <TablePlaceholder title='Completed' data={completedData} />
+    <div className="dashboard">
+      <DashboardCards title="Open" data={openWorkOrdersData} />
+      <DashboardCards title="On Site" data={onSiteData} />
+      <DashboardCards title="Incomplete" data={incompleteData} />
+      <DashboardCards title="Missed Check In" data={missedCheckInData} />
+      <DashboardCards title="Awaiting For Quote" data={awaitingQuoteData} />
+      <DashboardCards title="Completed" data={completedData} />
 
       <DashboardChart />
     </div>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;

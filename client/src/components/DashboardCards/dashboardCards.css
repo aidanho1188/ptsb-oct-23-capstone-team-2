@@ -1,0 +1,46 @@
+.scroll {
+  height: 30vh;
+  overflow: hidden;
+}
+
+.table {
+  border: 1px solid #e0e0e0;
+  width: 27vw !important;
+  height: 5vh !important;
+  border-radius: 5px !important;
+  background-color: white !important;
+  color: black !important;
+}
+
+.table-container {
+  display: flex;
+  justify-content: stretch !important;
+  align-items: stretch !important;
+  flex-direction: column;
+  width: 100% !important;
+  height: 100%;
+  margin: 0;
+}
+
+.table h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 1.5em;
+  font-weight: 400;
+  color: #333;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.table-header > * {
+  padding: 0 !important;
+}
+
+.loading-skeleton > * {
+  margin: 1em 1em 1rem 1em !important;
+  padding: 1rem;
+}
+
+.card-main-content {
+  width: fit-content !important;
+}
