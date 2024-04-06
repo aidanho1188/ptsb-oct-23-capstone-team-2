@@ -7,7 +7,7 @@ import {ScrollArea} from '@/components/ui/scroll-area'
 export function WorkActivity() {
   return (
     <ScrollArea className='activity-scroll rounded-md p-4'>
-      <Card className='card-container'>
+      <Card className='card-container rounded-md'>
         <div className='card'>
           <CardContent>
             <div className='grid w-full items-center gap-4'>
