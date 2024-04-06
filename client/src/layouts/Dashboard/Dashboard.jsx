@@ -18,6 +18,7 @@ function Dashboard() {
         const response = await axios.get(url);
         setData(response.data.value);
       } catch (error) {
+        console.log('error', error)
         if (error.response.status === 502) {
           alert("Service Channel is down. Please try again later.");
         }
@@ -25,28 +26,19 @@ function Dashboard() {
       }
     };
 
-    fetchData(
-      "http://localhost:8080/api/workorders/open",
-      setOpenWorkOrdersData
-    );
-    fetchData("http://localhost:8080/api/workorders/onSite", setOnSiteData);
-    fetchData(
-      "http://localhost:8080/api/workorders/incomplete",
-      setIncompleteData
-    );
-    fetchData(
-      "http://localhost:8080/api/workorders/open",
-      setMissedCheckInData
-    );
-    fetchData(
-      "http://localhost:8080/api/workorders/awaitingQuote",
-      setAwaitingQuoteData
-    );
-    fetchData(
-      "http://localhost:8080/api/workorders/completed",
-      setCompletedData
-    );
-  }, []);
+    async function fetchAllData() {
+        await Promise.all([
+          fetchData('http://localhost:8080/api/workorders/open', setOpenWorkOrdersData),
+          fetchData('http://localhost:8080/api/workorders/onSite', setOnSiteData),
+          fetchData('http://localhost:8080/api/workorders/incomplete', setIncompleteData),
+          fetchData('http://localhost:8080/api/workorders/open', setMissedCheckInData),
+          fetchData('http://localhost:8080/api/workorders/awaitingQuote', setAwaitingQuoteData),
+          fetchData('http://localhost:8080/api/workorders/completed', setCompletedData),
+        ])
+    }
+
+    fetchAllData()
+  }, [])
 
   return (
     <div className="dashboard">
@@ -57,7 +49,7 @@ function Dashboard() {
       <DashboardCards title="Awaiting For Quote" data={awaitingQuoteData} />
       <DashboardCards title="Completed" data={completedData} />
 
-      <DashboardChart />
+      <DashboardChart open={openWorkOrdersData} onSite={onSiteData} imcomplete={incompleteData} missedCheckIn={missedCheckInData} awaitingQuote={awaitingQuoteData} completed={completedData} />
     </div>
   );
 }
