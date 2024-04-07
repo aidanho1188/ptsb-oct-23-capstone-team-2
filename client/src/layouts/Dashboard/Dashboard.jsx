@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import DashboardCards from '../../components/DashboardCards/DashboardCards'
 import DashboardChart from '../../components/DashboardChart/DashboardChart'
-import ServerErrorToast from '../../components/ServerErrorToast/ServerErrorToast'
 import {toast} from 'react-toastify'
 
 import './dashboard.css'
@@ -24,7 +23,7 @@ function Dashboard() {
         setData(response.data.value)
       } catch (error) {
         if (!hasShownError) {
-          toast.error(`Error fetching data: ${error.message}`, {autoClose: 10000})
+          toast.error(`Error fetching data: ${error.message}`, {autoClose: 50000})
           hasShownError = true
         }
         setHasError(true)

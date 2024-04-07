@@ -3,6 +3,7 @@ import {Input} from '../ui/input'
 import {useForm} from 'react-hook-form'
 import {useEffect} from 'react'
 import axios from 'axios'
+import {toast} from 'react-toastify'
 import './GpsCheckoutForm.css'
 
 function GpsCheckoutForm({btnName, formState, isLoading, setIsLoading}) {
@@ -14,38 +15,42 @@ function GpsCheckoutForm({btnName, formState, isLoading, setIsLoading}) {
     event.preventDefault
     // send workorder id in the url params
     // localhost:8080/api/workorders/checkOut/:workorderId
-    const workorderId = formState.workorder.data.Id
-    // send these data with the body
-    const {workTypeId, primaryStatus, extendedStatus, actionStatus, resolution, userId, latitude, longitude} = event
-    setIsLoading(true)
-    // console.log('event: ', event)
-    // console.log('primaryStatus', primaryStatus.value)
-    const response = await axios.post(
-      `http://localhost:8080/api/workorders/checkOut/${workorderId}`,
-      {
-        WorkTypeId: workTypeId,
-        PrimaryStatus: primaryStatus,
-        ExtendedStatus: extendedStatus,
-        ActionStatus: actionStatus,
-        Resolution: resolution,
-        UserId: userId,
-        Latitude: latitude,
-        Longitude: longitude,
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
+
+    try {
+      const workorderId = formState.workorder.data.Id
+      // send these data with the body
+      const {workTypeId, primaryStatus, extendedStatus, actionStatus, resolution, userId, latitude, longitude} = event
+      setIsLoading(true)
+      const response = await axios.post(
+        `http://localhost:8080/api/workorders/checkOut/${workorderId}`,
+        {
+          WorkTypeId: workTypeId,
+          PrimaryStatus: primaryStatus,
+          ExtendedStatus: extendedStatus,
+          ActionStatus: actionStatus,
+          Resolution: resolution,
+          UserId: userId,
+          Latitude: latitude,
+          Longitude: longitude,
         },
-        responseType: 'json',
-      },
-    )
-    console.log(' check out response:', response)
-    if (response.data.success === true) {
-      formState.success = `Check Out Successful!`
-    } else {
-      formState.workorder = response.data
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          responseType: 'json',
+        },
+      )
+      console.log(' check out response:', response)
+      if (response.data.success === true) {
+        formState.success = `Check Out Successful!`
+      } else {
+        formState.workorder = response.data
+      }
+      setIsLoading(false)
+    } catch (error) {
+      setIsLoading(false)
+      toast.error(`Error checking out: ${error.message}`, {autoClose: 5000})
     }
-    setIsLoading(false)
   }
 
   useEffect(() => {

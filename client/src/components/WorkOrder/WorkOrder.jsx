@@ -6,6 +6,7 @@ import {Input} from '@/components/ui/input'
 import {Label} from '@/components/ui/label'
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select'
 import axios from 'axios'
+import {toast} from 'react-toastify'
 import './workorder.css'
 
 export function WorkOrder({onFormStateChange, onLoading}) {
@@ -34,6 +35,7 @@ export function WorkOrder({onFormStateChange, onLoading}) {
       }
     } catch (error) {
       console.error(`Error fetching data from ${url}: `, error)
+      toast.error(`Error fetching data: ${error.message}`, {autoClose: 5000})
     }
   }
 

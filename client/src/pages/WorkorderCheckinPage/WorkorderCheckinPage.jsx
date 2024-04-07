@@ -9,7 +9,7 @@ function WorkorderCheckinPage() {
     <div className='workorder-checkin-page-container'>
       <NavBar />
       <BackToDashboard />
-      <h1 className='checkin-page-title'>Check-in</h1>
+      <h1 className='checkin-page-title'>Check-In</h1>
       <CheckinPageLayout />
     </div>
   )
