@@ -1,6 +1,11 @@
 const mongoose = require('mongoose')
 
 const WorkorderSchema = new mongoose.Schema({
+  WorkOrderId: {
+    type: Number,
+    required: true,
+    unique: true,
+  },
   ContractInfo: {
     StoreId: {
       type: String,

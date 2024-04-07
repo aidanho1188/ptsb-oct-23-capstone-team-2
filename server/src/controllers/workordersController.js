@@ -1,5 +1,6 @@
 const express = require('express')
 const axios = require('axios')
+const WorkOrder = require('../models/WorkOrder.js')
 const getAccessToken = require('../utils/getAccessToken.js')
 const saveUpdatedWorkOrder = require('../utils/saveUpdatedWorkOrder.js')
 const {fetchData, sendStatusUpdateRequest, fetchWorkOrder, fetchLocation, sendCheckInRequest, sendCheckOutRequest} = require('../services/apiService.js')
@@ -147,6 +148,26 @@ const checkOut = async (req, res, next) => {
   }
 }
 
+const create = async (req, res, next) => {
+  const workOrder = req.body
+  try {
+    // save work order to database
+    const newWorkOrderId = saveWorkOrder(workOrder)
+    res.json({
+      success: true,
+      message: 'Work order created successfully',
+      workOrderId: newWorkOrderId,
+    })
+  } catch (error) {
+    console.log(error)
+    res.json({
+      success: false,
+      message: 'Error creating work order',
+      error: error,
+    })
+  }
+}
+
 module.exports = {
   open,
   onSite,
@@ -159,4 +180,5 @@ module.exports = {
   getLocation,
   checkIn,
   checkOut,
+  create,
 }
