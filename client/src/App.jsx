@@ -9,6 +9,8 @@ import WorkorderCheckoutPage from './pages/WorkorderCheckoutPage/WorkorderChecko
 import LoginPage from './pages/LoginPage/LoginPage.jsx'
 import CreateWorkorderPage from './pages/CreateWorkorderPage/CreateWorkorderPage.jsx'
 import WorkActivityPage from './pages/WorkActivityPage/WorkActivity.jsx'
+import {ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -51,6 +53,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
+      <ToastContainer position='bottom-right' />
     </QueryClientProvider>
   )
 }
