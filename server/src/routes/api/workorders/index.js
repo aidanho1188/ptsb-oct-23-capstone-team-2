@@ -10,6 +10,7 @@ const updateStatus = require('./updateStatus')
 const recents = require('./recents')
 const checkIn = require('./checkIn')
 const checkOut = require('./checkOut')
+const create = require('./create')
 
 const router = express.Router()
 
@@ -25,6 +26,7 @@ router.use('/checkOut', handleExpiredToken, checkOut)
 
 // get recent work orders from DB
 router.use('/recents', recents)
+router.use('/create', create)
 
 // localhost:8080/api/workorders/locations/locationId
 router.get('/locations/:locationId', handleExpiredToken, workordersController.getLocation)
