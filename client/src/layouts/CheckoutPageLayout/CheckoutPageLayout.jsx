@@ -3,6 +3,7 @@ import WorkorderSearch from '../../components/WorkorderSearch/WorkorderSearch'
 import FormResponse from '../../components/FormResponse/FormResponse'
 import GpsCheckoutForm from '../../components/Gps/GpsCheckoutForm'
 import axios from 'axios'
+import {toast} from 'react-toastify'
 import {useState} from 'react'
 
 function CheckoutPageLayout() {
@@ -38,6 +39,7 @@ function CheckoutPageLayout() {
       setIsLoading(false)
     } catch (error) {
       console.error('Error fetching work order:', error)
+      toast.error(`Error fetching work order: ${error.message}`, {autoClose: 5000})
     }
   }
 

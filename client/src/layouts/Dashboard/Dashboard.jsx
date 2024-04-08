@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import DashboardCards from '../../components/DashboardCards/DashboardCards'
 import DashboardChart from '../../components/DashboardChart/DashboardChart'
+import {toast} from 'react-toastify'
+
 import './dashboard.css'
 
 function Dashboard() {
@@ -11,18 +13,20 @@ function Dashboard() {
   const [missedCheckInData, setMissedCheckInData] = useState()
   const [awaitingQuoteData, setAwaitingQuoteData] = useState()
   const [completedData, setCompletedData] = useState()
+  const [hasError, setHasError] = useState(false)
 
   useEffect(() => {
+    let hasShownError = false
     const fetchData = async (url, setData) => {
       try {
         const response = await axios.get(url)
         setData(response.data.value)
       } catch (error) {
-        console.log('error', error)
-        if (error.response.status === 502) {
-          alert('Service Channel is down. Please try again later.')
+        if (!hasShownError) {
+          toast.error(`Error fetching data: ${error.message}`, {autoClose: 50000})
+          hasShownError = true
         }
-        console.error(`Error fetching data from ${url}: `, error)
+        setHasError(true)
       }
     }
 
