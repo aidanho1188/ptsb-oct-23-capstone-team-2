@@ -1,13 +1,17 @@
 import {Button} from '@/components/ui/button'
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger} from '@/components/ui/dropdown-menu'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import './accountmenu.css'
 
 const AccountMenu = () => {
   const [username, setUsername] = useState('Default User')
 
-  let name = setUsername(JSON.stringify(localStorage.getItem('user')))
-  console.log(name)
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user')).username
+    if (user) {
+      setUsername(user)
+    }
+  }, [])
 
   return (
     <div className='account-menu-layout'>
@@ -18,7 +22,7 @@ const AccountMenu = () => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className='dropdown-menu-content'>
-          <DropdownMenuLabel>{name}</DropdownMenuLabel>
+          <DropdownMenuLabel>{username}</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem>Profile</DropdownMenuItem>
           {/* <DropdownMenuItem>Billing</DropdownMenuItem> */}

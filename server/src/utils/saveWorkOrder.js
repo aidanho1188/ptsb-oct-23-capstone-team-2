@@ -7,9 +7,9 @@ function saveWorkOrder(data) {
     const workOrder = new WorkOrder({
       WorkOrderId: workOrderId,
       ContractInfo: {
-        StoreId: data.ContractInfo.StoreId,
-        TradeName: data.ContractInfo.TradeName,
-        ProviderId: data.ContractInfo.ProviderId,
+        StoreId: data.StoreId,
+        TradeName: data.TradeName,
+        ProviderId: data.ProviderId,
       },
       Category: data.Category,
       Priority: data.Priority,
@@ -18,8 +18,8 @@ function saveWorkOrder(data) {
       ScheduledDate: data.ScheduledDate,
       Description: data.Description,
       Status: {
-        Primary: data.Status.Primary,
-        Extended: data.Status.Extended,
+        Primary: data.Primary,
+        Extended: data.Extended,
       },
     })
     workOrder.save()
