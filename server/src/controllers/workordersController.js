@@ -153,7 +153,7 @@ const create = async (req, res, next) => {
   const workOrder = req.body
   try {
     // save work order to database
-    const newWorkOrderId = saveWorkOrder(workOrder)
+    const newWorkOrderId = await saveWorkOrder(workOrder)
     res.json({
       success: true,
       message: 'Work order created successfully',
@@ -169,7 +169,6 @@ const create = async (req, res, next) => {
   }
 }
 
-
 /*
 function for the work activites and for a work order
 const respone for fetchWorkOrder
@@ -177,8 +176,6 @@ const respone for fetchWorkOrder
 const response for workOrderActivities
 - pull rest of work order activity
 */
-
-
 
 module.exports = {
   open,

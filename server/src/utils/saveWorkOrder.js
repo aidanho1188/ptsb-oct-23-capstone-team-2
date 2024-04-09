@@ -1,9 +1,10 @@
 const WorkOrder = require('../models/WorkOrder')
 const generateWorkOrderId = require('./generateWorkOrderId')
 
-function saveWorkOrder(data) {
+async function saveWorkOrder(data) {
   try {
-    const workOrderId = generateWorkOrderId()
+    const workOrderId = await generateWorkOrderId()
+    console.log('WorkOrderId:', workOrderId)
     const workOrder = new WorkOrder({
       WorkOrderId: workOrderId,
       ContractInfo: {

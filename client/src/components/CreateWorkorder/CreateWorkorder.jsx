@@ -139,7 +139,7 @@ export function CreateWorkorder() {
   const categories = ['CAPEX', 'EMS', 'MAINTENANCE', 'PARTS ORDER', 'REPAIR', 'WARRANTY']
   const priorities = ['P1 - 4 Hours', 'P2 - 8 Hours', 'P3 - 24 Hours', 'P4 - 72 Hours', 'P5 - 1 Week', 'Project/Schedule', 'NORMAL', 'EMERGENCY']
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     // Handle form submission logic here
     console.log('callDate', callDate)
@@ -154,7 +154,7 @@ export function CreateWorkorder() {
     console.log('Store ID', event.target['store-id'].value)
     try {
       // Call the API to create a new work order
-      const response = axios.post('http://localhost:8080/api/workorders/create', {
+      const response = await axios.post('http://localhost:8080/api/workorders/create', {
         CallDate: callDate,
         ScheduledDate: scheduledDate,
         TradeName: tradeName,
@@ -168,7 +168,7 @@ export function CreateWorkorder() {
         StoreId: event.target['store-id'].value,
       })
       const workorderId = response.data.workOrderId
-      toast.success(`Work order created successfully: ${workorderId}`, {autoClose: false})
+      toast.success(`Work order created successfully! ID: ${workorderId}`, {autoClose: false})
     } catch (error) {
       toast.error(`Error creating work order: ${error.message}`, {autoClose: 10000})
     }
