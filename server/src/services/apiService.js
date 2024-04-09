@@ -23,7 +23,7 @@ async function fetchData(endpoint, select, filter) {
   return data
 }
 
-async function fetchWorkOrder(workOrderId, select = 'Id,LocationId,Trade,Status') {
+async function fetchWorkOrder(workOrderId, select = 'Id,Location.Id,Trade,Status') {
   console.log(`Working on fetching data from Service Channel...`)
   try {
     const response = await axios.get(`https://sb2api.servicechannel.com/v3/odata/workorders(${workOrderId})?$select=${select}`, {
@@ -40,6 +40,25 @@ async function fetchWorkOrder(workOrderId, select = 'Id,LocationId,Trade,Status'
     return error.response.data
   }
 }
+
+async function fetchWorkActivities(workOrderId, select) {
+  console.log('Workin on fetching data from Service Channel...')
+  try {
+    const response = await axios.get(`https://sb2api.servicechannel.com/v3/odata/workorders(${workorderId})/workactivities`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${await getAccessToken(tokenType)}`,
+      },
+      responseType: 'json',
+    })
+    const getStoreId = fetchWorkOrder(workOrderId, `Location.StoreId`, {
+      $select: 'Location.StoreId',
+    })
+    
+  }
+}
+
+
 
 async function fetchLocation(locationId) {
   console.log(`Working on fetching data from Service Channel...`)

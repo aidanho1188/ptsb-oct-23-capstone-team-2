@@ -168,6 +168,17 @@ const create = async (req, res, next) => {
   }
 }
 
+
+/*
+function for the work activites and for a work order
+const respone for fetchWorkOrder
+- pulls the storeid
+const response for workOrderActivities
+- pull rest of work order activity
+*/
+
+
+
 module.exports = {
   open,
   onSite,
