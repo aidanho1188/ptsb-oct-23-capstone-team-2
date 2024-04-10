@@ -4,7 +4,7 @@ const WorkOrder = require('../models/WorkOrder.js')
 const getAccessToken = require('../utils/getAccessToken.js')
 const saveUpdatedWorkOrder = require('../utils/saveUpdatedWorkOrder.js')
 const saveWorkOrder = require('../utils/saveWorkOrder.js')
-const {fetchData, sendStatusUpdateRequest, fetchWorkOrder, fetchLocation, sendCheckInRequest, sendCheckOutRequest} = require('../services/apiService.js')
+const {fetchData, sendStatusUpdateRequest, fetchWorkOrder, fetchLocation, sendCheckInRequest, sendCheckOutRequest, fetchWorkActivities} = require('../services/apiService.js')
 const getupdateWorkOrders = require('../utils/getUpdatedWorkOrder.js')
 
 const open = async (req, res, next) => {
@@ -83,7 +83,7 @@ const getRecentsWorkorders = async (req, res, next) => {
 }
 
 const getWorkOrderByID = async (req, res, next) => {
-  console.log('Getting work order by id')
+  console.log('data7: getting work order by id')
   try {
     const data = await fetchWorkOrder(req.params.workOrderId)
     res.json(data)
@@ -104,7 +104,7 @@ const getLocation = async (req, res, next) => {
 const checkIn = async (req, res, next) => {
   try {
     const response = await sendCheckInRequest(req)
-    console.log('verifying req send for check in')
+    console.log('data8: verifying req send for check in')
     let result = {success: null, message: '', data: response}
     if (response && response.hasOwnProperty('MechanicId')) {
       result = {
@@ -128,7 +128,7 @@ const checkIn = async (req, res, next) => {
 const checkOut = async (req, res, next) => {
   try {
     const response = await sendCheckOutRequest(req)
-    console.log('verifying req send for check out')
+    console.log('data9: verifying req send for check out')
     let result = {success: null, message: '', data: response}
     if (response && response.hasOwnProperty('MechanicId')) {
       result = {
@@ -169,13 +169,24 @@ const create = async (req, res, next) => {
   }
 }
 
-/*
-function for the work activites and for a work order
-const respone for fetchWorkOrder
-- pulls the storeid
-const response for workOrderActivities
-- pull rest of work order activity
-*/
+const getActivities = async (req, res, next) => {
+  try {
+    const workOrderId = req.params.workOrderId
+    const data = await fetchWorkActivities(workOrderId)
+    res.json({
+      success: true,
+      message: 'Work order retrieved successfully',
+      data: data,
+    })
+  } catch (error) {
+    console.log(error)
+    res.json({
+      success: false,
+      message: 'Error retrieving work order',
+      error: error,
+    })
+  }
+}
 
 module.exports = {
   open,
@@ -190,4 +201,5 @@ module.exports = {
   checkIn,
   checkOut,
   create,
+  getActivities,
 }

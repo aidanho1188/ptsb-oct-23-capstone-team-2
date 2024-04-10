@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react'
 import './accountmenu.css'
 
 const AccountMenu = () => {
-  const [username, setUsername] = useState('Default User')
+  const [username, setUsername] = useState("Default User");
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'))
@@ -15,10 +15,10 @@ const AccountMenu = () => {
   }, [])
 
   return (
-    <div className='account-menu-layout'>
+    <div className="account-menu-layout">
       <DropdownMenu>
-        <DropdownMenuTrigger className='dropdown-menu-trigger'>
-          <Button variant='outline' className='account-btn'>
+        <DropdownMenuTrigger className="dropdown-menu-trigger">
+          <Button variant="outline" className="account-btn">
             Account
           </Button>
         </DropdownMenuTrigger>
@@ -32,7 +32,7 @@ const AccountMenu = () => {
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
-  )
-}
+  );
+};
 
-export default AccountMenu
+export default AccountMenu;

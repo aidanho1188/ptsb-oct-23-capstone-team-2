@@ -11,6 +11,7 @@ const recents = require('./recents')
 const checkIn = require('./checkIn')
 const checkOut = require('./checkOut')
 const create = require('./create')
+const activities = require('./activities')
 
 const router = express.Router()
 
@@ -20,6 +21,8 @@ router.use('/incomplete', handleExpiredToken, incomplete)
 router.use('/completed', handleExpiredToken, completed)
 router.use('/awaitingQuote', handleExpiredToken, awaitingQuote)
 router.use('/updateStatus', handleExpiredToken, updateStatus)
+router.use('/activities', handleExpiredToken, activities)
+
 // localhost:8080/api/workorders/checkIn/workOrderId
 router.use('/checkIn', handleExpiredToken, checkIn)
 router.use('/checkOut', handleExpiredToken, checkOut)
