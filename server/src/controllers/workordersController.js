@@ -1,18 +1,11 @@
-const express = require("express");
-const axios = require("axios");
-const WorkOrder = require("../models/WorkOrder.js");
-const getAccessToken = require("../utils/getAccessToken.js");
-const saveUpdatedWorkOrder = require("../utils/saveUpdatedWorkOrder.js");
-const {
-  fetchData,
-  sendStatusUpdateRequest,
-  fetchWorkOrder,
-  fetchLocation,
-  sendCheckInRequest,
-  sendCheckOutRequest,
-  fetchWorkActivities,
-} = require("../services/apiService.js");
-const getupdateWorkOrders = require("../utils/getUpdatedWorkOrder.js");
+const express = require('express')
+const axios = require('axios')
+const WorkOrder = require('../models/WorkOrder.js')
+const getAccessToken = require('../utils/getAccessToken.js')
+const saveUpdatedWorkOrder = require('../utils/saveUpdatedWorkOrder.js')
+const saveWorkOrder = require('../utils/saveWorkOrder.js')
+const {fetchData, sendStatusUpdateRequest, fetchWorkOrder, fetchLocation, sendCheckInRequest, sendCheckOutRequest} = require('../services/apiService.js')
+const getupdateWorkOrders = require('../utils/getUpdatedWorkOrder.js')
 
 const open = async (req, res, next) => {
   try {
@@ -184,7 +177,7 @@ const create = async (req, res, next) => {
   const workOrder = req.body;
   try {
     // save work order to database
-    const newWorkOrderId = saveWorkOrder(workOrder);
+    const newWorkOrderId = await saveWorkOrder(workOrder)
     res.json({
       success: true,
       message: "Work order created successfully",
