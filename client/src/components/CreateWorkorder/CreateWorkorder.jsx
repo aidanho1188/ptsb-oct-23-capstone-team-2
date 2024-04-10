@@ -198,7 +198,7 @@ export function CreateWorkorder() {
         <Label htmlFor='provider-id'>Provider Id</Label>
         <Input id='provider-id' placeholder='Enter Provider Id' />
       </div>
-      <Separator />
+
       <div className='category'>
         <Label htmlFor='category'>Category</Label>
         <Select id='category' onValueChange={handleCategoryChange}>
@@ -273,7 +273,6 @@ export function CreateWorkorder() {
         <Input id='description' placeholder='Enter Description' />
       </div>
 
-      <Separator />
       <div className='status'>
         <h2>Status</h2>
         <Label htmlFor='primary'>Primary Status</Label>
