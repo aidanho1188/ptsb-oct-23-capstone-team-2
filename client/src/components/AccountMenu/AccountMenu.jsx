@@ -7,9 +7,10 @@ const AccountMenu = () => {
   const [username, setUsername] = useState('Default User')
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user')).username
+    const user = JSON.parse(localStorage.getItem('user'))
     if (user) {
-      setUsername(user)
+      const username = user.username || 'Guest'
+      setUsername(username)
     }
   }, [])
 
