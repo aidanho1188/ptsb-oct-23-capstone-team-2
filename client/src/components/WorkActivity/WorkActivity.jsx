@@ -4,7 +4,7 @@ import {Input} from '@/components/ui/input'
 import {Label} from '@/components/ui/label'
 import {ScrollArea} from '@/components/ui/scroll-area'
 
-export function WorkActivity() {
+export function WorkActivity({workorderActivity}) {
   return (
     <ScrollArea className='activity-scroll rounded-md p-4'>
       <Card className='card-container rounded-md'>
@@ -24,8 +24,8 @@ export function WorkActivity() {
                 <div className='rounded p-2'>User Name</div>
               </div>
               <div className='flex flex-col space-y-1.5'>
-                <Label>Location Id</Label>
-                <div className='rounded p-2'>GPS location</div>
+                <Label>Store Id</Label>
+                <div className='rounded p-2'>Store Number</div>
               </div>
               <div className='flex flex-col space-y-1.5'>
                 <Label>Resolution Code</Label>
