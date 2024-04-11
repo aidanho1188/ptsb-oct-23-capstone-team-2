@@ -11,7 +11,6 @@ function SearchID({handleSearch}) {
     event.preventDefault()
     handleSearch(workOrderId)
   }
-
   return (
     <div className='search-form'>
       <div className='search-form-container'>
