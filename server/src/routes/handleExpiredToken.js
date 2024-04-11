@@ -3,7 +3,8 @@ const UserToken = require('../models/UserToken.js')
 const {refetchAccessToken} = require('../services/tokenService.js')
 const axios = require('axios')
 const getAccessToken = require('../utils/getAccessToken.js')
-let accessToken = getAccessToken('sandbox')
+const tokenType =process.env.TOKEN_TYPE
+let accessToken = getAccessToken(tokenType)
 let expiryTime = 9 * 60 * 1000
 
 async function handleExpiredToken(req, res, next) {
@@ -13,14 +14,14 @@ async function handleExpiredToken(req, res, next) {
       const response = await axios.get('https://sb2api.servicechannel.com/v3/test/notifications1', {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${await getAccessToken('sandbox')}`,
+          Authorization: `Bearer ${await getAccessToken(tokenType)}`,
         },
         ResponseType: 'json',
       })
       next()
     } else {
       console.log('Access Token is still valid')
-      const response = await getAccessToken('sandbox')
+      const response = await getAccessToken(tokenType)
       accessToken = response.token
       expiryTime = Date.now() + response.expires_in * 1000
     }

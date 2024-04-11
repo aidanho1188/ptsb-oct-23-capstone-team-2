@@ -1,41 +1,47 @@
 import './WorkActivity.css'
-import {Card, CardContent} from '@/components/ui/card'
-import {Input} from '@/components/ui/input'
-import {Label} from '@/components/ui/label'
-import {ScrollArea} from '@/components/ui/scroll-area'
+import { Card, CardContent } from '@/components/ui/card'
+import { Label } from '@/components/ui/label'
+import { ScrollArea } from '@/components/ui/scroll-area'
+import { useEffect, useState } from 'react'
 
-export function WorkActivity({workorderActivity}) {
+export function WorkActivity({ workorderActivity }) {
+  if (!workorderActivity) {
+    return <div>Loading...</div>
+  }
+
   return (
     <ScrollArea className='activity-scroll rounded-md p-4'>
       <Card className='card-container rounded-md'>
         <div className='card'>
           <CardContent>
-            <div className='grid w-full items-center gap-4'>
-              <div className='flex flex-col space-y-1.5 '>
-                <Label>Time In</Label>
-                <div className='rounded p-2'>Time Checked In</div>
+            {workorderActivity.map((activity, index) => (
+              <div key={index} className='grid w-full items-center gap-4'>
+                <div className='flex flex-col space-y-1.5'>
+                  <Label>Time In</Label>
+                  <div className='rounded p-2'>{activity.timeIn}</div>
+                </div>
+                <div className='flex flex-col space-y-1.5'>
+                  <Label>Time Out</Label>
+                  <div className='rounded p-2'>{activity.timeOut}</div>
+                </div>
+                <div className='flex flex-col space-y-1.5'>
+                  <Label>User Id</Label>
+                  <div className='rounded p-2'>{activity.userId}</div>
+                </div>
+                <div className='flex flex-col space-y-1.5'>
+                  <Label>Store Id</Label>
+                  <div className='rounded p-2'>{activity.storeId}</div>
+                </div>
+                <div className='flex flex-col space-y-1.5'>
+                  <Label>Resolution Code</Label>
+                  <div className='rounded p-2'>{activity.resolutionCode}</div>
+                </div>
+                <div className='flex flex-col space-y-1.5'>
+                  <Label>Techs Count</Label>
+                  <div className='rounded p-2'>{activity.techsCount}</div>
+                </div>
               </div>
-              <div className='flex flex-col space-y-1.5'>
-                <Label>Time Out</Label>
-                <div className=' rounded p-2'>Time Checked Out</div>
-              </div>
-              <div className='flex flex-col space-y-1.5'>
-                <Label>User Id</Label>
-                <div className='rounded p-2'>User Name</div>
-              </div>
-              <div className='flex flex-col space-y-1.5'>
-                <Label>Store Id</Label>
-                <div className='rounded p-2'>Store Number</div>
-              </div>
-              <div className='flex flex-col space-y-1.5'>
-                <Label>Resolution Code</Label>
-                <div className='rounded p-2'>Res Code</div>
-              </div>
-              <div className='flex flex-col space-y-1.5'>
-                <Label>Techs Count</Label>
-                <div className='rounded p-2'>Number of Techs Present</div>
-              </div>
-            </div>
+            ))}
           </CardContent>
         </div>
       </Card>
