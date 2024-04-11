@@ -1,44 +1,93 @@
 import './WorkActivity.css'
 import {Card, CardContent} from '@/components/ui/card'
-import {Input} from '@/components/ui/input'
 import {Label} from '@/components/ui/label'
 import {ScrollArea} from '@/components/ui/scroll-area'
+import {useEffect, useState} from 'react'
+import {Separator} from '@/components/ui/separator'
 
 export function WorkActivity({workorderActivity}) {
+  function reformatTime(time) {
+    let date = new Date(time)
+    let formattedDate = date.toLocaleString()
+    return formattedDate
+  }
+
+  if (!workorderActivity) {
+    return (
+      <ScrollArea className='activity-scroll rounded-md p-4'>
+        <Card className='card-container rounded-md'>
+          <div className='card'>
+            <CardContent>
+              <div className='grid w-full items-center gap-4'>
+                <div className='flex flex-col space-y-1.5'>
+                  <Label>Time In</Label>
+                  <div className='rounded p-2'>Time In</div>
+                </div>
+                <div className='flex flex-col space-y-1.5'>
+                  <Label>Time Out</Label>
+                  <div className='rounded p-2'>Time Out</div>
+                </div>
+                <div className='flex flex-col space-y-1.5'>
+                  <Label>User Id</Label>
+                  <div className='rounded p-2'>User Id</div>
+                </div>
+                <div className='flex flex-col space-y-1.5'>
+                  <Label>Store Id</Label>
+                  <div className='rounded p-2'>Store Id</div>
+                </div>
+                <div className='flex flex-col space-y-1.5'>
+                  <Label>Resolution Code</Label>
+                  <div className='rounded p-2'>Resolution Code</div>
+                </div>
+                <div className='flex flex-col space-y-1.5'>
+                  <Label>Techs Count</Label>
+                  <div className='rounded p-2'>Techs Count</div>
+                </div>
+              </div>
+            </CardContent>
+          </div>
+        </Card>
+      </ScrollArea>
+    )
+  }
+
   return (
     <ScrollArea className='activity-scroll rounded-md p-4'>
-      <Card className='card-container rounded-md'>
-        <div className='card'>
-          <CardContent>
-            <div className='grid w-full items-center gap-4'>
-              <div className='flex flex-col space-y-1.5 '>
-                <Label>Time In</Label>
-                <div className='rounded p-2'>Time Checked In</div>
-              </div>
-              <div className='flex flex-col space-y-1.5'>
-                <Label>Time Out</Label>
-                <div className=' rounded p-2'>Time Checked Out</div>
-              </div>
-              <div className='flex flex-col space-y-1.5'>
-                <Label>User Id</Label>
-                <div className='rounded p-2'>User Name</div>
-              </div>
-              <div className='flex flex-col space-y-1.5'>
-                <Label>Store Id</Label>
-                <div className='rounded p-2'>Store Number</div>
-              </div>
-              <div className='flex flex-col space-y-1.5'>
-                <Label>Resolution Code</Label>
-                <div className='rounded p-2'>Res Code</div>
-              </div>
-              <div className='flex flex-col space-y-1.5'>
-                <Label>Techs Count</Label>
-                <div className='rounded p-2'>Number of Techs Present</div>
-              </div>
+      {workorderActivity.value &&
+        [...workorderActivity.value].reverse().map((activity, index) => (
+          <Card className='card-container rounded-md'>
+            <div className='card'>
+              <CardContent>
+                <div key={index} className='grid w-full items-center gap-4'>
+                  <div className='flex flex-col space-y-1.5'>
+                    <Label>Time In</Label>
+                    <div className='rounded p-2'>{reformatTime(activity.TimeIn)}</div>
+                  </div>
+                  <div className='flex flex-col space-y-1.5'>
+                    <Label>Time Out</Label>
+                    <div className='rounded p-2'>{reformatTime(activity.TimeOut)}</div>
+                  </div>
+                  <div className='flex flex-col space-y-1.5'>
+                    <Label>User Id</Label>
+                    <div className='rounded p-2'>{activity.User.Id}</div>
+                  </div>
+                  <div className='flex flex-col space-y-1.5'>
+                    <Label>Full Name</Label>
+                    <div className='rounded p-2'>{activity.User.FullName}</div>
+                  </div>
+                  <div className='flex flex-col space-y-1.5'>
+                    <Label>Resolution Code</Label>
+                    <div className='rounded p-2'>{activity.ResolutionCode}</div>
+                  </div>
+                  <div className='flex flex-col space-y-1.5'>
+                    <Label>Techs Count</Label>
+                    <div className='rounded p-2'>{activity.TechsCount}</div>
+                  </div>
+                </div>
+              </CardContent>
             </div>
-          </CardContent>
-        </div>
-      </Card>
+          </Card>
+        ))}
     </ScrollArea>
   )
 }
