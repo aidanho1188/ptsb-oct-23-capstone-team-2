@@ -31,14 +31,18 @@ function Dashboard() {
     }
 
     async function fetchAllData() {
-      await Promise.all([
-        fetchData('http://localhost:8080/api/workorders/open', setOpenWorkOrdersData),
-        fetchData('http://localhost:8080/api/workorders/onSite', setOnSiteData),
-        fetchData('http://localhost:8080/api/workorders/incomplete', setIncompleteData),
-        fetchData('http://localhost:8080/api/workorders/open', setMissedCheckInData),
-        fetchData('http://localhost:8080/api/workorders/awaitingQuote', setAwaitingQuoteData),
-        fetchData('http://localhost:8080/api/workorders/completed', setCompletedData),
-      ])
+      try {
+        await Promise.all([
+          fetchData('http://localhost:8080/api/workorders/open', setOpenWorkOrdersData),
+          fetchData('http://localhost:8080/api/workorders/onSite', setOnSiteData),
+          fetchData('http://localhost:8080/api/workorders/incomplete', setIncompleteData),
+          fetchData('http://localhost:8080/api/workorders/open', setMissedCheckInData),
+          fetchData('http://localhost:8080/api/workorders/awaitingQuote', setAwaitingQuoteData),
+          fetchData('http://localhost:8080/api/workorders/completed', setCompletedData),
+        ])
+      } catch (error) {
+        console.log('Error fetching data:', error)
+      }
     }
 
     fetchAllData()
