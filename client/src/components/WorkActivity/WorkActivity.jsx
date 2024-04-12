@@ -7,6 +7,9 @@ import {Separator} from '@/components/ui/separator'
 
 export function WorkActivity({workorderActivity}) {
   function reformatTime(time) {
+    if (!time) {
+      return 'N/A'
+    }
     let date = new Date(time)
     let formattedDate = date.toLocaleString()
     return formattedDate

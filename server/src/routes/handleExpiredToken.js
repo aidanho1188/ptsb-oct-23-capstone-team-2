@@ -15,13 +15,13 @@ async function handleExpiredToken(req, res, next) {
           Authorization: `Bearer ${accessToken}`,
         },
       })
-      console.log('Access Token is still valid', response.data)
       next()
     } else {
       console.log('Access Token is still valid')
       const response = accessToken
       accessToken = response.token
       expiryTime = Date.now() + response.expires_in * 1000
+      next()
     }
   } catch (error) {
     if (error.response.status === 401 || error.response.status === 504) {
