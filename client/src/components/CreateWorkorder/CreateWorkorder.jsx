@@ -179,10 +179,10 @@ export function CreateWorkorder() {
       <h2>Contact Information</h2>
       <div className='contract-info'>
         <Label htmlFor='store-id'>Store ID</Label>
-        <Input id='store-id' placeholder='Enter Store Id' />
+        <Input id='store-id' placeholder='Enter Store Id' required />
 
         <Label htmlFor='trade-name'>Trade Name</Label>
-        <Select id='trade-name' onValueChange={handleTradeNameChange}>
+        <Select id='trade-name' onValueChange={handleTradeNameChange} required>
           <SelectTrigger>
             <SelectValue placeholder='Select' />
           </SelectTrigger>
@@ -196,12 +196,12 @@ export function CreateWorkorder() {
         </Select>
 
         <Label htmlFor='provider-id'>Provider Id</Label>
-        <Input id='provider-id' placeholder='Enter Provider Id' />
+        <Input id='provider-id' placeholder='Enter Provider Id' required />
       </div>
 
       <div className='category'>
         <Label htmlFor='category'>Category</Label>
-        <Select id='category' onValueChange={handleCategoryChange}>
+        <Select id='category' onValueChange={handleCategoryChange} required>
           <SelectTrigger>
             <SelectValue placeholder='Select' />
           </SelectTrigger>
@@ -217,7 +217,7 @@ export function CreateWorkorder() {
 
       <div className='priority'>
         <Label htmlFor='priority'>Priority</Label>
-        <Select id='priority' onValueChange={handlePriorityChange}>
+        <Select id='priority' onValueChange={handlePriorityChange} required>
           <SelectTrigger>
             <SelectValue placeholder='Select' />
           </SelectTrigger>
@@ -233,7 +233,7 @@ export function CreateWorkorder() {
 
       <div>
         <Label htmlFor='nte'>Nte</Label>
-        <Input id='nte' placeholder='Enter Nte' />
+        <Input id='nte' placeholder='Enter Nte' required />
       </div>
 
       <div className='space-y-1'>
@@ -276,7 +276,7 @@ export function CreateWorkorder() {
       <div className='status'>
         <h2>Status</h2>
         <Label htmlFor='primary'>Primary Status</Label>
-        <Select id='primary' onValueChange={handlePrimaryStatusChange}>
+        <Select id='primary' onValueChange={handlePrimaryStatusChange} required>
           <SelectTrigger>
             <SelectValue placeholder='Select' />
           </SelectTrigger>
@@ -287,7 +287,7 @@ export function CreateWorkorder() {
         </Select>
 
         <Label htmlFor='extended'>Extended Status (optional)</Label>
-        <Select id='extended' onValueChange={handleExtendedStatusChange}>
+        <Select id='extended' onValueChange={handleExtendedStatusChange} required>
           <SelectTrigger>
             <SelectValue placeholder='Select' />
           </SelectTrigger>
