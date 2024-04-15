@@ -9,13 +9,13 @@ import './GpsCheckoutForm.css'
 
 function GpsCheckoutForm({btnName, formState, isLoading, setIsLoading}) {
   const {register, handleSubmit, reset} = useForm({
-    defaultValues: {workTypeId: 1, primaryStatus: 'NoStatusChange', extendedStatus: '', actionStatus: 'Complete', resolution: '', userId: 0, latitude: 0, longitude: 0},
+    defaultValues: {workTypeId: 1, primaryStatus: 'InProgress', extendedStatus: 'Incomplete', actionStatus: 'Complete', resolution: '', userId: 0, latitude: 0, longitude: 0},
   })
-  const [primaryStatus, setPrimaryStatus] = useState('NoStatusChange')
+  // const [primaryStatus, setPrimaryStatus] = useState('InProgress')
 
-  const handlePrimaryStatusChange = (event) => {
-    setPrimaryStatus(event.target.value)
-  }
+  // const handlePrimaryStatusChange = (event) => {
+  //   setPrimaryStatus(event.target.value)
+  // }
 
   const onSubmit = async (event) => {
     event.preventDefault
@@ -23,7 +23,7 @@ function GpsCheckoutForm({btnName, formState, isLoading, setIsLoading}) {
     try {
       const workorderId = formState.workorder.data.Id
       // send these data with the body
-      const {workTypeId, extendedStatus, actionStatus, resolution, userId, latitude, longitude} = event
+      const {workTypeId, primaryStatus, extendedStatus, actionStatus, resolution, userId, latitude, longitude} = event
       setIsLoading(true)
       const response = await axios.post(
         `http://localhost:8080/api/workorders/checkOut/${workorderId}`,
@@ -31,7 +31,7 @@ function GpsCheckoutForm({btnName, formState, isLoading, setIsLoading}) {
           WorkTypeId: workTypeId,
           PrimaryStatus: primaryStatus,
           ExtendedStatus: extendedStatus,
-          ActionStatus: actionStatus,
+          // ActionStatus: actionStatus,
           Resolution: resolution,
           UserId: userId,
           Latitude: latitude,
@@ -61,6 +61,8 @@ function GpsCheckoutForm({btnName, formState, isLoading, setIsLoading}) {
     if (formState && formState.userId && formState.location) {
       reset({
         workTypeId: 1,
+        primaryStatus: 'InProgress',
+        extendedStatus: 'Incomplete',
         userId: formState.userId.data,
         latitude: formState.location.data.Latitude,
         longitude: formState.location.data.Longitude,
@@ -78,19 +80,7 @@ function GpsCheckoutForm({btnName, formState, isLoading, setIsLoading}) {
 
         <div>
           <label htmlFor='primaryStatus'>Primary Status</label>
-          <Select id='primaryStatus' onChange={handlePrimaryStatusChange}>
-            <SelectTrigger>
-              <SelectValue placeholder='Select' />
-            </SelectTrigger>
-            <SelectContent position='popper'>
-              <SelectItem value='NoStatuschange'>No Status change</SelectItem>
-              <SelectItem value='InProgress'>In Progress</SelectItem>
-              <SelectItem value='WaitingForQuote'>Waiting For Quote</SelectItem>
-              <SelectItem value='PartsOnOrder'>Parts On Order</SelectItem>
-              <SelectItem value='Incomplete'>Incomplete</SelectItem>
-              <SelectItem value='Completed'>Completed</SelectItem>
-            </SelectContent>
-          </Select>
+          <Input placeholder="Work Order's Primary Status" {...register('primaryStatus')} />
         </div>
 
         <div>
@@ -98,10 +88,10 @@ function GpsCheckoutForm({btnName, formState, isLoading, setIsLoading}) {
           <Input placeholder="Work Order's Extended Status" {...register('extendedStatus')} />
         </div>
 
-        <div>
+        {/* <div>
           <label htmlFor='actionStatus'>Action Status</label>
           <Input placeholder='Current Action Status' {...register('actionStatus')} />
-        </div>
+        </div> */}
 
         <div>
           <label htmlFor='resolution'>Resolution</label>

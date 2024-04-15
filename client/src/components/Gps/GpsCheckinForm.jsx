@@ -30,11 +30,11 @@ function GpsCheckinForm({btnName, formState, isLoading, setIsLoading}) {
       const response = await axios.post(
         `http://localhost:8080/api/workorders/checkIn/${workorderId}`,
         {
-          workTypeId: workTypeId,
-          userId: userId,
-          techsCount: techsCount,
-          latitude: latitude,
-          longitude: longitude,
+          WorkTypeId: workTypeId,
+          UserId: userId,
+          TechsCount: techsCount,
+          Latitude: latitude,
+          Longitude: longitude,
         },
         {
           headers: {

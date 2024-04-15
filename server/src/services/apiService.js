@@ -117,6 +117,7 @@ async function sendCheckInRequest(req) {
   const workOrderId = req.params.workOrderId
   const {WorkTypeId, UserId, TechsCount, Latitude, Longitude} = req.body
   try {
+    console.log(`workOrderId: ${workOrderId}, WorkTypeId: ${WorkTypeId}, UserId: ${UserId}, TechsCount: ${TechsCount}, Latitude: ${Latitude}, Longitude: ${Longitude}`)
     const response = await axios.post(
       `https://sb2api.servicechannel.com/v3/workorders/${workOrderId}/universalCheckIn`,
       {
@@ -159,7 +160,7 @@ async function sendCheckOutRequest(req) {
         UserId: UserId,
         Latitude: Latitude,
         Longitude: Longitude,
-        CheckOutTime: new Date().toISOString(),
+        // CheckOutTime: new Date().toISOString(),
       },
       {
         headers: {
