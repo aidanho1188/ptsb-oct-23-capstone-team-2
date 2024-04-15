@@ -7,6 +7,7 @@ const tokenType = process.env.TOKEN_TYPE
 let expiryTime = 9 * 60 * 1000
 
 async function handleExpiredToken(req, res, next) {
+  console.log('Middleware is running...')
   let accessToken = await getAccessToken(tokenType)
   try {
     if (!accessToken || Date.now() > expiryTime) {
@@ -15,13 +16,16 @@ async function handleExpiredToken(req, res, next) {
           Authorization: `Bearer ${accessToken}`,
         },
       })
-      next()
-    } else {
-      console.log('Access Token is still valid')
-      const response = accessToken
-      accessToken = response.token
-      expiryTime = Date.now() + response.expires_in * 1000
-      next()
+
+      if (typeof response.data === 'object') {
+        console.log('Access Token is still valid')
+        console.log(response)
+        next()
+      } else {
+        console.log('Access Token is expired')
+        await refetchAccessToken()
+        next()
+      }
     }
   } catch (error) {
     if (error.response.status === 401 || error.response.status === 504) {
@@ -32,7 +36,7 @@ async function handleExpiredToken(req, res, next) {
       console.log('Server is down')
       res.status(502).send('Server is down')
     } else {
-      console.error('Error:', error)
+      console.error('Error:', error.response.statusText)
       res.status(error.response.status).send(error.response.statusText)
       next()
     }

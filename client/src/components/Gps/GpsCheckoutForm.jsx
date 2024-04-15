@@ -1,25 +1,29 @@
 import {Button} from '../ui/button'
 import {Input} from '../ui/input'
 import {useForm} from 'react-hook-form'
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import axios from 'axios'
 import {toast} from 'react-toastify'
+import {Select, SelectTrigger, SelectContent, SelectItem, SelectValue} from '@/components/ui/select'
 import './GpsCheckoutForm.css'
 
 function GpsCheckoutForm({btnName, formState, isLoading, setIsLoading}) {
   const {register, handleSubmit, reset} = useForm({
     defaultValues: {workTypeId: 1, primaryStatus: 'NoStatusChange', extendedStatus: '', actionStatus: 'Complete', resolution: '', userId: 0, latitude: 0, longitude: 0},
   })
+  const [primaryStatus, setPrimaryStatus] = useState('NoStatusChange')
+
+  const handlePrimaryStatusChange = (event) => {
+    setPrimaryStatus(event.target.value)
+  }
 
   const onSubmit = async (event) => {
     event.preventDefault
-    // send workorder id in the url params
-    // localhost:8080/api/workorders/checkOut/:workorderId
 
     try {
       const workorderId = formState.workorder.data.Id
       // send these data with the body
-      const {workTypeId, primaryStatus, extendedStatus, actionStatus, resolution, userId, latitude, longitude} = event
+      const {workTypeId, extendedStatus, actionStatus, resolution, userId, latitude, longitude} = event
       setIsLoading(true)
       const response = await axios.post(
         `http://localhost:8080/api/workorders/checkOut/${workorderId}`,
@@ -74,7 +78,19 @@ function GpsCheckoutForm({btnName, formState, isLoading, setIsLoading}) {
 
         <div>
           <label htmlFor='primaryStatus'>Primary Status</label>
-          <Input placeholder="Work Order's Primary Status" {...register('primaryStatus')} />
+          <Select id='primaryStatus' onChange={handlePrimaryStatusChange}>
+            <SelectTrigger>
+              <SelectValue placeholder='Select' />
+            </SelectTrigger>
+            <SelectContent position='popper'>
+              <SelectItem value='NoStatuschange'>No Status change</SelectItem>
+              <SelectItem value='InProgress'>In Progress</SelectItem>
+              <SelectItem value='WaitingForQuote'>Waiting For Quote</SelectItem>
+              <SelectItem value='PartsOnOrder'>Parts On Order</SelectItem>
+              <SelectItem value='Incomplete'>Incomplete</SelectItem>
+              <SelectItem value='Completed'>Completed</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
 
         <div>
