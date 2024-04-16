@@ -6,9 +6,9 @@ import './formResponse.css'
 
 function FormResponse({form, formState, isLoading}) {
   function handleResponse(formState) {
-    console.log('data:', formState.data.result)
-    console.log('formState:', formState)
-    console.log('formState.workorder:', formState.workorder)
+    // console.log('data:', formState.data.result)
+    // console.log('formState:', formState)
+    // console.log('formState.workorder:', formState.workorder)
     if (!formState.data.ErrorCode) {
       if (formState.data.result !== '') {
         return `<strong>Success</strong>: ${formState.data.result}`

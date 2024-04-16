@@ -10,24 +10,24 @@ function DashboardChart({isLoading, open, onSite, incomplete, missedCheckIn, awa
       // fill: '#5FC6FF',
     },
     {
-      name: 'Awaiting Quote',
-      'Work Order': awaitingQuote ? awaitingQuote.length : 0,
-      // fill: '#F48FB1',
-    },
-    {
       name: 'On Site',
       'Work Order': onSite ? onSite.length : 0,
       // fill: '#000080',
     },
     {
-      name: 'In Progress',
-      'Work Order': onSite ? onSite.length : 0,
+      name: 'Incomplete',
+      'Work Order': incomplete ? incomplete.length : 0,
       // fill: '#8B0000',
     },
     {
-      name: 'Incomplete',
-      'Work Order': incomplete ? incomplete.length : 0,
-      // fill: '#FFD700',
+      name: 'Approved Proposals',
+      'Work Order': missedCheckIn ? missedCheckIn.length : 0,
+      // fill: '#8B0000',
+    },
+    {
+      name: 'Waiting For Quote',
+      'Work Order': awaitingQuote ? awaitingQuote.length : 0,
+      // fill: '#F48FB1',
     },
     {
       name: 'Completed',
