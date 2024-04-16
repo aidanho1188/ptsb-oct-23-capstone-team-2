@@ -1,82 +1,66 @@
-import {
-  BarChart,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Legend,
-  Bar,
-} from "recharts";
-import "./dashboardChart.css";
-import { useEffect } from "react";
+import {BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar} from 'recharts'
+import './dashboardChart.css'
+import {useEffect} from 'react'
 
-function DashboardChart({
-  isLoading,
-  open,
-  onSite,
-  incomplete,
-  missedCheckIn,
-  awaitingQuote,
-  completed,
-}) {
+function DashboardChart({isLoading, open, onSite, incomplete, missedCheckIn, awaitingQuote, completed}) {
   let data = [
     {
-      name: "Open",
-      Open: open ? open.length : 0,
-      fill: "#5FC6FF",
+      name: 'Open',
+      'Work Order': open ? open.length : 0,
+      // fill: '#5FC6FF',
     },
     {
-      name: "Awaiting Quote",
-      "Awaiting Quote": awaitingQuote ? awaitingQuote.length : 0,
-      fill: "#F48FB1",
+      name: 'Awaiting Quote',
+      'Work Order': awaitingQuote ? awaitingQuote.length : 0,
+      // fill: '#F48FB1',
     },
     {
-      name: "On Site",
-      "On Site": onSite ? onSite.length : 0,
-      fill: "#000080",
+      name: 'On Site',
+      'Work Order': onSite ? onSite.length : 0,
+      // fill: '#000080',
     },
     {
-      name: "In Progress",
-      "In Progress": onSite ? onSite.length : 0,
-      fill: "#8B0000",
+      name: 'In Progress',
+      'Work Order': onSite ? onSite.length : 0,
+      // fill: '#8B0000',
     },
     {
-      name: "Incomplete",
-      Incomplete: incomplete ? incomplete.length : 0,
-      fill: "#FFD700",
+      name: 'Incomplete',
+      'Work Order': incomplete ? incomplete.length : 0,
+      // fill: '#FFD700',
     },
     {
-      name: "Completed",
-      Completed: completed ? completed.length : 0,
-      fill: "#800080",
+      name: 'Completed',
+      'Work Order': completed ? completed.length : 0,
+      // fill: '#800080',
     },
-  ];
+  ]
 
   return (
     <BarChart width={1500} height={450} data={data}>
-      <CartesianGrid strokeDasharray="1 2" fill="#4f4f4f" />
-      <XAxis dataKey="name" stroke="white" />
+      <CartesianGrid strokeDasharray='1 2' fill='#00541A' />
+      <XAxis dataKey='name' stroke='white' />
       <YAxis
-        stroke="white"
+        stroke='white'
         label={{
-          value: "No. Work Orders",
+          value: 'No. Work Orders',
           angle: -90,
-          position: "insideBottomLeft",
-          fill: "black",
+          position: 'insideBottomLeft',
+          fill: 'white',
           offset: 15,
           fontSize: 18,
         }}
       />
       <Tooltip />
       <Legend />
-      <Bar dataKey="Open" stackId="a" fill="#5FC6FF" radius={[10, 10, 0, 0]} />
-      <Bar
+      <Bar dataKey='Work Order' stackId='a' fill='#61CE70' radius={[10, 10, 0, 0]} />
+      {/* <Bar
         dataKey="Awaiting Quote"
         stackId="a"
         fill="#F48FB1"
         radius={[10, 10, 0, 0]}
-      />
-      <Bar
+      /> */}
+      {/* <Bar
         dataKey="On Site"
         stackId="a"
         fill="#000080"
@@ -99,9 +83,9 @@ function DashboardChart({
         stackId="a"
         fill="#800080"
         radius={[10, 10, 0, 0]}
-      />
+      /> */}
     </BarChart>
-  );
+  )
 }
 
-export default DashboardChart;
+export default DashboardChart

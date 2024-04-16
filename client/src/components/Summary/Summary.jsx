@@ -64,7 +64,7 @@ function Summary({isResponseLoading}) {
               <>
                 {Array.isArray(workorders) &&
                   workorders.map((workorder) => (
-                    <TableRow key={workorder.workorderId}>
+                    <TableRow>
                       <HoverCard>
                         <HoverCardTrigger>
                           <TableCell className='w-[100px]'>{workorder.workorderId}</TableCell>

@@ -1,58 +1,50 @@
-import * as React from "react";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Separator } from "@/components/ui/separator";
-import "./formResponse.css";
+import * as React from 'react'
+import {Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter} from '@/components/ui/card'
+import {Skeleton} from '@/components/ui/skeleton'
+import {Separator} from '@/components/ui/separator'
+import './formResponse.css'
 
-function FormResponse({ form, formState, isLoading }) {
+function FormResponse({form, formState, isLoading}) {
   function handleResponse(formState) {
-    console.log("data:", formState);
-    console.log("formState:", formState);
-    console.log("formState.workorder:", formState.workorder);
-    if (
-      !formState.workorder.data.ErrorCode &&
-      typeof formState.workorder.data !== "string"
-    ) {
-      return `<strong>Success</strong>: ${formState.success}`;
+    console.log('data:', formState.data.result)
+    console.log('formState:', formState)
+    console.log('formState.workorder:', formState.workorder)
+    if (!formState.data.ErrorCode) {
+      if (formState.data.result !== '') {
+        return `<strong>Success</strong>: ${formState.data.result}`
+      } else {
+        return `<strong>Success</strong>: Status has already been updated`
+      }
     } else {
-      return `<strong>Failed</strong>: ${
-        formState.workorder.data.ErrorMessage || formState.workorder.data
-      }`;
+      return `<strong>Failed</strong>: ${formState.data.ErrorMessage}`
     }
   }
 
   if (isLoading) {
     return (
-      <Card className="form-response-layout">
+      <Card className='form-response-layout'>
         <CardHeader>
           <CardTitle>
-            <div className="form-loading-skeleton">
-              <Skeleton className="h-4" />
+            <div className='form-loading-skeleton'>
+              <Skeleton className='h-4' />
             </div>
           </CardTitle>
         </CardHeader>
         <Separator />
         <CardContent>
-          <div className="form-loading-skeleton">
-            <Skeleton className="h-4" />
-            <Skeleton className="h-1" />
-            <Skeleton className="h-1" />
+          <div className='form-loading-skeleton'>
+            <Skeleton className='h-4' />
+            <Skeleton className='h-1' />
+            <Skeleton className='h-1' />
           </div>
         </CardContent>
       </Card>
-    );
+    )
   }
 
   if (!formState) {
     return (
-      <Card className="form-response-layout">
+      <Card className='form-response-layout'>
         <CardHeader>
           <CardTitle>Form Response</CardTitle>
         </CardHeader>
@@ -62,47 +54,42 @@ function FormResponse({ form, formState, isLoading }) {
           <p>Waiting for form submission...</p>
         </CardContent>
       </Card>
-    );
+    )
   }
-  const { userId, workorder, location } = formState;
+  const {userId, workorder, location} = formState
 
   return (
-    <Card className="form-response-layout">
+    <Card className='form-response-layout'>
       <CardHeader>
-        <CardTitle
-          dangerouslySetInnerHTML={{ __html: handleResponse(formState) }}
-        />
+        <CardTitle dangerouslySetInnerHTML={{__html: handleResponse(formState)}} />
       </CardHeader>
       <Separator />
       <CardContent>
         <br />
         <p>
-          <strong>User ID:</strong> {userId?.data || ""}
+          <strong>User ID:</strong> {userId?.data || ''}
         </p>
         <p>
-          <strong>Work Order ID:</strong> {workorder?.data?.Id || ""}
+          <strong>Work Order ID:</strong> {workorder?.data?.Id || ''}
         </p>
         <p>
-          <strong>Status:</strong> {workorder?.data?.Status?.Primary}{" "}
-          {workorder?.data?.Status?.Extended
-            ? `/${workorder.data.Status.Extended}`
-            : "" || ""}
+          <strong>Status:</strong> {workorder?.data?.Status?.Primary} {workorder?.data?.Status?.Extended ? `/${workorder.data.Status.Extended}` : '' || ''}
         </p>
         <p>
-          <strong>Location ID:</strong> {workorder?.data?.LocationId || ""}
+          <strong>Location ID:</strong> {workorder?.data?.LocationId || ''}
         </p>
         <p>
-          <strong>Trade:</strong> {workorder?.data?.Trade || ""}
+          <strong>Trade:</strong> {workorder?.data?.Trade || ''}
         </p>
         <p>
-          <strong>Latitude:</strong> {location?.data?.Latitude || ""}
+          <strong>Latitude:</strong> {location?.data?.Latitude || ''}
         </p>
         <p>
-          <strong>Longitude:</strong> {location?.data?.Longitude || ""}
+          <strong>Longitude:</strong> {location?.data?.Longitude || ''}
         </p>
       </CardContent>
     </Card>
-  );
+  )
 }
 
-export default FormResponse;
+export default FormResponse
