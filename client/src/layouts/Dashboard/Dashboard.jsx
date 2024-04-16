@@ -36,7 +36,7 @@ function Dashboard() {
           fetchData('http://localhost:8080/api/workorders/open', setOpenWorkOrdersData),
           fetchData('http://localhost:8080/api/workorders/onSite', setOnSiteData),
           fetchData('http://localhost:8080/api/workorders/incomplete', setIncompleteData),
-          fetchData('http://localhost:8080/api/workorders/open', setMissedCheckInData),
+          fetchData('http://localhost:8080/api/workorders/Proposal', setMissedCheckInData),
           fetchData('http://localhost:8080/api/workorders/awaitingQuote', setAwaitingQuoteData),
           fetchData('http://localhost:8080/api/workorders/completed', setCompletedData),
         ])
@@ -53,7 +53,7 @@ function Dashboard() {
       <DashboardCards title='Open' data={openWorkOrdersData} />
       <DashboardCards title='On Site' data={onSiteData} />
       <DashboardCards title='Incomplete' data={incompleteData} />
-      <DashboardCards title='Missed Check In' data={missedCheckInData} />
+      <DashboardCards title='Approved Proposals' data={missedCheckInData} />
       <DashboardCards title='Awaiting For Quote' data={awaitingQuoteData} />
       <DashboardCards title='Completed' data={completedData} />
 

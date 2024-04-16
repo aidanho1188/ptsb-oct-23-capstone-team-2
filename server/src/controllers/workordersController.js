@@ -17,6 +17,16 @@ const open = async (req, res, next) => {
   }
 }
 
+const proposal = async (req, res, next) => {
+  try {
+    const data = await fetchData('workorders', 'Id,LocationId,Trade,Status,CallDate,UpdatedDate', "Status/Extended eq 'PROPOSAL APPROVED'")
+    console.log('data1: proposal workorders')
+    res.json(data)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const onSite = async (req, res, next) => {
   try {
     const data = await fetchData('workorders', 'Id,LocationId,Trade,Status,CallDate,UpdatedDate', "Status/Extended eq 'ON SITE'")
@@ -190,6 +200,7 @@ const getActivities = async (req, res, next) => {
 
 module.exports = {
   open,
+  proposal,
   onSite,
   incomplete,
   awaitingQuote,
