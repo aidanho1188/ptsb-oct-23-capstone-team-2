@@ -42,7 +42,7 @@ const WorkorderSchema = new mongoose.Schema({
   },
   Description: {
     type: String,
-    required: true,
+    required: false,
   },
   Status: {
     Primary: {

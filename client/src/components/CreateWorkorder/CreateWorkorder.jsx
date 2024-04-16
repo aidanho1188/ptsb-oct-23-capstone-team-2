@@ -286,7 +286,7 @@ export function CreateWorkorder() {
           </SelectContent>
         </Select>
 
-        <Label htmlFor='extended'>Extended Status (optional)</Label>
+        <Label htmlFor='extended'>Extended Status</Label>
         <Select id='extended' onValueChange={handleExtendedStatusChange} required>
           <SelectTrigger>
             <SelectValue placeholder='Select' />

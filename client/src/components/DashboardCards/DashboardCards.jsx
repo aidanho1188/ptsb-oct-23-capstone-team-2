@@ -81,7 +81,7 @@ function DashboardCards({title, data, onHover}) {
               </>
             )}
           </TableBody>
-          {data.length === 0 ? <TableCaption>No data</TableCaption> : null}
+          {data && Array.isArray(data) && data.length === 0 ? <TableCaption>No data</TableCaption> : null}
         </ScrollArea>
       </Table>
     </div>
