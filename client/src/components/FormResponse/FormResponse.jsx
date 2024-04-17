@@ -2,6 +2,7 @@ import * as React from 'react'
 import {Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter} from '@/components/ui/card'
 import {Skeleton} from '@/components/ui/skeleton'
 import {Separator} from '@/components/ui/separator'
+import Map from '../../components/Map/Map'
 import './formResponse.css'
 
 function FormResponse({form, formState, isLoading}) {
@@ -84,6 +85,7 @@ function FormResponse({form, formState, isLoading}) {
           <strong>Longitude:</strong> {location?.data?.Longitude || ''}
         </p>
       </CardContent>
+      <Map lat={location.data.Latitude} lng={location.data.Longitude} />
     </Card>
   )
 }
