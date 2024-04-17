@@ -53,7 +53,7 @@ function DashboardChart({isLoading, open, onSite, incomplete, missedCheckIn, awa
       />
       <Tooltip />
       <Legend />
-      <Bar dataKey='Work Order' stackId='a' fill='#61CE70' radius={[10, 10, 0, 0]} />
+      <Bar dataKey='Work Orders' stackId='a' fill='#61CE70' radius={[10, 10, 0, 0]} />
       {/* <Bar
         dataKey="Awaiting Quote"
         stackId="a"
