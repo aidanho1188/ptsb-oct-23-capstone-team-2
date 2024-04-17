@@ -11,27 +11,29 @@ async function handleExpiredToken(req, res, next) {
   let accessToken = await getAccessToken(tokenType)
   try {
     if (!accessToken || Date.now() > expiryTime) {
-      const response = await axios.post('https://sb2api.servicechannel.com/v3/test/notifications1', {
+      const response = await axios.get('https://sb2api.servicechannel.com/v3/ApplicationAccess', {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       })
 
-      if (typeof response.data === 'object') {
+      if (typeof response.data !== 'string') {
         console.log('Access Token is still valid')
         console.log(response)
         next()
       } else {
         console.log('Access Token is expired')
+        console.log(response)
         await refetchAccessToken()
         next()
       }
     }
   } catch (error) {
-    if (error.response.status === 401 || error.response.status === 504) {
+    console.log('Error:', error.response.data.ErrorCode)
+    if (error.response.status === 401 || error.response.data.ErrorCode === 504) {
       console.log('Attempting to refresh token')
       await refetchAccessToken()
-      next(error)
+      next()
     } else if (error.response.status === 502) {
       console.log('Server is down')
       res.status(502).send('Server is down')

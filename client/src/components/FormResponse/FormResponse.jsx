@@ -85,7 +85,7 @@ function FormResponse({form, formState, isLoading}) {
           <strong>Longitude:</strong> {location?.data?.Longitude || ''}
         </p>
       </CardContent>
-      <Map lat={location.data.Latitude} lng={location.data.Longitude} />
+      <Map lat={location?.data?.Latitude} lng={location?.data?.Longitude} />
     </Card>
   )
 }
