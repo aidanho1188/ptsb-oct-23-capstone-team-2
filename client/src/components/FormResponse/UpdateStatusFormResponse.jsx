@@ -7,8 +7,14 @@ import './formResponse.css'
 function FormResponse({formState, isLoading}) {
   function handleResponse(formState) {
     console.log('data:', formState)
-    if (!formState.data.ErrorCode) {
-      return `<strong>Success</strong>: ${formState.data.result}`
+    console.log('formState:', formState)
+    // console.log('formState.workorder:', formState.workorder)
+    if (formState.data) {
+      if (formState.data.result !== '') {
+        return `<strong>Success</strong>: ${formState.data.result}`
+      } else {
+        return `<strong>Success</strong>: Status has already been updated`
+      }
     } else {
       return `<strong>Failed</strong>: ${formState.data.ErrorMessage}`
     }

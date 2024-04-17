@@ -6,17 +6,13 @@ import './formResponse.css'
 
 function FormResponse({form, formState, isLoading}) {
   function handleResponse(formState) {
-    // console.log('data:', formState.data.result)
-    // console.log('formState:', formState)
-    // console.log('formState.workorder:', formState.workorder)
-    if (!formState.data.ErrorCode) {
-      if (formState.data.result !== '') {
-        return `<strong>Success</strong>: ${formState.data.result}`
-      } else {
-        return `<strong>Success</strong>: Status has already been updated`
-      }
+    console.log('data:', formState)
+    console.log('formState:', formState)
+    console.log('formState.workorder:', formState.workorder)
+    if (!formState.workorder.data.ErrorCode && typeof formState.workorder.data !== 'string') {
+      return `<strong>Success</strong>: ${formState.success}`
     } else {
-      return `<strong>Failed</strong>: ${formState.data.ErrorMessage}`
+      return `<strong>Failed</strong>: ${formState.workorder.data.ErrorMessage || formState.workorder.data}`
     }
   }
 
