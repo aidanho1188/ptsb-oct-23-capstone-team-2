@@ -3,14 +3,14 @@ const axios = require('axios')
 const getRefreshToken = require('../utils/getRefetchToken.js')
 const saveToken = require('../utils/saveToken.js')
 const sendErrorResponse = require('../utils/errorHandler.js')
-const clientId = process.env.CLIENT_ID
-const clientSecret = process.env.CLIENT_SECRET
-const tokenType = process.env.TOKEN_TYPE
+const clientId = process.env.SB_CLIENT_ID
+const clientSecret = process.env.SB_CLIENT_SECRET
+const tokenType = process.env.SB_TOKEN_TYPE
 const grantType = process.env.GRANT_TYPE
 const redirect_uri = process.env.REDIRECT_URI
-const username = process.env.SC_USERNAME
-const password = process.env.SC_PASSWORD
-// const authCode = decodeURIComponent(process.env.AUTH_CODE)
+const username = process.env.SB_PROVIDER_USERNAME
+const password = process.env.SB_PROVIDER_PASSWORD
+const authCode = decodeURIComponent(process.env.AUTH_CODE)
 const currentTime = new Date().getTime()
 const cooldownPeriod = 9 * 60 * 1000
 let lastFetchTime = 0
@@ -41,12 +41,12 @@ async function fetchToken() {
   try {
     console.log('Getting new token...')
     console.log('grantType:', grantType)
-    // console.log('username:', username)
-    // console.log('password:', password)
-    // console.log('authCode:', authCode)
-    // console.log('redirect_uri:', redirect_uri)
-    // const body = `grant_type=${grantType}&code=${authCode}&redirect_uri=${redirect_uri}`
-    const body = `grant_type=${grantType}&username=${username}&password=${password}`
+    console.log('username:', username)
+    console.log('password:', password)
+    console.log('authCode:', authCode)
+    console.log('redirect_uri:', redirect_uri)
+    const body = `grant_type=${grantType}&code=${authCode}&redirect_uri=${redirect_uri}`
+    // const body = `grant_type=${grantType}&username=${username}&password=${password}`
 
     const response = await axios.post('https://sb2login.servicechannel.com/oauth/token', body, {
       headers: {

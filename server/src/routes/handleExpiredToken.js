@@ -3,7 +3,7 @@ const UserToken = require('../models/UserToken.js')
 const {refetchAccessToken} = require('../services/tokenService.js')
 const axios = require('axios')
 const getAccessToken = require('../utils/getAccessToken.js')
-const tokenType = process.env.TOKEN_TYPE
+const tokenType = process.env.SB_TOKEN_TYPE
 let expiryTime = 9 * 60 * 1000
 
 async function handleExpiredToken(req, res, next) {

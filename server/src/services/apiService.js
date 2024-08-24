@@ -1,7 +1,7 @@
 require('dotenv').config()
 const axios = require('axios')
 const getAccessToken = require('../utils/getAccessToken.js')
-const tokenType = process.env.TOKEN_TYPE
+const tokenType = process.env.SB_TOKEN_TYPE
 
 /**
  * Fetches data from the specified endpoint from the Service channel

@@ -1,5 +1,5 @@
 import BackToDashboard from '../components/BackToDashboard/BackToDashboard'
-import React, {useEffect, useRef} from 'react'
+import {useEffect, useRef} from 'react'
 
 function Demo() {
   const iframeRef = useRef(null)
@@ -68,7 +68,7 @@ function Demo() {
           allow='fullscreen'
         ></iframe>
       </div>
-      <a href='https://www.canva.com/design/DAGCJqO_4Lw/8Z_YkBjpQn9HAPwqMorDDg/view?utm_content=DAGCJqO_4Lw&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link' target='_blank' rel='noopener'></a>
+      <a href='https://www.canva.com/design/DAGCJqO_4Lw/8Z_YkBjpQn9HAPwqMorDDg/view' target='_blank' rel='noopener'></a>
     </div>
   )
 }
