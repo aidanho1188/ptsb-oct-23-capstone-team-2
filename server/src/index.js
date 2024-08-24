@@ -17,6 +17,10 @@ app.listen(port, async () => {
   console.log(`Server listening at http://localhost:${port}`)
 })
 
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
 async function dbConnect() {
   try {
     await mongoose.connect(DB_URL, {
