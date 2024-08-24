@@ -1,4 +1,4 @@
-const WorkOrder = require('../models/WorkOrder')
+const WorkOrder = require('../models/WorkOrder.js')
 const generateWorkOrderId = require('./generateWorkOrderId')
 
 async function saveWorkOrder(data) {

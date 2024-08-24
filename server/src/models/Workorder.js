@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const WorkorderSchema = new mongoose.Schema({
+const WorkOrderSchema = new mongoose.Schema({
   WorkOrderId: {
     type: Number,
     required: true,
@@ -56,4 +56,4 @@ const WorkorderSchema = new mongoose.Schema({
   },
 })
 
-module.exports = mongoose.model('Workorder', WorkorderSchema)
+module.exports = mongoose.model('WorkOrder', WorkOrderSchema)

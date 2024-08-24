@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import axios from 'axios'
 import DashboardCards from '../../components/DashboardCards/DashboardCards'
 import DashboardChart from '../../components/DashboardChart/DashboardChart'

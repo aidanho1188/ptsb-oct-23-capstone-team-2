@@ -1,6 +1,5 @@
 const express = require('express')
 const axios = require('axios')
-const WorkOrder = require('../models/WorkOrder.js')
 const getAccessToken = require('../utils/getAccessToken.js')
 const saveUpdatedWorkOrder = require('../utils/saveUpdatedWorkOrder.js')
 const saveWorkOrder = require('../utils/saveWorkOrder.js')

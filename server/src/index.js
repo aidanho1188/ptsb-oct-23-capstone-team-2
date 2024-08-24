@@ -12,10 +12,10 @@ app.use(express.urlencoded({extended: true}))
 app.use(cors())
 app.use('/', router)
 
-app.listen(port, async () => {
-  await dbConnect()
-  console.log(`Server listening at http://localhost:${port}`)
-})
+// app.listen(port, async () => {
+//   await dbConnect()
+//   console.log(`Server listening at http://localhost:${port}`)
+// })
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -32,3 +32,7 @@ async function dbConnect() {
     console.error(`Error connecting to MongoDB: ${error}`)
   }
 }
+
+dbConnect()
+
+module.exports = app
