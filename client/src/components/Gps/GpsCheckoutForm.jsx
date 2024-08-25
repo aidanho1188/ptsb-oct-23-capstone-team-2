@@ -25,8 +25,9 @@ function GpsCheckoutForm({btnName, formState, isLoading, setIsLoading}) {
       // send these data with the body
       const {workTypeId, primaryStatus, extendedStatus, actionStatus, resolution, userId, latitude, longitude} = event
       setIsLoading(true)
+      const apiUrl = import.meta.env.VITE_API_URL
       const response = await axios.post(
-        `http://localhost:8080/api/workorders/checkOut/${workorderId}`,
+        `${apiUrl}/api/workorders/checkOut/${workorderId}`,
         {
           WorkTypeId: workTypeId,
           PrimaryStatus: primaryStatus,

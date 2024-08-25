@@ -3,7 +3,6 @@ import axios from 'axios'
 import DashboardCards from '../../components/DashboardCards/DashboardCards'
 import DashboardChart from '../../components/DashboardChart/DashboardChart'
 import {toast} from 'react-toastify'
-
 import './dashboard.css'
 
 function Dashboard() {
@@ -13,6 +12,7 @@ function Dashboard() {
   const [missedCheckInData, setMissedCheckInData] = useState()
   const [awaitingQuoteData, setAwaitingQuoteData] = useState()
   const [completedData, setCompletedData] = useState()
+  // eslint-disable-next-line no-unused-vars
   const [hasError, setHasError] = useState(false)
 
   useEffect(() => {
@@ -32,14 +32,9 @@ function Dashboard() {
 
     async function fetchAllData() {
       try {
-        await Promise.all([
-          fetchData('http://localhost:8080/api/workorders/open', setOpenWorkOrdersData),
-          fetchData('http://localhost:8080/api/workorders/onSite', setOnSiteData),
-          fetchData('http://localhost:8080/api/workorders/incomplete', setIncompleteData),
-          fetchData('http://localhost:8080/api/workorders/Proposal', setMissedCheckInData),
-          fetchData('http://localhost:8080/api/workorders/awaitingQuote', setAwaitingQuoteData),
-          fetchData('http://localhost:8080/api/workorders/completed', setCompletedData),
-        ])
+        const apiUrl = import.meta.env.VITE_API_URL
+        // console.log('apiUrl:', apiUrl)
+        await Promise.all([fetchData(`${apiUrl}/api/workorders/open`, setOpenWorkOrdersData), fetchData(`${apiUrl}/api/workorders/onSite`, setOnSiteData), fetchData(`${apiUrl}/api/workorders/incomplete`, setIncompleteData), fetchData(`${apiUrl}/api/workorders/Proposal`, setMissedCheckInData), fetchData(`${apiUrl}/api/workorders/awaitingQuote`, setAwaitingQuoteData), fetchData(`${apiUrl}/api/workorders/completed`, setCompletedData)])
       } catch (error) {
         console.log('Error fetching data:', error)
       }

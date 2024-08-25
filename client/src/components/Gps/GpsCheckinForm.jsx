@@ -27,8 +27,9 @@ function GpsCheckinForm({btnName, formState, isLoading, setIsLoading}) {
       const {workTypeId, userId, techsCount, latitude, longitude} = event
       setIsLoading(true)
       // console.log('workTypeId: ', workTypeId)
+      const apiUrl = import.meta.env.VITE_API_URL
       const response = await axios.post(
-        `http://localhost:8080/api/workorders/checkIn/${workorderId}`,
+        `${apiUrl}/api/workorders/checkIn/${workorderId}`,
         {
           WorkTypeId: workTypeId,
           UserId: userId,

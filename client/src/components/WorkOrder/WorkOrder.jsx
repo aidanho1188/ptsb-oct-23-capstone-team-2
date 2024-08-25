@@ -24,7 +24,8 @@ export function WorkOrder({onFormStateChange, onLoading}) {
   const handleSubmit = async (event) => {
     event.preventDefault()
     onLoading(true)
-    const url = `http://localhost:8080/api/workorders/updateStatus/${workOrderId}`
+    const apiUrl = import.meta.env.VITE_API_URL
+    const url = `${apiUrl}/api/workorders/updateStatus/${workOrderId}`
     try {
       const response = await axios.patch(url, {
         status: status,

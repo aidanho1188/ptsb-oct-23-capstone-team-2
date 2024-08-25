@@ -21,13 +21,14 @@ function CheckoutPageLayout() {
     console.log('Getting work order info... with id: ', workorderId)
     setIsLoading(true)
     try {
-      const response = await axios.get(`http://localhost:8080/api/workorders/${workorderId}`)
+      const apiUrl = import.meta.env.VITE_API_URL
+      const response = await axios.get(`${apiUrl}/api/workorders/${workorderId}`)
       let data = {workorder: response, location: null, userId: null}
 
       // if success, fetch longitude and latitude and userID
       if (!response.data.ErrorCode && typeof response.data !== 'string') {
         console.log('Work order info:', response.data)
-        const [locationData, userID] = await Promise.all([axios.get(`http://localhost:8080/api/workorders/locations/${response.data.LocationId}`), axios.get(`http://localhost:8080/api/userId`)])
+        const [locationData, userID] = await Promise.all([axios.get(`${apiUrl}/api/workorders/locations/${response.data.LocationId}`), axios.get(`${apiUrl}/api/userId`)])
         data = {
           workorder: response,
           location: locationData,

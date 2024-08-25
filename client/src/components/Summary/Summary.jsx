@@ -3,7 +3,7 @@ import {Skeleton} from '@/components/ui/skeleton'
 import {ScrollArea} from '@/components/ui/scroll-area'
 import {HoverCard, HoverCardTrigger, HoverCardContent} from '@/components/ui/hover-card'
 import axios from 'axios'
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import './summary.css'
 
 function Summary({isResponseLoading}) {
@@ -19,7 +19,8 @@ function Summary({isResponseLoading}) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/workorders/recents')
+        const apiUrl = import.meta.env.VITE_API_URL
+        const response = await axios.get(`${apiUrl}/api/workorders/recents`)
         setWorkorders(response.data)
         setIsLoading(false)
         console.log('Summary:', response.data)

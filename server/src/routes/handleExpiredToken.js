@@ -8,8 +8,9 @@ let expiryTime = 9 * 60 * 1000
 
 async function handleExpiredToken(req, res, next) {
   console.log('Middleware is running...')
-  let accessToken = await getAccessToken(tokenType)
   try {
+    let accessToken = await getAccessToken(tokenType)
+
     if (!accessToken || Date.now() > expiryTime) {
       const response = await axios.get('https://sb2api.servicechannel.com/v3/ApplicationAccess', {
         headers: {
