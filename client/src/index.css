@@ -1,7 +1,7 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
-@import "../app/globals.css";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import '../app/globals.css';
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -27,11 +27,9 @@ body {
   display: flex;
   width: 100%;
   height: fit-content;
-  background-image: linear-gradient(
-    to bottom right,
-    var(--primary-color),
-    var(--secondary-color)
-  );
+  background-image: linear-gradient(to bottom right, var(--primary-color), var(--secondary-color));
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 h1 {
