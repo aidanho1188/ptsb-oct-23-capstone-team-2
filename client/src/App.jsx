@@ -1,4 +1,3 @@
-import * as React from 'react'
 import {QueryClient, QueryClientProvider} from 'react-query'
 import Homepage from './pages/Homepage/Homepage.jsx'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
@@ -12,6 +11,7 @@ import WorkActivityPage from './pages/WorkActivityPage/WorkActivity.jsx'
 import Demo from './pages/Canva.jsx'
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import AboutPage from './pages/AboutPage/AboutPage.jsx'
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -51,6 +51,10 @@ const router = createBrowserRouter([
   {
     path: '/demo',
     element: <Demo />,
+  },
+  {
+    path: '/about',
+    element: <AboutPage />,
   },
 ])
 

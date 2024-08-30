@@ -1,5 +1,4 @@
-import {GridIcon, GroupIcon} from '@radix-ui/react-icons'
-import {NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger} from '@/components/ui/navigation-menu'
+import {NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList} from '@/components/ui/navigation-menu'
 import './navigationMenu.css'
 
 function NavMenu() {
@@ -7,6 +6,17 @@ function NavMenu() {
     <div className='nav-menu-layout'>
       <NavigationMenu>
         <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuLink href='/about' className='nav-link'>
+              <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='#61CE70' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'>
+                <circle cx='12' cy='12' r='10'></circle>
+                <line x1='12' y1='16' x2='12' y2='12'></line>
+                <line x1='12' y1='8' x2='12' y2='8'></line>
+              </svg>
+              About
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+
           <NavigationMenuItem>
             <NavigationMenuLink href='/workorder-checkin' className='nav-link'>
               <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='#61CE70' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'>
@@ -32,7 +42,7 @@ function NavMenu() {
 
           <NavigationMenuItem>
             <NavigationMenuLink href='/workorder-create' className='nav-link'>
-              <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='#61CE70' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
+              <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='#61CE70' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'>
                 <path d='M3 3h18v18H3zM12 8v8m-4-4h8' />
               </svg>
               Create Work Order

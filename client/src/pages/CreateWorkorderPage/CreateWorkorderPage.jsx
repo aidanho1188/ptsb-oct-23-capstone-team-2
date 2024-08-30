@@ -1,4 +1,3 @@
-import React from 'react'
 import CreateWorkorder from '../../components/CreateWorkorder/CreateWorkorder'
 import './CreateWorkorderPage.css'
 import NavBar from '../../layouts/Navbar/NavBar'
