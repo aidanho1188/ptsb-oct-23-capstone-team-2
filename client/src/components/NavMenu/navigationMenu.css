@@ -9,8 +9,12 @@
   display: flex;
   align-items: center;
   font-size: 1rem;
-  padding: 1rem;
+  padding: 0.5rem;
   cursor: pointer;
+}
+
+.nav-link:last-child {
+  border-right: none;
 }
 
 .nav-link svg {

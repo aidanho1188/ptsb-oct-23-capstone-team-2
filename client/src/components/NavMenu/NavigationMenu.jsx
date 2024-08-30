@@ -9,6 +9,18 @@ function NavMenu() {
           <NavigationMenuItem>
             <NavigationMenuLink href='/about' className='nav-link'>
               <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='#61CE70' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'>
+                <rect x='3' y='3' width='7' height='9'></rect>
+                <rect x='14' y='3' width='7' height='5'></rect>
+                <rect x='14' y='12' width='7' height='9'></rect>
+                <rect x='3' y='16' width='7' height='5'></rect>
+              </svg>
+              Dashboard
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+
+          <NavigationMenuItem>
+            <NavigationMenuLink href='/about' className='nav-link'>
+              <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='#61CE70' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'>
                 <circle cx='12' cy='12' r='10'></circle>
                 <line x1='12' y1='16' x2='12' y2='12'></line>
                 <line x1='12' y1='8' x2='12' y2='8'></line>
