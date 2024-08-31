@@ -1,6 +1,10 @@
 import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from '@/components/ui/carousel'
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/components/ui/card'
 import {Separator} from '@/components/ui/separator'
+import mattImage from '@/assets/matt.jpeg'
+import aidanImage from '@/assets/aidan.jpeg'
+import danielaImage from '@/assets/daniela.jpeg'
+import davidImage from '@/assets/david.jpeg'
 
 function TeamCarousel() {
   return (
@@ -17,7 +21,7 @@ function TeamCarousel() {
         <CarouselItem className='basis-1/4 pl-2 md:pl-4'>
           <Card>
             <CardHeader>
-              <img width={280} height={300} className='carousel-image' alt='Matt Picture Here' src='../src/assets/matt.jpeg' />
+              <img width={280} height={300} className='carousel-image' alt='Matt Picture Here' src={mattImage} loading='lazy' />
               <CardTitle>Matt Nolan</CardTitle>
               <CardDescription>Product Owner</CardDescription>
             </CardHeader>
@@ -34,7 +38,7 @@ function TeamCarousel() {
         <CarouselItem className='basis-1/4 pl-2 md:pl-4'>
           <Card>
             <CardHeader>
-              <img width={280} height={300} className='carousel-image' alt='Aidan Picture Here' src='../src/assets/aidan.jpeg' />
+              <img width={280} height={300} className='carousel-image' alt='Aidan Picture Here' src={aidanImage} loading='lazy' />
               <CardTitle>Aidan Ho</CardTitle>
               <CardDescription>Project Leader</CardDescription>
             </CardHeader>
@@ -49,7 +53,7 @@ function TeamCarousel() {
         <CarouselItem className='basis-1/4 pl-2 md:pl-4'>
           <Card>
             <CardHeader>
-              <img width={280} height={300} className='carousel-image' alt='Daniela Picture Here' src='../src/assets/daniela.jpeg' />
+              <img width={280} height={300} className='carousel-image' alt='Daniela Picture Here' src={danielaImage} loading='lazy' />
               <CardTitle>Daniela Watanabe</CardTitle>
               <CardDescription>Fullstack Developer</CardDescription>
             </CardHeader>
@@ -64,7 +68,7 @@ function TeamCarousel() {
         <CarouselItem className='basis-1/4 pl-2 md:pl-4'>
           <Card>
             <CardHeader>
-              <img width={280} height={300} className='carousel-image' alt='David Picture Here' src='../src/assets/david.jpeg' />
+              <img width={280} height={300} className='carousel-image' alt='David Picture Here' src={davidImage} loading='lazy' />
               <CardTitle>David Blumenshine</CardTitle>
               <CardDescription>Fullstack Developer</CardDescription>
             </CardHeader>

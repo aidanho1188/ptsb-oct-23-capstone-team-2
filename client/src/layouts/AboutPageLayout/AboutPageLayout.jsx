@@ -2,13 +2,15 @@ import './aboutPageLayout.css'
 import FAQ from '../../components/FAQ/FAQ'
 import {Separator} from '@/components/ui/separator'
 import TeamCarousel from '../../components/TeamCarousel/TeamCarousel'
+import aidavielaImage from '../../assets/aidaviela.jpeg'
+import outsideunlimitedImage from '../../assets/outsideunlimited_logo.jpeg'
 
 function AboutPageLayout() {
   return (
     <div className='about-page-content'>
       <h2>About Us</h2>
       <div className='about-page-content-block'>
-        <img className='about-page-content-block-image' alt='Picture Here' src='../src/assets/aidaviela.jpeg' />
+        <img className='about-page-content-block-image' alt='Picture Here' src={aidavielaImage} />
         <p>Our mission is to provide a user-friendly and efficient workorder management solution that helps businesses streamline their operations and improve productivity. </p>
       </div>
 
@@ -16,7 +18,7 @@ function AboutPageLayout() {
       <h2>What is the purpose?</h2>
       <div className='about-page-content-block'>
         <p>This app is built for Outside Unlimited to help manage work orders without the need for using the &quot;Service Channel&quot; UI.</p>
-        <img className='about-page-content-block-image' alt='Picture Here' src='../src/assets/outsideunlimited_logo.jpeg' />
+        <img className='about-page-content-block-image' alt='Picture Here' src={outsideunlimitedImage} />
       </div>
 
       <Separator />
