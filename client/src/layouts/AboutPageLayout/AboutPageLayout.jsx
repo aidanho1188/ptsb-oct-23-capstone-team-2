@@ -8,7 +8,7 @@ function AboutPageLayout() {
     <div className='about-page-content'>
       <h2>About Us</h2>
       <div className='about-page-content-block'>
-        <img className='about-page-content-block-image' alt='Picture Here' src='../src/assets/aidaviela.webp' />
+        <img className='about-page-content-block-image' alt='Picture Here' src='../src/assets/aidaviela.jpeg' />
         <p>Our mission is to provide a user-friendly and efficient workorder management solution that helps businesses streamline their operations and improve productivity. </p>
       </div>
 

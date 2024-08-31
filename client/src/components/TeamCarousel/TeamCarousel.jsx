@@ -17,7 +17,7 @@ function TeamCarousel() {
         <CarouselItem className='basis-1/4 pl-2 md:pl-4'>
           <Card>
             <CardHeader>
-              <img width={280} height={300} className='carousel-image' alt='Matt Picture Here' src='../src/assets/matt.webp' />
+              <img width={280} height={300} className='carousel-image' alt='Matt Picture Here' src='../src/assets/matt.jpeg' />
               <CardTitle>Matt Nolan</CardTitle>
               <CardDescription>Product Owner</CardDescription>
             </CardHeader>
@@ -34,7 +34,7 @@ function TeamCarousel() {
         <CarouselItem className='basis-1/4 pl-2 md:pl-4'>
           <Card>
             <CardHeader>
-              <img width={280} height={300} className='carousel-image' alt='Aidan Picture Here' src='../src/assets/aidan.webp' />
+              <img width={280} height={300} className='carousel-image' alt='Aidan Picture Here' src='../src/assets/aidan.jpeg' />
               <CardTitle>Aidan Ho</CardTitle>
               <CardDescription>Project Leader</CardDescription>
             </CardHeader>
@@ -49,7 +49,7 @@ function TeamCarousel() {
         <CarouselItem className='basis-1/4 pl-2 md:pl-4'>
           <Card>
             <CardHeader>
-              <img width={280} height={300} className='carousel-image' alt='Daniela Picture Here' src='../src/assets/daniela.webp' />
+              <img width={280} height={300} className='carousel-image' alt='Daniela Picture Here' src='../src/assets/daniela.jpeg' />
               <CardTitle>Daniela Watanabe</CardTitle>
               <CardDescription>Fullstack Developer</CardDescription>
             </CardHeader>
@@ -64,7 +64,7 @@ function TeamCarousel() {
         <CarouselItem className='basis-1/4 pl-2 md:pl-4'>
           <Card>
             <CardHeader>
-              <img width={280} height={300} className='carousel-image' alt='David Picture Here' src='../src/assets/david.webp' />
+              <img width={280} height={300} className='carousel-image' alt='David Picture Here' src='../src/assets/david.jpeg' />
               <CardTitle>David Blumenshine</CardTitle>
               <CardDescription>Fullstack Developer</CardDescription>
             </CardHeader>
