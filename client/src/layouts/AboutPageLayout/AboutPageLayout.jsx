@@ -3,7 +3,7 @@ import FAQ from '../../components/FAQ/FAQ'
 import {Separator} from '@/components/ui/separator'
 import TeamCarousel from '../../components/TeamCarousel/TeamCarousel'
 import aidavielaImage from '../../assets/aidaviela.jpeg'
-import outsideunlimitedImage from '../../assets/outsideunlimited_logo.jpeg'
+import outsideunlimitedImage from '../../assets/outsideunlimited.jpg'
 
 function AboutPageLayout() {
   return (
