@@ -11,6 +11,7 @@
 .about-page-content h2 {
   font-size: 2em;
   margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .about-page-content-block {
@@ -18,13 +19,33 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  width: 100%;
+  width: 90%;
   padding: 1rem;
   margin-bottom: 1rem;
-  gap: 1rem;
-  border: 1px solid #e0e0e0; /* remove this once we have all the contents in */
+  gap: 2rem;
+  /* border: 1px solid #e0e0e0; remove this once we have all the contents in */
 }
 
 .about-page-content-block img {
   width: 20vw;
+}
+
+.carousel-image {
+  width: 280px;
+  height: 300px;
+  object-fit: cover;
+}
+.about-page-content-team-block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 90%;
+  margin-bottom: 1rem;
+}
+
+.separator {
+  width: 90% !important;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 1rem;
 }
