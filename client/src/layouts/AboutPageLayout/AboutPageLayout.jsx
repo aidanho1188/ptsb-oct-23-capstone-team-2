@@ -14,14 +14,14 @@ function AboutPageLayout() {
         <p>Our mission is to provide a user-friendly and efficient workorder management solution that helps businesses streamline their operations and improve productivity. </p>
       </div>
 
-      <Separator />
+      <Separator className='separator' />
       <h2>What is the purpose?</h2>
       <div className='about-page-content-block'>
         <p>This app is built for Outside Unlimited to help manage work orders without the need for using the &quot;Service Channel&quot; UI.</p>
         <img className='about-page-content-block-image' alt='Picture Here' src={outsideunlimitedImage} />
       </div>
 
-      <Separator />
+      <Separator className='about-page-separator' />
       <h2>How it works?</h2>
       <div className='about-page-content-block flex-col'>
         {/* a Carousel here could work */}
@@ -32,13 +32,13 @@ function AboutPageLayout() {
         <p>and more texts</p>
       </div>
 
-      <Separator />
+      <Separator className='about-page-separator' />
       <h2>Our Team</h2>
       <div className='about-page-content-team-block'>
         <TeamCarousel />
       </div>
 
-      <Separator />
+      <Separator className='about-page-separator' />
       <FAQ />
     </div>
   )

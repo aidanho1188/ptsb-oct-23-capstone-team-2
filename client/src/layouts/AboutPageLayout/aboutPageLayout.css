@@ -41,5 +41,12 @@
   width: 90% !important;
   height: 1px;
   background-color: #e0e0e0;
-  margin: 1rem;
+  margin: 0 1rem 1rem;
+}
+
+.about-page-separator {
+  width: 90%;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 2rem 1rem 1rem 1rem;
 }
