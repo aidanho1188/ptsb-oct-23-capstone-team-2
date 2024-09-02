@@ -8,7 +8,7 @@ import WorkorderCheckoutPage from './pages/WorkorderCheckoutPage/WorkorderChecko
 import LoginPage from './pages/LoginPage/LoginPage.jsx'
 import CreateWorkorderPage from './pages/CreateWorkorderPage/CreateWorkorderPage.jsx'
 import WorkActivityPage from './pages/WorkActivityPage/WorkActivity.jsx'
-import Demo from './pages/Canva.jsx'
+import Demo from './pages/DemoPage/Canva.jsx'
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import AboutPage from './pages/AboutPage/AboutPage.jsx'
