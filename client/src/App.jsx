@@ -12,6 +12,7 @@ import Demo from './pages/DemoPage/Canva.jsx'
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import AboutPage from './pages/AboutPage/AboutPage.jsx'
+import Footer from './components/Footer/Footer.jsx'
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -63,6 +64,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
       <ToastContainer position='bottom-right' />
+      <Footer />
     </QueryClientProvider>
   )
 }
