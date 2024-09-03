@@ -69,16 +69,28 @@ const updateWorkOrderStatus = async (req, res, next) => {
   try {
     const primary = req.body.status.split('/')[0]
     const extended = req.body.status.split('/')[1]
-    const response = await sendStatusUpdateRequest(req.params.workOrderId, primary, extended)
+    let response = await sendStatusUpdateRequest(req.params.workOrderId, primary, extended)
     console.log('data6: workorder update')
     if (!response.ErrorCode && response.result && response.result !== '') {
       console.log('Saving updated work order...')
       saveUpdatedWorkOrder(response)
+    } else if (!Object.prototype.hasOwnProperty.call(response, 'ErrorCode')) {
+      if (response.result === '') {
+        throw {
+          ErrorMessage: 'Status has already been updated',
+          ErrorCode: 404,
+        }
+      } else {
+        throw {
+          ErrorMessage: response,
+          ErrorCode: 404,
+        }
+      }
     }
     res.json(response)
   } catch (error) {
-    res.json({error})
-    console.log(error)
+    res.json(error)
+    console.log('Error: ', error)
   }
 }
 

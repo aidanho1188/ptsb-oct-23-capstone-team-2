@@ -15,7 +15,11 @@ function FormResponse({formState, isLoading}) {
     console.log('formState:', formState)
     // console.log('formState.workorder:', formState.workorder)
 
-    if (formState.data && Object.prototype.hasOwnProperty.call(formState.data, 'ErrorCode') === false) {
+    console.log(formState.data && Object.prototype.hasOwnProperty.call(formState.data, 'ErrorCode') === false)
+    console.log(formState.data.result !== '')
+    console.log(formState.data.result !== undefined)
+
+    if (formState.data && Object.prototype.hasOwnProperty.call(formState.data, 'ErrorCode') === false && formState.data.result !== undefined) {
       if (formState.data.result !== '') {
         return `<strong>Success</strong>: ${formState.data.result}`
       } else {

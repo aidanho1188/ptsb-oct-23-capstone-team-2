@@ -37,22 +37,32 @@ export function WorkOrder({onFormStateChange, onLoading}) {
       const response = await axios.patch(url, {
         status: status,
       })
-      if (Object.prototype.hasOwnProperty.call(response.data, 'ErrorCode') === false && typeof response.data !== 'string') {
+      if (typeof response.data !== 'string') {
         console.log('response result:', response.data)
         onFormStateChange(response)
         onLoading(false)
       }
 
-      console.log('response:', Object.prototype.hasOwnProperty.call(response.data, 'ErrorCode'))
-      console.log('response:', typeof response.data !== 'string')
-      if (Object.prototype.hasOwnProperty.call(response.data, 'ErrorCode') === true || typeof response.data === 'string') {
-        console.log('response error:', response.data)
-        onFormStateChange(response)
-        onLoading(false)
-      }
+      console.log('response:', response)
+      // console.log('response:', Object.prototype.hasOwnProperty.call(response.data, 'ErrorCode'))
+      // console.log('response:', typeof response.data !== 'string')
+      // if (Object.prototype.hasOwnProperty.call(response.data, 'ErrorCode') === true || typeof response.data === 'string') {
+      //   console.log('response error:', response.data)
+      //   onFormStateChange(response)
+      //   onLoading(false)
+      // }
     } catch (error) {
       console.error(`Error fetching data from ${url}: `, error)
       toast.error(`Error fetching data: ${error.message}`, {autoClose: 5000})
+
+      const errorWithData = {
+        ...error,
+        data: {
+          ErrorMessage: error.message,
+        },
+      }
+      onFormStateChange(errorWithData)
+      onLoading(false)
     }
   }
 
