@@ -1,15 +1,21 @@
-import * as React from 'react'
-import {Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter} from '@/components/ui/card'
+import {Card, CardHeader, CardTitle, CardContent} from '@/components/ui/card'
 import {Skeleton} from '@/components/ui/skeleton'
 import {Separator} from '@/components/ui/separator'
 import './formResponse.css'
 
+import PropTypes from 'prop-types'
+
 function FormResponse({formState, isLoading}) {
+  FormResponse.propTypes = {
+    formState: PropTypes.object,
+    isLoading: PropTypes.bool,
+  }
   function handleResponse(formState) {
     console.log('data:', formState)
     console.log('formState:', formState)
     // console.log('formState.workorder:', formState.workorder)
-    if (formState.data) {
+
+    if (formState.data && Object.prototype.hasOwnProperty.call(formState.data, 'ErrorCode') === false) {
       if (formState.data.result !== '') {
         return `<strong>Success</strong>: ${formState.data.result}`
       } else {

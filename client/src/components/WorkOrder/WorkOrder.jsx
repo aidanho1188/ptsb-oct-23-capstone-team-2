@@ -8,8 +8,13 @@ import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/c
 import axios from 'axios'
 import {toast} from 'react-toastify'
 import './workorder.css'
+import PropTypes from 'prop-types'
 
 export function WorkOrder({onFormStateChange, onLoading}) {
+  WorkOrder.propTypes = {
+    onFormStateChange: PropTypes.func.isRequired,
+    onLoading: PropTypes.func.isRequired,
+  }
   const [workOrderId, setWorkOrderId] = React.useState('')
   const [status, setStatus] = React.useState('')
 
@@ -27,10 +32,21 @@ export function WorkOrder({onFormStateChange, onLoading}) {
     const apiUrl = import.meta.env.VITE_API_URL
     const url = `${apiUrl}/api/workorders/updateStatus/${workOrderId}`
     try {
+      console.log('getting data from:', url)
+
       const response = await axios.patch(url, {
         status: status,
       })
-      if (response.data.hasOwnProperty('ErrorCode') === false && typeof response.data !== 'string') {
+      if (Object.prototype.hasOwnProperty.call(response.data, 'ErrorCode') === false && typeof response.data !== 'string') {
+        console.log('response result:', response.data)
+        onFormStateChange(response)
+        onLoading(false)
+      }
+
+      console.log('response:', Object.prototype.hasOwnProperty.call(response.data, 'ErrorCode'))
+      console.log('response:', typeof response.data !== 'string')
+      if (Object.prototype.hasOwnProperty.call(response.data, 'ErrorCode') === true || typeof response.data === 'string') {
+        console.log('response error:', response.data)
         onFormStateChange(response)
         onLoading(false)
       }
