@@ -56,7 +56,14 @@ function AboutPageLayout() {
           </nav>
         </aside>
         <div className='how-it-works-content'>
-          {activePage === 'dashboard' && <p>The Dashboard gives you an overview of the app's key features and current status. It's the central hub for accessing other pages and monitoring general activity. It displays information about work orders, including their status such as open, on site, incomplete, approved proposals, awaiting for quote, and completed. In addition, it has a graph plotted on this data for an overview.</p>}
+          {activePage === 'dashboard' && (
+            <p>
+              The Dashboard gives you an overview of the app&apos;s key features and current status. It&apos;s the central hub for accessing other pages and monitoring general activity. It displays information about work orders, including their status such as open, on site, incomplete, approved proposals, awaiting for quote, and completed. In addition, it has a graph plotted on this data for an overview.
+              <br />
+              <br />
+              <i>Note that there are limitations in terms of speed and data fetching because we are fetching from the Service Channel. Sometimes, when there are multiple fetches under the same account, it will cause a throttling error.</i>
+            </p>
+          )}
 
           {activePage === 'check-in-out' && (
             <p>

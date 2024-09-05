@@ -1,61 +1,88 @@
 import {QueryClient, QueryClientProvider} from 'react-query'
-import Homepage from './pages/Homepage/Homepage.jsx'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
-import './App.css'
-import UpdateStatusPage from './pages/UpdateStatusPage/UpdateStatusPage.jsx'
-import WorkorderCheckinPage from './pages/WorkorderCheckinPage/WorkorderCheckinPage.jsx'
-import WorkorderCheckoutPage from './pages/WorkorderCheckoutPage/WorkorderCheckoutPage.jsx'
-import LoginPage from './pages/LoginPage/LoginPage.jsx'
-import CreateWorkorderPage from './pages/CreateWorkorderPage/CreateWorkorderPage.jsx'
-import WorkActivityPage from './pages/WorkActivityPage/WorkActivity.jsx'
-import Demo from './pages/DemoPage/Canva.jsx'
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import './App.css'
+import Layout from './Layout.jsx'
 import AboutPage from './pages/AboutPage/AboutPage.jsx'
-import Footer from './components/Footer/Footer.jsx'
+import CreateWorkorderPage from './pages/CreateWorkorderPage/CreateWorkorderPage.jsx'
+import Demo from './pages/DemoPage/Canva.jsx'
+import Homepage from './pages/Homepage/Homepage.jsx'
+import LoginPage from './pages/LoginPage/LoginPage.jsx'
+import UpdateStatusPage from './pages/UpdateStatusPage/UpdateStatusPage.jsx'
+import WorkActivityPage from './pages/WorkActivityPage/WorkActivity.jsx'
+import WorkorderCheckinPage from './pages/WorkorderCheckinPage/WorkorderCheckinPage.jsx'
+import WorkorderCheckoutPage from './pages/WorkorderCheckoutPage/WorkorderCheckoutPage.jsx'
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Homepage />,
+    element: (
+      <Layout>
+        <Homepage />
+      </Layout>
+    ),
   },
   {
     path: '/update-status',
-    element: <UpdateStatusPage />,
+    element: (
+      <Layout>
+        <UpdateStatusPage />
+      </Layout>
+    ),
   },
   {
     path: '/workorder-checkin',
-    element: <WorkorderCheckinPage />,
+    element: (
+      <Layout>
+        <WorkorderCheckinPage />
+      </Layout>
+    ),
   },
   {
     path: '/workorder-checkout',
-    element: <WorkorderCheckoutPage />,
+    element: (
+      <Layout>
+        <WorkorderCheckoutPage />
+      </Layout>
+    ),
   },
   {
     path: '/login',
     element: <LoginPage />,
   },
   {
-    path: '/create-workorder',
-
-    element: <CreateWorkorderPage />,
-  },
-  {
     path: '/work-activity',
-    element: <WorkActivityPage />,
+    element: (
+      <Layout>
+        <WorkActivityPage />
+      </Layout>
+    ),
   },
   {
     path: '/workorder-create',
-    element: <CreateWorkorderPage />,
+    element: (
+      <Layout>
+        <CreateWorkorderPage />
+      </Layout>
+    ),
   },
   {
     path: '/demo',
-    element: <Demo />,
+    element: (
+      <Layout>
+        <Demo />
+      </Layout>
+    ),
   },
   {
     path: '/about',
-    element: <AboutPage />,
+    element: (
+      <Layout>
+        <AboutPage />
+      </Layout>
+    ),
   },
 ])
 
@@ -64,7 +91,6 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
       <ToastContainer position='bottom-right' />
-      <Footer />
     </QueryClientProvider>
   )
 }

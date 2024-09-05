@@ -2,10 +2,11 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  margin: 0 1rem;
   width: 100%;
 }
 
-.nav-link {
+.nav-links {
   display: flex;
   align-items: center;
   font-size: 1rem;
@@ -13,10 +14,17 @@
   cursor: pointer;
 }
 
-.nav-link:last-child {
+.nav-links:last-child {
   border-right: none;
 }
 
-.nav-link svg {
+.nav-links svg {
   margin-right: 0.5rem;
+}
+
+.nav-links.active {
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  background-color: rgba(167, 207, 55, 0.3);
 }

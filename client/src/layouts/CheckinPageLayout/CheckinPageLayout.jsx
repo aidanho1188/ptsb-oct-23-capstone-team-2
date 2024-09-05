@@ -30,6 +30,9 @@ function CheckinPageLayout() {
       if (!response.data.ErrorCode && typeof response.data !== 'string') {
         console.log('Work order info:', response.data)
         const [locationData, userID] = await Promise.all([axios.get(`${apiUrl}/api/workorders/locations/${response.data.LocationId}`), axios.get(`${apiUrl}/api/userId`)])
+        console.log('Location data:', locationData.data)
+        console.log('User ID:', userID.data)
+
         data = {
           workorder: response,
           location: locationData,
@@ -37,9 +40,13 @@ function CheckinPageLayout() {
           success: 'Work order found!',
         }
       }
+      console.log(data)
+
       setWorkorderInfo(data)
       setIsLoading(false)
     } catch (error) {
+      // setWorkorderInfo(error)
+      // setIsLoading(false)
       console.error('Error fetching work order:', error)
       toast.error(`Error fetching work order: ${error.message}`, {autoClose: 5000})
     }

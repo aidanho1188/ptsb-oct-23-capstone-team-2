@@ -1,14 +1,12 @@
 .workorder-checkout-page-container {
-    display: flex;
-    flex-direction: column;
-    /* width: 100vw;
-    height: 100vh; */
-    padding: .5rem;
-  }
+  display: flex;
+  flex-direction: column;
+  /* width: 100vw; */
+  /* height: 100vh; */
+  padding: 0.5rem;
+}
 
 .checkout-page-title {
-    text-align: center;
-    font-size: 2em;
+  text-align: center;
+  font-size: 2em;
 }
-  
-  

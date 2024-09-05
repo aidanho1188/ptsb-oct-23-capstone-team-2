@@ -7,7 +7,7 @@ function NavBar() {
   return (
     <nav className='nav-bar'>
       <Logo />
-      <NavMenu className='nav-menu' />
+      <NavMenu />
       <AccountMenu />
     </nav>
   )
