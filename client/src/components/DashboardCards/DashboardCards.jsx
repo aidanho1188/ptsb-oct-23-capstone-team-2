@@ -3,11 +3,11 @@ import {Skeleton} from '@/components/ui/skeleton'
 import {ScrollArea} from '@/components/ui/scroll-area'
 import {HoverCard, HoverCardTrigger, HoverCardContent} from '@/components/ui/hover-card'
 import axios from 'axios'
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import './dashboardCards.css'
 
 // TODO: RENAME THIS COMPONENT
-function DashboardCards({title, data, onHover}) {
+function DashboardCards({title, data}) {
   const [workorders, setWorkorders] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
@@ -81,7 +81,7 @@ function DashboardCards({title, data, onHover}) {
               </>
             )}
           </TableBody>
-          {data && Array.isArray(data) && data.length === 0 ? <TableCaption>No data</TableCaption> : null}
+          {data && Array.isArray(data) && data.length === 0 ? <TableCaption>No data available</TableCaption> : null}
         </ScrollArea>
       </Table>
     </div>

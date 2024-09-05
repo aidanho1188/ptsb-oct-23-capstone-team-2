@@ -17,11 +17,11 @@ const AccountMenu = () => {
   return (
     <div className='account-menu-layout'>
       <DropdownMenu>
-        <DropdownMenuTrigger className='dropdown-menu-trigger'>
-          <Button variant='outline' className='account-btn'>
-            {username}
-          </Button>
-        </DropdownMenuTrigger>
+        {/* <DropdownMenuTrigger className='dropdown-menu-trigger'> */}
+        {/* <Button variant='outline' className='account-btn'> */}
+        <div className='account-name'>{username}</div>
+        {/* </Button> */}
+        {/* </DropdownMenuTrigger> */}
         {/* <DropdownMenuContent className='dropdown-menu-content'> */}
         {/* <DropdownMenuLabel>{username}</DropdownMenuLabel> */}
         {/* <DropdownMenuSeparator /> */}

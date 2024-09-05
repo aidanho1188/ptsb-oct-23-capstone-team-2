@@ -9,10 +9,11 @@ const getupdateWorkOrders = require('../utils/getUpdatedWorkOrder.js')
 const open = async (req, res, next) => {
   try {
     const data = await fetchData('workorders', 'Id,LocationId,Trade,Status,CallDate,UpdatedDate', "Status/Primary eq 'OPEN'")
-    console.log('data1: open workorders')
+    console.log('data0: open workorders')
     res.json(data)
   } catch (error) {
     console.log(error)
+    res.json([{}])
   }
 }
 

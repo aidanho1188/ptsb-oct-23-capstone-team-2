@@ -7,16 +7,16 @@ const app = express()
 const port = 8080
 const DB_URL = process.env.DB_URL
 
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-app.use(cors())
 app.use('/', router)
 
 // uncomment this when use on local
-app.listen(port, async () => {
-  await dbConnect()
-  console.log(`Server listening at http://localhost:${port}`)
-})
+// app.listen(port, async () => {
+//   await dbConnect()
+//   console.log(`Server listening at http://localhost:${port}`)
+// })
 
 app.get('/', (req, res) => {
   res.send('Hello World!')

@@ -20,10 +20,15 @@ function Dashboard() {
     const fetchData = async (url, setData) => {
       try {
         const response = await axios.get(url)
-        setData(response.data.value)
+        if (!response.data.value) {
+          throw new Error(`Failed to fetch ${url.split('/').pop()} data`)
+        } else {
+          setData(response.data.value)
+        }
       } catch (error) {
         if (!hasShownError) {
-          toast.error(`Error fetching data: ${error.message}`, {autoClose: 50000})
+          toast.error(`Error fetching data: ${error.message}`, {autoClose: 10000})
+          setData([])
           hasShownError = true
         }
         setHasError(true)
