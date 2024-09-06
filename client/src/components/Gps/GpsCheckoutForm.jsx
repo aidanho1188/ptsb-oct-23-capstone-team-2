@@ -5,7 +5,7 @@ import {useEffect, useState} from 'react'
 import axios from 'axios'
 import {toast} from 'react-toastify'
 import {Select, SelectTrigger, SelectContent, SelectItem, SelectValue} from '@/components/ui/select'
-import './GpsCheckoutForm.css'
+import './GpsCheckinoutForm.css'
 
 function GpsCheckoutForm({btnName, formState, isLoading, setIsLoading}) {
   const {register, handleSubmit, reset} = useForm({

@@ -4,7 +4,7 @@ import {useForm} from 'react-hook-form'
 import {useEffect} from 'react'
 import axios from 'axios'
 import {toast} from 'react-toastify'
-import './GpsCheckinForm.css'
+import './GpsCheckinoutForm.css'
 
 function GpsCheckinForm({btnName, formState, isLoading, setIsLoading}) {
   const {register, handleSubmit, reset} = useForm({

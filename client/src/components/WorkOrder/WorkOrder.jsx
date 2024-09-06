@@ -67,7 +67,7 @@ export function WorkOrder({onFormStateChange, onLoading}) {
   }
 
   return (
-    <Card className='w-[350px]'>
+    <Card className='rounded-md w-[350px]'>
       <div className='order-layout'>
         <CardContent>
           <form onSubmit={handleSubmit}>

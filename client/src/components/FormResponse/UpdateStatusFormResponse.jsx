@@ -32,7 +32,7 @@ function FormResponse({formState, isLoading}) {
 
   if (isLoading) {
     return (
-      <Card className='form-response-layout'>
+      <Card className='rounded-md form-response-layout'>
         <CardHeader>
           <CardTitle>
             <div className='form-loading-skeleton'>
@@ -54,7 +54,7 @@ function FormResponse({formState, isLoading}) {
 
   if (!formState) {
     return (
-      <Card className='form-response-layout'>
+      <Card className='rounded-md form-response-layout'>
         <CardHeader>
           <CardTitle>Form Response</CardTitle>
         </CardHeader>
@@ -68,7 +68,7 @@ function FormResponse({formState, isLoading}) {
   }
 
   return (
-    <Card className='form-response-layout'>
+    <Card className='rounded-md form-response-layout'>
       <CardHeader>
         <CardTitle dangerouslySetInnerHTML={{__html: handleResponse(formState)}} />
       </CardHeader>
