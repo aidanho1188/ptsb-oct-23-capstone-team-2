@@ -3,18 +3,3 @@
   width: 100vw;
   margin: 0;
 }
-
-.Toastify__toast {
-  background-color: #333;
-  color: #fff;
-}
-
-/* Change the color of the progress bar */
-.Toastify__progress-bar {
-  background-color: #f00;
-}
-
-/* Change the color of the close button */
-.Toastify__close-button {
-  color: #fff;
-}

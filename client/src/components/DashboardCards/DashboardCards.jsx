@@ -5,6 +5,7 @@ import {HoverCard, HoverCardTrigger, HoverCardContent} from '@/components/ui/hov
 import {useEffect, useState} from 'react'
 import './dashboardCards.css'
 import {toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import PropType from 'prop-types'
 // TODO: RENAME THIS COMPONENT
@@ -88,7 +89,9 @@ function DashboardCards({title, data}) {
                         </HoverCardContent>
                       </HoverCard>
                       <TableCell>{workorder.Status.Extended || workorder.Status.Primary || 'None'}</TableCell>
-                      <TableCell className="ID" onClick={() => handleCopyToClipboard(workorder.LocationId, 'Location')}>{workorder.LocationId}</TableCell>
+                      <TableCell className='ID' onClick={() => handleCopyToClipboard(workorder.LocationId, 'Location')}>
+                        {workorder.LocationId}
+                      </TableCell>
                       <TableCell className='text-right'>{workorder.Trade}</TableCell>
                     </TableRow>
                   ))}

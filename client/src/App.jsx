@@ -1,8 +1,6 @@
 import {QueryClient, QueryClientProvider} from 'react-query'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import {ToastContainer} from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import './App.css'
 import Layout from './Layout.jsx'
 import AboutPage from './pages/AboutPage/AboutPage.jsx'
 import CreateWorkorderPage from './pages/CreateWorkorderPage/CreateWorkorderPage.jsx'
@@ -13,6 +11,8 @@ import UpdateStatusPage from './pages/UpdateStatusPage/UpdateStatusPage.jsx'
 import WorkActivityPage from './pages/WorkActivityPage/WorkActivity.jsx'
 import WorkorderCheckinPage from './pages/WorkorderCheckinPage/WorkorderCheckinPage.jsx'
 import WorkorderCheckoutPage from './pages/WorkorderCheckoutPage/WorkorderCheckoutPage.jsx'
+import 'react-toastify/dist/ReactToastify.css'
+import './App.css'
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -90,7 +90,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
-      <ToastContainer position='bottom-right' />
+      <ToastContainer position='bottom-right' draggable='mouse' draggableDirection='x' />
     </QueryClientProvider>
   )
 }

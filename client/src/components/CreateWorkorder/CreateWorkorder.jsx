@@ -6,6 +6,8 @@ import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/c
 import {CalendarIcon} from '@radix-ui/react-icons'
 import {format} from 'date-fns'
 import {Separator} from '@/components/ui/separator'
+import 'react-toastify/dist/ReactToastify.css'
+
 import {toast} from 'react-toastify'
 import {cn} from '@/lib/utils'
 import {Calendar} from '@/components/ui/calendar'
