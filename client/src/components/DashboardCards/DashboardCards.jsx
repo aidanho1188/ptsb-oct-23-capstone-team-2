@@ -2,14 +2,26 @@ import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Table
 import {Skeleton} from '@/components/ui/skeleton'
 import {ScrollArea} from '@/components/ui/scroll-area'
 import {HoverCard, HoverCardTrigger, HoverCardContent} from '@/components/ui/hover-card'
-import axios from 'axios'
 import {useEffect, useState} from 'react'
 import './dashboardCards.css'
+import {toast} from 'react-toastify'
 
+import PropType from 'prop-types'
 // TODO: RENAME THIS COMPONENT
 function DashboardCards({title, data}) {
+  // eslint-disable-next-line no-unused-vars
   const [workorders, setWorkorders] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const handleCopyToClipboard = (id, idType) => {
+    navigator.clipboard
+      .writeText(id)
+      .then(() => {
+        toast.success(`${idType} ID copied to clipboard`)
+      })
+      .catch((err) => {
+        console.error('Failed to copy: ', err)
+      })
+  }
 
   useEffect(() => {
     setIsLoading(!data)
@@ -56,7 +68,9 @@ function DashboardCards({title, data}) {
                     <TableRow key={workorder.Id}>
                       <HoverCard>
                         <HoverCardTrigger>
-                          <TableCell className='w-[100px]'>{workorder.Id}</TableCell>
+                          <TableCell className='ID w-[100px]' onClick={() => handleCopyToClipboard(workorder.Id, 'Work Order')}>
+                            {workorder.Id}
+                          </TableCell>
                         </HoverCardTrigger>
                         <HoverCardContent className='card-main-content'>
                           <p>
@@ -74,7 +88,7 @@ function DashboardCards({title, data}) {
                         </HoverCardContent>
                       </HoverCard>
                       <TableCell>{workorder.Status.Extended || workorder.Status.Primary || 'None'}</TableCell>
-                      <TableCell>{workorder.LocationId}</TableCell>
+                      <TableCell className="ID" onClick={() => handleCopyToClipboard(workorder.LocationId, 'Location')}>{workorder.LocationId}</TableCell>
                       <TableCell className='text-right'>{workorder.Trade}</TableCell>
                     </TableRow>
                   ))}
@@ -86,5 +100,10 @@ function DashboardCards({title, data}) {
       </Table>
     </div>
   )
+}
+
+DashboardCards.propTypes = {
+  title: PropType.string.isRequired,
+  data: PropType.array.isRequired,
 }
 export default DashboardCards

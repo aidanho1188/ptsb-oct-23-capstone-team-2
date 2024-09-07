@@ -44,3 +44,7 @@
 .card-main-content {
   width: fit-content !important;
 }
+
+.ID {
+  cursor: pointer;
+}
