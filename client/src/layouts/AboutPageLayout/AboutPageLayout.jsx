@@ -6,7 +6,7 @@ import TeamCarousel from '../../components/TeamCarousel/TeamCarousel'
 import aidavielaImage from '../../assets/aidaviela.jpeg'
 import outsideunlimitedImage from '../../assets/outsideunlimited.jpg'
 import checkin from '../../assets/checkin.gif'
-import checkout from '../../assets/checkout.gif'
+// import checkout from '../../assets/checkout.gif'
 import createWorkOrder from '../../assets/createWorkOrder.gif'
 import updateStatus from '../../assets/updateStatus.gif'
 import workOrderActivity from '../../assets/workOrderActivity.gif'
@@ -60,6 +60,13 @@ function AboutPageLayout() {
             <p>
               The Dashboard gives you an overview of the app&apos;s key features and current status. It&apos;s the central hub for accessing other pages and monitoring general activity. It displays information about work orders, including their status such as open, on site, incomplete, approved proposals, awaiting for quote, and completed. In addition, it has a graph plotted on this data for an overview.
               <br />
+              <br />
+              <h3>Key Features:</h3>
+              <ul className='bullet-list'>
+                <li>View all work orders via tables.</li>
+                <li>View the overall number of work orders via a graph.</li>
+                <li>Click on the work order ID in the table to copy it to the clipboard.</li>
+              </ul>
               <br />
               <i>Note that there are limitations in terms of speed and data fetching because we are fetching from the Service Channel. Sometimes, when there are multiple fetches under the same account, it will cause a throttling error.</i>
             </p>

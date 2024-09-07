@@ -101,3 +101,8 @@
   background-color: #e0e0e0;
   margin: 2rem 1rem 1rem 1rem;
 }
+
+.bullet-list {
+  list-style-type: disc;
+  margin-left: 20px;
+}
