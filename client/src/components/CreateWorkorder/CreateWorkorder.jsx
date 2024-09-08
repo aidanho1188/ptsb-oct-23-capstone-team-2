@@ -14,6 +14,8 @@ import {Calendar} from '@/components/ui/calendar'
 import {Popover, PopoverContent, PopoverTrigger} from '@/components/ui/popover'
 import axios from 'axios'
 
+import './CreateWorkorder.css'
+
 export function CreateWorkorder() {
   const [callDate, setCallDate] = React.useState(new Date())
   const [scheduledDate, setScheduledDate] = React.useState(new Date())
@@ -177,67 +179,74 @@ export function CreateWorkorder() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='form-layout'>
       <h2>Contact Information</h2>
       <div className='contract-info'>
-        <Label htmlFor='store-id'>Store ID</Label>
-        <Input id='store-id' placeholder='Enter Store Id' required />
+        <div className='verticle-box'>
+          <Label htmlFor='store-id'>Store ID</Label>
+          <Input id='store-id' placeholder='Enter Store Id' required />
+        </div>
 
-        <Label htmlFor='trade-name'>Trade Name</Label>
-        <Select id='trade-name' onValueChange={handleTradeNameChange} required>
-          <SelectTrigger>
-            <SelectValue placeholder='Select' />
-          </SelectTrigger>
-          <SelectContent position='popper'>
-            {tradeNames.map((tradeName, index) => (
-              <SelectItem key={index} value={tradeName.toLowerCase()}>
-                {tradeName}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        <div className='verticle-box'>
+          <Label htmlFor='trade-name'>Trade Name</Label>
+          <Select id='trade-name' onValueChange={handleTradeNameChange} required>
+            <SelectTrigger>
+              <SelectValue placeholder='Select' />
+            </SelectTrigger>
+            <SelectContent position='popper'>
+              {tradeNames.map((tradeName, index) => (
+                <SelectItem key={index} value={tradeName.toLowerCase()}>
+                  {tradeName}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
 
-        <Label htmlFor='provider-id'>Provider Id</Label>
-        <Input id='provider-id' placeholder='Enter Provider Id' required />
+        <div className='verticle-box'>
+          <Label htmlFor='provider-id'>Provider Id</Label>
+          <Input id='provider-id' placeholder='Enter Provider Id' required />
+        </div>
       </div>
 
-      <div className='category'>
-        <Label htmlFor='category'>Category</Label>
-        <Select id='category' onValueChange={handleCategoryChange} required>
-          <SelectTrigger>
-            <SelectValue placeholder='Select' />
-          </SelectTrigger>
-          <SelectContent position='popper'>
-            {categories.map((category, index) => (
-              <SelectItem key={index} value={category.toLowerCase()}>
-                {category}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
+      <div className='contract-info'>
+        <div className='category'>
+          <Label htmlFor='category'>Category</Label>
+          <Select id='category' onValueChange={handleCategoryChange} required>
+            <SelectTrigger>
+              <SelectValue placeholder='Select' />
+            </SelectTrigger>
+            <SelectContent position='popper'>
+              {categories.map((category, index) => (
+                <SelectItem key={index} value={category.toLowerCase()}>
+                  {category}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
 
-      <div className='priority'>
-        <Label htmlFor='priority'>Priority</Label>
-        <Select id='priority' onValueChange={handlePriorityChange} required>
-          <SelectTrigger>
-            <SelectValue placeholder='Select' />
-          </SelectTrigger>
-          <SelectContent position='popper'>
-            {priorities.map((priority, index) => (
-              <SelectItem key={index} value={priority.toLowerCase()}>
-                {priority}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
+        <div className='priority'>
+          <Label htmlFor='priority'>Priority</Label>
+          <Select id='priority' onValueChange={handlePriorityChange} required>
+            <SelectTrigger>
+              <SelectValue placeholder='Select' />
+            </SelectTrigger>
+            <SelectContent position='popper'>
+              {priorities.map((priority, index) => (
+                <SelectItem key={index} value={priority.toLowerCase()}>
+                  {priority}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
 
-      <div>
-        <Label htmlFor='nte'>Nte</Label>
-        <Input id='nte' placeholder='Enter Nte' required />
+        <div>
+          <Label htmlFor='nte'>Nte</Label>
+          <Input id='nte' placeholder='Enter Nte' required />
+        </div>
       </div>
-
       <div className='space-y-1'>
         <Label htmlFor='callDate'>Call Date</Label>
         <br />
@@ -275,35 +284,41 @@ export function CreateWorkorder() {
         <Input id='description' placeholder='Enter Description' />
       </div>
 
+      <Separator />
+      <h2>Status</h2>
       <div className='status'>
-        <h2>Status</h2>
-        <Label htmlFor='primary'>Primary Status</Label>
-        <Select id='primary' onValueChange={handlePrimaryStatusChange} required>
-          <SelectTrigger>
-            <SelectValue placeholder='Select' />
-          </SelectTrigger>
-          <SelectContent position='popper'>
-            <SelectItem value='open'>Open</SelectItem>
-            <SelectItem value='In Progress'>In Progress</SelectItem>
-          </SelectContent>
-        </Select>
-
-        <Label htmlFor='extended'>Extended Status</Label>
-        <Select id='extended' onValueChange={handleExtendedStatusChange} required>
-          <SelectTrigger>
-            <SelectValue placeholder='Select' />
-          </SelectTrigger>
-          <SelectContent position='popper'>
-            <SelectItem value=' '>None</SelectItem>
-            <SelectItem value='DISPATCH CONFIRMED'>DISPATCH CONFIRMED</SelectItem>
-            <SelectItem value='INCOMPLETE'>INCOMPLETE</SelectItem>
-            <SelectItem value='ON SITE'>ON SITE</SelectItem>
-            <SelectItem value='PARTS ON ORDER'>PARTS ON ORDER</SelectItem>
-            <SelectItem value='PROPOSAL APPROVED'>PROPOSAL APPROVED</SelectItem>
-            <SelectItem value='UNSATISFACTORY'>UNSATISFACTORY</SelectItem>
-            <SelectItem value='WAITING FOR QUOTE'>WAITING FOR QUOTE</SelectItem>
-          </SelectContent>
-        </Select>
+        <div className='status-info'>
+          <div className='vertical-box'>
+            <Label htmlFor='primary'>Primary Status</Label>
+            <Select id='primary' onValueChange={handlePrimaryStatusChange} required>
+              <SelectTrigger>
+                <SelectValue placeholder='Select' />
+              </SelectTrigger>
+              <SelectContent position='popper'>
+                <SelectItem value='open'>Open</SelectItem>
+                <SelectItem value='In Progress'>In Progress</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className='vertical-box'>
+            <Label htmlFor='extended'>Extended Status</Label>
+            <Select id='extended' onValueChange={handleExtendedStatusChange} required>
+              <SelectTrigger>
+                <SelectValue placeholder='Select' />
+              </SelectTrigger>
+              <SelectContent position='popper'>
+                <SelectItem value=' '>None</SelectItem>
+                <SelectItem value='DISPATCH CONFIRMED'>DISPATCH CONFIRMED</SelectItem>
+                <SelectItem value='INCOMPLETE'>INCOMPLETE</SelectItem>
+                <SelectItem value='ON SITE'>ON SITE</SelectItem>
+                <SelectItem value='PARTS ON ORDER'>PARTS ON ORDER</SelectItem>
+                <SelectItem value='PROPOSAL APPROVED'>PROPOSAL APPROVED</SelectItem>
+                <SelectItem value='UNSATISFACTORY'>UNSATISFACTORY</SelectItem>
+                <SelectItem value='WAITING FOR QUOTE'>WAITING FOR QUOTE</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
       </div>
       {/* <Separator /> */}
       {/* <div className='space-y-1'>
@@ -313,7 +328,9 @@ export function CreateWorkorder() {
         <Input id='description' placeholder='Description' />
       </div> */}
 
-      <Button type='submit'>Create New Work Order</Button>
+      <Button className='submit-btn' type='submit'>
+        Create New Work Order
+      </Button>
     </form>
   )
 }

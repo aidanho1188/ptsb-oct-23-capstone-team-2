@@ -1,5 +1,5 @@
 import BackToDashboard from '../../components/BackToDashboard/BackToDashboard'
-import CheckoutPageLayout from '../../layouts/CheckoutPageLayout/CheckoutPageLayout'
+import CheckoutPageLayout from '../../layouts/CheckinoutPageLayout/CheckoutPageLayout'
 import './workorderCheckoutPage.css'
 
 function WorkorderCheckoutPage() {

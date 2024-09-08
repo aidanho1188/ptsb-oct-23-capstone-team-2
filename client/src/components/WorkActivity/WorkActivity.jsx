@@ -4,6 +4,7 @@ import {Label} from '@/components/ui/label'
 import {ScrollArea} from '@/components/ui/scroll-area'
 import {useEffect, useState} from 'react'
 import {Separator} from '@/components/ui/separator'
+import {toast} from 'react-toastify'
 
 export function WorkActivity({workorderActivity}) {
   function reformatTime(time) {
@@ -45,6 +46,46 @@ export function WorkActivity({workorderActivity}) {
                 <div className='flex flex-col space-y-1.5'>
                   <Label>Techs Count</Label>
                   <div className='rounded p-2'>Techs Count</div>
+                </div>
+              </div>
+            </CardContent>
+          </div>
+        </Card>
+      </ScrollArea>
+    )
+  }
+
+  if (workorderActivity.value.length === 0) {
+    toast.error('No work order activity data found')
+    return (
+      <ScrollArea className='activity-scroll rounded-md p-4'>
+        <Card className='card-container rounded-md'>
+          <div className='card'>
+            <CardContent>
+              <div className='grid w-full items-center gap-4'>
+                <div className='flex flex-col space-y-1.5'>
+                  <Label>Time In</Label>
+                  <div className='rounded p-2'>No Data</div>
+                </div>
+                <div className='flex flex-col space-y-1.5'>
+                  <Label>Time Out</Label>
+                  <div className='rounded p-2'>No Data</div>
+                </div>
+                <div className='flex flex-col space-y-1.5'>
+                  <Label>User Id</Label>
+                  <div className='rounded p-2'>No Data</div>
+                </div>
+                <div className='flex flex-col space-y-1.5'>
+                  <Label>Store Id</Label>
+                  <div className='rounded p-2'>No Data</div>
+                </div>
+                <div className='flex flex-col space-y-1.5'>
+                  <Label>Resolution Code</Label>
+                  <div className='rounded p-2'>No Data</div>
+                </div>
+                <div className='flex flex-col space-y-1.5'>
+                  <Label>Techs Count</Label>
+                  <div className='rounded p-2'>No Data</div>
                 </div>
               </div>
             </CardContent>

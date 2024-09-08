@@ -1,5 +1,5 @@
 .form-response-layout {
-  width: 35vw;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -10,7 +10,11 @@
 }
 
 .form-loading-skeleton > * {
-  width: 30vw !important;
+  width: 42vw !important;
   margin: 1em 1em 1rem 1em !important;
   padding: 1rem;
+}
+
+.update-status-page .form-loading-skeleton > * {
+  width: 30vw !important;
 }

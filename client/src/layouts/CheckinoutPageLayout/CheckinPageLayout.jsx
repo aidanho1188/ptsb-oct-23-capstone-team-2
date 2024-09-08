@@ -1,4 +1,4 @@
-import './checkinPageLayout.css'
+import './checkinoutPageLayout.css'
 import WorkorderSearch from '../../components/WorkorderSearch/WorkorderSearch'
 import FormResponse from '../../components/FormResponse/FormResponse'
 import GpsCheckinForm from '../../components/Gps/GpsCheckinForm'

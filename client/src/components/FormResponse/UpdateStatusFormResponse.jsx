@@ -32,7 +32,7 @@ function FormResponse({formState, isLoading}) {
 
   if (isLoading) {
     return (
-      <Card className='rounded-md form-response-layout'>
+      <Card className='rounded-md form-response-layout update-status-page'>
         <CardHeader>
           <CardTitle>
             <div className='form-loading-skeleton'>

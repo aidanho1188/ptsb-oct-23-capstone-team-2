@@ -1,5 +1,5 @@
 import BackToDashboard from '../../components/BackToDashboard/BackToDashboard'
-import CheckinPageLayout from '../../layouts/CheckinPageLayout/CheckinPageLayout'
+import CheckinPageLayout from '../../layouts/CheckinoutPageLayout/CheckinPageLayout'
 
 import './workorderCheckinPage.css'
 

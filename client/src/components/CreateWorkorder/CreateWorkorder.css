@@ -1,0 +1,65 @@
+.form-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 95vw;
+  padding: 30px;
+  gap: 10px;
+}
+
+.contract-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.category,
+.status {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.priority {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.contract-info > * {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  width: 30vw;
+}
+
+.status-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+}
+
+.status-info > * {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+}
+
+.form-layout h1 {
+  font-size: 2em;
+  font-weight: bolder;
+}
+
+.submit-btn {
+  margin: 1rem 0;
+}

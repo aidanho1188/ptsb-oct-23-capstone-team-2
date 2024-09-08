@@ -1,10 +1,9 @@
-/* WorkActivity.css */
-
 .card-container {
-  padding: 20px;
+  padding: 1rem;
   height: 100%;
-  width: 50vw;
-  margin: 1em 0;
+  width: 95vw;
+  margin: 1em;
+  border-radius: 6px;
 }
 
 .activity-scroll {

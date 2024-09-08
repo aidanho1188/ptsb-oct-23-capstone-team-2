@@ -11,9 +11,15 @@ function WorkActivityPage() {
   const handleSearch = async (workorderID) => {
     try {
       const apiUrl = import.meta.env.VITE_API_URL
-      const response = await axios.get(`${apiUrl}/api/workorders/activities/${workorderID}`)
-      setWorkorderActivity(response.data.data)
-      console.log(response.data.data)
+      let response = await axios.get(`${apiUrl}/api/workorders/activities/${workorderID}`)
+      const data = response.data.data
+      if (data && typeof data === 'object' && Object.keys(data).length > 0) {
+        setWorkorderActivity(data)
+        console.log(data)
+      } else {
+        setWorkorderActivity({value: []})
+        toast.error(`No workorder activity data found for workorder ID: ${workorderID}`)
+      }
     } catch (error) {
       console.error(error)
       toast.error(`Error fetching workorder activity data: ${error.message}`)

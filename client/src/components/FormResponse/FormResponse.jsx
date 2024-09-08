@@ -33,6 +33,8 @@ function FormResponse({form, formState, isLoading}) {
             <Skeleton className='h-4' />
             <Skeleton className='h-1' />
             <Skeleton className='h-1' />
+            <Skeleton className='h-1' />
+            <Skeleton className='h-1' />
           </div>
         </CardContent>
       </Card>

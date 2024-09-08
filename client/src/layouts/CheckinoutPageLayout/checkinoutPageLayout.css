@@ -1,3 +1,4 @@
+.checkin-page-layout,
 .checkout-page-layout {
   display: flex;
   flex-direction: column;
@@ -7,11 +8,12 @@
 }
 
 .popup-form {
-  width: 80%;
+  width: 95vw;
   min-height: 70vh;
   display: flex;
   flex-direction: row;
   flex: 1;
+  gap: 10px;
 }
 
 .form-response,
@@ -26,5 +28,4 @@
 
 .gps-form {
   width: 100%;
-  /* padding: 20px; */
 }

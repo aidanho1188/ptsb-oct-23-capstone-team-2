@@ -2,3 +2,8 @@
   display: flex;
   gap: 10px;
 }
+
+.search-form-container {
+  width: 95vw;
+  border-radius: 6px;
+}
