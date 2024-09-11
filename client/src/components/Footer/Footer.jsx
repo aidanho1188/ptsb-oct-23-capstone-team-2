@@ -74,7 +74,7 @@ function Footer() {
       <hr />
       <div className='copyright'>
         <p className='copyright-text'>
-          Copyright &copy; 2017 All Rights Reserved by
+          Copyright &copy; {new Date().getFullYear()} All Rights Reserved by
           <a href='/about'> Aidaviela</a>.
         </p>
       </div>
