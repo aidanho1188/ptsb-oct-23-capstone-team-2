@@ -1,6 +1,7 @@
 .dashboard-chart-container {
   width: 100%;
   height: fit-content;
+  border-radius: 6px !important;
 }
 
 .dashboard-chart {
